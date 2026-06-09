@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/09 13:25:40 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:45:18 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+/*
 typedef struct	s_list
 {
 	void	*content;
 	struct	s_list *next;
 } t_list;
+*/
+
+typedef struct	node
+{
+	struct	node *next;
+	void	*content;
+} node;
 
 #endif
 
