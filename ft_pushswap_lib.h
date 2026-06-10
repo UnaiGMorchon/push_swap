@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/10 09:33:21 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/10 12:18:13 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ typedef struct	node
 {
 	struct	node *next;
 	void	*content;
-} node_type;
+} node_list;
+node_list	*ft_lstnew(void *content);
+node_list	*ft_lstlast(node_list *lst);
+void	ft_lstadd_back(node_list **lst, node_list *new);
 
 #endif
 
