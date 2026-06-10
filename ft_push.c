@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/10 13:53:18 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/10 14:56:12 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,11 @@ void	ft_pa(node_list **stack_a, node_list **stack_b)
 	new_a_head = (node_list *)ft_calloc(1, sizeof(node_list));
 	if (new_a_head == NULL)
 		return ;
-	*temp = *stack_a;
-	*stack_a = (*stack_b) -> content;
-	*stack_a -> next = *temp;
-
-	(*stack_b) -> next = *stack_a;
-	(*stack_a) -> content = *stack_b;
+	temp = *stack_a;
+	(*stack_a) = (*stack_b) -> content;
+	(*stack_a) -> next = temp;
 	free(*stack_b);
-	stack_b = NULL;
+	*stack_b = NULL;
 	*stack_b = (*stack_b) -> next;
 }
 
