@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/09 15:45:18 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/10 09:33:21 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct	node
 {
 	struct	node *next;
 	void	*content;
-} node;
+} node_type;
 
 #endif
 
