@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/10 12:38:34 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/11 10:32:49 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ void    ft_lstadd_back(node_list **stack, node_list *new_node)
 
     new_node -> next = *stack;
     *stack = new_node;
+}
+
+void	ft_lstadd_front(node_list **stack, node_list *new_node)
+{
+	if (!stack || !new_node)
+		return ;
+	new_node -> next = *stack;
+	*stack = new_node;
 }
 
 node_list	*ft_lstlast(node_list *stack)
