@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/11 15:51:37 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/11 16:03:37 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct  node
+/*typedef struct  node
     {
         struct  node *next;
         int    content;
-    } node_list;
+    } node_list;*/
 
-node_list   *ft_lstnew(int content)
+node_list	*ft_lstnew(int content)
 {
-    node_list   *new_node;
+	node_list	*new_node;
 
-    new_node = malloc(sizeof(node_list));
-    if (!new_node)
-        return (NULL);
-    new_node -> next = NULL;
-    new_node -> content = content;
-    return (new_node);
+	new_node = malloc(sizeof(node_list));
+	if (!new_node)
+		return (NULL);
+	new_node -> next = NULL;
+	new_node -> content = content;
+	return (new_node);
 }
 
-node_list   *ft_lstlast(node_list *stack)
+node_list	*ft_lstlast(node_list *stack)
 {
-    if (!stack)
-        return (NULL);
-    while (stack->next != NULL)
-        stack = stack -> next;
-    return (stack);
+	if (!stack)
+		return (NULL);
+	while (stack->next != NULL)
+		stack = stack -> next;
+	return (stack);
 }
 
 void	ft_lstadd_front(node_list **stack, node_list *new_node)
@@ -49,20 +49,19 @@ void	ft_lstadd_front(node_list **stack, node_list *new_node)
 	*stack = new_node;
 }
 
-void    ft_lstadd_back(node_list **stack, node_list *new_node)
+void	ft_lstadd_back(node_list **stack, node_list *new_node)
 {
 	node_list	*last;
 
-    if (!stack || !new_node)
+	if (!stack || !new_node)
 		return ;
 	new_node -> next = NULL;
-    if (*stack == NULL)
+	if (*stack == NULL)
 	{
 		*stack = new_node;
 		return ;
 	}
 	last = ft_lstlast(*stack);
-	//(*stack) -> next = new_node;
 	last -> next = new_node;
 }
 
@@ -75,7 +74,7 @@ void	ft_pa(node_list **stack_a, node_list **stack_b)
 		return ;
 	if (*stack_b == NULL)
 		return ;
-	tmp = (*stack_b) -> next;
+	tmp = (*stack_b)-> next;
 	ft_lstadd_front(stack_a, *stack_b);
 	*stack_b = tmp;
 }
@@ -84,12 +83,12 @@ void	ft_pa(node_list **stack_a, node_list **stack_b)
 void	ft_pb(node_list **stack_b, node_list **stack_a)
 {
 	node_list	*tmp;
-	
+
 	if (!stack_b || !stack_a)
 		return ;
 	if (*stack_a == NULL)
 		return ;
-	tmp = (*stack_a) -> next;
+	tmp = (*stack_a)-> next;
 	ft_lstadd_front(stack_b, *stack_a);
 	*stack_a = tmp;
 }
