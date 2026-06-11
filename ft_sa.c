@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/11 11:53:50 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/11 12:55:38 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(void)
 
 	// 2. Configuramos el segundo nodo
 	nodo2.content = "Mundo";
-	nodo2.next = &nodo3;   // Es el final de la lista
+	nodo2.next = NULL;   // Es el final de la lista
 
 // 2. Configuramos el segundo nodo
 	nodo3.content = "verde";
@@ -65,7 +65,7 @@ int	main(void)
 	printf("Antes del swap:\n");
 	printf("1º Nodo: %s\n", (char *)mi_lista->content);
 	printf("2º Nodo: %s\n", (char *)mi_lista->next->content);
-	printf("3º Nodo: %s\n\n", (char *)mi_lista->next->next->content);
+	//printf("3º Nodo: %s\n\n", (char *)mi_lista->next->next->content);
 
 	// 4. Llamamos a tu función pasándole la dirección del puntero
 	ft_sa(&mi_lista);
@@ -74,6 +74,6 @@ int	main(void)
 	printf("Después del swap:\n");
 	printf("1º Nodo: %s\n", (char *)mi_lista->content);
 	printf("2º Nodo: %s\n", (char *)mi_lista->next->content);
-	printf("3º Nodo: %s\n\n", (char *)mi_lista->next->next->content);
+	//printf("3º Nodo: %s\n\n", (char *)mi_lista->next->next->content);
 	return (0);
 }
