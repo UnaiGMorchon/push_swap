@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:59:53 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/09 15:47:04 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/11 14:51:56 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@
 # include <unistd.h>
 # include <stdio.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+	int				value;
+	struct s_stack	*next;
+}					t_stack;
 
-void	ft_sa(t_list **lst);
+void	ft_sa(t_stack **lst_a);
+void	ft_sb(t_stack **lst_b);
 
 #endif

@@ -6,7 +6,7 @@
 #   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/08 11:14:33 by ugarcia-            #+#    #+#             #
-#   Updated: 2026/06/08 13:54:40 by ugarcia-           ###   ########.fr       #
+#   Updated: 2026/06/11 14:52:18 by ugarcia-           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRCS = ft_printf.c
+SRCS = ft_sa.c ft_sb.c ft_ss.c
 
 OBJS = $(SRCS:.c=.o)
 
