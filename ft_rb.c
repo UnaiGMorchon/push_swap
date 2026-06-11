@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ss.c                                            :+:      :+:    :+:   */
+/*   ft_rb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 14:42:04 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/11 15:09:22 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/06/11 15:17:08 by ugarcia-          #+#    #+#             */
+/*   Updated: 2026/06/11 15:18:51 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-void	ft_ss(t_stack **lst_a, t_stack **lst_b)
+void	ft_ra(t_stack **lst)
 {
-	if ((lst_b == NULL || *lst_b == NULL || (*lst_b)->next == NULL)
-		&& (lst_a == NULL || *lst_a == NULL || (*lst_a)->next == NULL))
-	{
-		ft_sa(*lst_a);
-		ft_sb(*lst_b);
-		write(1, "ss\n", 3);
-	}
+
+	ft_lstadd_back();
+
 }
