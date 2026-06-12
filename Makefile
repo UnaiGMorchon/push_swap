@@ -3,19 +3,18 @@
 #                                                          :::      ::::::::   #
 #   Makefile                                             :+:      :+:    :+:   #
 #                                                      +:+ +:+         +:+     #
-#   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
+#   By: patperez <patperez@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
-#   Created: 2026/06/08 11:14:33 by ugarcia-            #+#    #+#             #
-#   Updated: 2026/06/08 13:54:40 by ugarcia-           ###   ########.fr       #
+#   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
+#   Updated: 2026/06/12 09:41:28 by patperez           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
-
-NAME = push_swap
+NAME = pushswap.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_printf.c
+SRCS = 
 
 OBJS = $(SRCS:.c=.o)
 
