@@ -5,17 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 12:59:53 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 09:00:26 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
+/*   Updated: 2026/06/12 09:53:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAPLIB_H
 # define PUSHSWAPLIB_H
-
-# include <stddef.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <stdlib.h>
+# include <stddef.h>
 # include <stdio.h>
 
 typedef struct node
@@ -28,5 +27,9 @@ void		ft_sa(t_node_list **lst_a);
 void		ft_sb(t_node_list **lst_b);
 void		ft_ss(t_node_list **lst_a, t_node_list **lst_b);
 t_node_list	*ft_lstlast(t_node_list *lst);
+t_node_list	*ft_lstnew(int content);
+t_node_list	*ft_lstlast(t_node_list *lst);
+void		ft_lstadd_back(t_node_list **lst, t_node_list *new_node);
+void		ft_lstadd_front(t_node_list **lst, t_node_list *new_node);
 
 #endif
