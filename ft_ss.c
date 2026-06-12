@@ -6,13 +6,13 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:42:04 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/11 15:09:22 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:01:06 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswaplib.h"
 
-void	ft_ss(t_stack **lst_a, t_stack **lst_b)
+void	ft_ss(t_node_list **lst_a, t_node_list **lst_b)
 {
 	if ((lst_b == NULL || *lst_b == NULL || (*lst_b)->next == NULL)
 		&& (lst_a == NULL || *lst_a == NULL || (*lst_a)->next == NULL))
