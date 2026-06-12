@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswaplib.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:05:52 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:53:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 
 typedef struct node
 {
-	struct node	*next;
-	int			content;
-}			t_node_list;
+	int				content;
+	struct node		*next;
+}					t_node_list;
 
+void		ft_sa(t_node_list **lst_a);
+void		ft_sb(t_node_list **lst_b);
+void		ft_ss(t_node_list **lst_a, t_node_list **lst_b);
+t_node_list	*ft_lstlast(t_node_list *lst);
 t_node_list	*ft_lstnew(int content);
 t_node_list	*ft_lstlast(t_node_list *lst);
 void		ft_lstadd_back(t_node_list **lst, t_node_list *new_node);
