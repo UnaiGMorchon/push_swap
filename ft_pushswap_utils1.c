@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:23:36 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:45:22 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ t_node_list	*ft_lstlast(t_node_list *lst)
 		lst = lst -> next;
 	return (lst);
 }
+
+// REVISE
+t_node_list	*ft_lstfind(t_node_list **lst, t_node_list *tofind)
+{
+    if (!lst)
+        return (NULL);
+    while ((*lst)->next != tofind)
+       *lst =(*lst) -> next;
+    return (*lst);
+}
+
 
 void	ft_lstadd_front(t_node_list **lst, t_node_list *new_node)
 {
