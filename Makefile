@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/10 12:43:36 by patperez          #+#    #+#              #
-#    Updated: 2026/06/12 09:38:37 by patperez         ###   ########.fr        #
+#                                                          :::      ::::::::   #
+#   Makefile                                             :+:      :+:    :+:   #
+#                                                      +:+ +:+         +:+     #
+#   By: patperez <patperez@student.42urduliz.com>    +#+  +:+       +#+        #
+#                                                  +#+#+#+#+#+   +#+           #
+#   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
+#   Updated: 2026/06/12 09:41:28 by patperez           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	$(CC) $(NAME) $(OBJS)
 
-$(NAME): $(SRCS) $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -35,4 +35,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
