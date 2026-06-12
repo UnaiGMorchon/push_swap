@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 13:44:18 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 15:26:48 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 void	ft_reva(t_node_list **lst_a)
 {
 	t_node_list *tmp_last;
-    
+	    
 	if (!lst_a)
 		return ;
 	tmp_last = ft_lstlast(*lst_a);
-	(ft_lstfind(lst_a, tmp_last)) -> next = NULL;
+	ft_lstfind(lst_a);
+	(*lst_a) -> next -> next = NULL;
 	ft_lstadd_front(lst_a, tmp_last);
 //	*lst_a = tmp_last;
 }
@@ -40,6 +41,8 @@ int	main(void)
 	ft_lstadd_back(&lst_a, node_a);
 	ft_lstadd_back(&lst_a, ft_lstnew(12));
 	ft_lstadd_back(&lst_a, ft_lstnew(13));
+	ft_lstadd_back(&lst_a, ft_lstnew(14));
+    ft_lstadd_back(&lst_a, ft_lstnew(15));
 	/* STACK_B */
 	ft_lstadd_back(&lst_b, node_b);
 	ft_lstadd_back(&lst_b, ft_lstnew(22));
@@ -60,7 +63,9 @@ int	main(void)
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);
-	printf("FOURTH A node: %d\n", lst_a -> next -> next -> next -> content);
+	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
+	printf("Fifth A node: %d\n", lst_a -> next -> next -> next -> next -> content);
+	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 	//printf("First B node: %d\n", lst_b -> content);
 
 	return (0);
