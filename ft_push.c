@@ -3,131 +3,80 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/11 16:03:37 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:25:03 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "pushswap_lib.h"
+#include "pushswaplib.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-/*typedef struct  node
-    {
-        struct  node *next;
-        int    content;
-    } node_list;*/
-
-node_list	*ft_lstnew(int content)
-{
-	node_list	*new_node;
-
-	new_node = malloc(sizeof(node_list));
-	if (!new_node)
-		return (NULL);
-	new_node -> next = NULL;
-	new_node -> content = content;
-	return (new_node);
-}
-
-node_list	*ft_lstlast(node_list *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack->next != NULL)
-		stack = stack -> next;
-	return (stack);
-}
-
-void	ft_lstadd_front(node_list **stack, node_list *new_node)
-{
-	if (!stack || !new_node)
-		return ;
-	new_node -> next = *stack;
-	*stack = new_node;
-}
-
-void	ft_lstadd_back(node_list **stack, node_list *new_node)
-{
-	node_list	*last;
-
-	if (!stack || !new_node)
-		return ;
-	new_node -> next = NULL;
-	if (*stack == NULL)
-	{
-		*stack = new_node;
-		return ;
-	}
-	last = ft_lstlast(*stack);
-	last -> next = new_node;
-}
-
 /* take first element atop b and put it atop a. nothing done if b empty */
-void	ft_pa(node_list **stack_a, node_list **stack_b)
+void	ft_pa(t_node_list **lst_a, t_node_list **lst_b)
 {
-	node_list	*tmp;
+	t_node_list	*tmp;
 
-	if (!stack_a || !stack_b)
+	if (!lst_a || !lst_b)
 		return ;
-	if (*stack_b == NULL)
+	if (*lst_b == NULL)
 		return ;
-	tmp = (*stack_b)-> next;
-	ft_lstadd_front(stack_a, *stack_b);
-	*stack_b = tmp;
+	tmp = (*lst_b)-> next;
+	ft_lstadd_front(lst_a, *lst_b);
+	*lst_b = tmp;
 }
 
 /* take first element atop a and put it atop b. nothing done if a empty */
-void	ft_pb(node_list **stack_b, node_list **stack_a)
+void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
 {
-	node_list	*tmp;
+	t_node_list	*tmp;
 
-	if (!stack_b || !stack_a)
+	if (!lst_b || !lst_a)
 		return ;
-	if (*stack_a == NULL)
+	if (*lst_a == NULL)
 		return ;
-	tmp = (*stack_a)-> next;
-	ft_lstadd_front(stack_b, *stack_a);
-	*stack_a = tmp;
+	tmp = (*lst_a)-> next;
+	ft_lstadd_front(lst_b, *lst_a);
+	*lst_a = tmp;
 }
 
-int	main(void)
+/*int	main(void)
 {
-	node_list	*stack_a;
-	node_list	*stack_b;
-	node_list	*node_a;
-	node_list	*node_b;
+	t_node_list	*lst_a;
+	t_node_list	*lst_b;
+	t_node_list	*node_a;
+	t_node_list	*node_b;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	lst_a = NULL;
+	lst_b = NULL;
 	node_a = ft_lstnew(1);
 	node_b = ft_lstnew(2);
-	/* STACK_A */
-	ft_lstadd_back(&stack_a, node_a);
-	ft_lstadd_back(&stack_a, ft_lstnew(12));
-	ft_lstadd_back(&stack_a, ft_lstnew(13));
-	/* STACK_B */
-	ft_lstadd_back(&stack_b, node_b);
-	ft_lstadd_back(&stack_b, ft_lstnew(22));
+	// STACK_A
+	ft_lstadd_back(&lst_a, node_a);
+	ft_lstadd_back(&lst_a, ft_lstnew(12));
+	ft_lstadd_back(&lst_a, ft_lstnew(13));
+	// STACK_B
+	ft_lstadd_back(&lst_b, node_b);
+	ft_lstadd_back(&lst_b, ft_lstnew(22));
 	
-	/*while (stack_a)
+	while (lst_a)
 	{
-		printf("%d\n", stack_a -> content);
-		stack_a = stack_a -> next;
+		printf("%d\n", lst_a -> content);
+		lst_a = lst_a -> next;
 	}
-	while (stack_b)
+	while (lst_b)
     {
-        printf("%d\n", stack_b -> content);
-        stack_b = stack_b -> next;
+        printf("%d\n", lst_b -> content);
+        lst_b = lst_b -> next;
     }
-	printf("Salida\n\n");*/
+	printf("Salida\n\n");
 
-	ft_pa(&stack_a, &stack_b);
-	printf("First A node: %d\n", stack_a -> content);
-	printf("Second A node: %d\n", stack_a -> next -> content);
-	printf("First B node: %d\n", stack_b -> content);
+	ft_pa(&lst_a, &lst_b);
+	printf("First A node: %d\n", lst_a -> content);
+	printf("Second A node: %d\n", lst_a -> next -> content);
+	printf("First B node: %d\n", lst_b -> content);
 
 	return (0);
-}
+}*/

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_lib.h                                  :+:      :+:    :+:   */
+/*   pushswaplib.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/11 10:34:01 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:05:52 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 # define PUSHSWAPLIB_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stddef.h>
+# include <stdio.h>
 
-/*
-typedef struct	s_list
+typedef struct node
 {
-	void	*content;
-	struct	s_list *next;
-} t_list;
-*/
+	struct node	*next;
+	int			content;
+}			t_node_list;
 
-typedef struct	node
-{
-	struct	node *next;
-	void	*content;
-} node_list;
-node_list	*ft_lstnew(void *content);
-node_list	*ft_lstlast(node_list *stack);
-void	ft_lstadd_back(node_list **stack, node_list *new_node);
-void	ft_lstadd_front(node_list **stack, node_list *new_node);
+t_node_list	*ft_lstnew(int content);
+t_node_list	*ft_lstlast(t_node_list *lst);
+void		ft_lstadd_back(t_node_list **lst, t_node_list *new_node);
+void		ft_lstadd_front(t_node_list **lst, t_node_list *new_node);
 
 #endif
-

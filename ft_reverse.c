@@ -1,14 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/11 15:58:16 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 09:22:34 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "pushswaplib.h"
+#include <stdio.h>
 
 void	ft_ra(node_list **stack_a)
 {
