@@ -6,7 +6,7 @@
 #    By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/10 12:43:36 by patperez          #+#    #+#              #
-#    Updated: 2026/06/10 12:46:14 by patperez         ###   ########.fr        #
+#    Updated: 2026/06/12 09:38:37 by patperez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,3 +35,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
