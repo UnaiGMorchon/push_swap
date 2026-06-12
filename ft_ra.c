@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:53:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 09:25:26 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:38:28 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_ra(t_node_list **lst)
 		tmp_last = ft_lstlast(*lst);
 		tmp_last->next = tmp_first;
 	}
+	write(1, "ss\n", 3);
 }
 int main(void)
 {

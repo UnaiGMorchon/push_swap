@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:25:03 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:35:14 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
 	*lst_a = tmp;
 }
 
-/*int	main(void)
+int	main(void)
 {
 	t_node_list	*lst_a;
 	t_node_list	*lst_b;
@@ -60,7 +60,7 @@ void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
 	// STACK_B
 	ft_lstadd_back(&lst_b, node_b);
 	ft_lstadd_back(&lst_b, ft_lstnew(22));
-	
+	/*
 	while (lst_a)
 	{
 		printf("%d\n", lst_a -> content);
@@ -71,7 +71,7 @@ void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
         printf("%d\n", lst_b -> content);
         lst_b = lst_b -> next;
     }
-	printf("Salida\n\n");
+	printf("Salida\n\n");*/
 
 	ft_pa(&lst_a, &lst_b);
 	printf("First A node: %d\n", lst_a -> content);
@@ -79,4 +79,4 @@ void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
 	printf("First B node: %d\n", lst_b -> content);
 
 	return (0);
-}*/
+}

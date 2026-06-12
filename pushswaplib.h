@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:53:07 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:42:14 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct node
 {
 	int				content;
 	struct node		*next;
+	struct node		*prev;
 }					t_node_list;
 
 void		ft_sa(t_node_list **lst_a);

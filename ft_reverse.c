@@ -3,56 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:22:34 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/12 10:18:24 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 #include <stdio.h>
-
-void	ft_ra(node_list **stack_a)
+/*
+void	ft_ra(t_node_list **list_a)
 {
 
 }
 
 int	main(void)
 {
-	node_list   *stack_a;
-	node_list   *stack_b;
-	node_list   *node_a;
-	node_list   *node_b;
+	t_node_list	*list_a;
+	t_node_list	*list_b;
+	t_node_list	*node_a;
+	t_node_list	*node_b;
 
-	stack_a = NULL;
-	stack_b = NULL;
+	list_a = NULL;
+	list_b = NULL;
 	node_a = ft_lstnew(1);
 	node_b = ft_lstnew(2);
-	/* STACK_A */
-	ft_lstadd_back(&stack_a, node_a);
-	ft_lstadd_back(&stack_a, ft_lstnew(12));
-	ft_lstadd_back(&stack_a, ft_lstnew(13));
-	/* STACK_B */
-	ft_lstadd_back(&stack_b, node_b);
-	ft_lstadd_back(&stack_b, ft_lstnew(22));
+	// list_A 
+	ft_lstadd_back(&list_a, node_a);
+	ft_lstadd_back(&list_a, ft_lstnew(12));
+	ft_lstadd_back(&list_a, ft_lstnew(13));
+	// list_B 
+	ft_lstadd_back(&list_b, node_b);
+	ft_lstadd_back(&list_b, ft_lstnew(22));
 
-	/*while (stack_a)
+	while (list_a)
 	{
-		printf("%d\n", stack_a -> content);
-		stack_a = stack_a -> next;
+		printf("%d\n", list_a -> content);
+		list_a = list_a -> next;
 	}
-	while (stack_b)
+	while (list_b)
 	{
-	printf("%d\n", stack_b -> content);
-		stack_b = stack_b -> next;
+	printf("%d\n", list_b -> content);
+		list_b = list_b -> next;
 	}
-	printf("Salida\n\n");*/
+	printf("Salida\n\n");
 
-    ft_ra(&stack_a);
-	printf("First A node: %d\n", stack_a -> content);
-	printf("Second A node: %d\n", stack_a -> next -> content);
-	printf("First B node: %d\n", stack_b -> content);
+	ft_ra(&list_a);
+	printf("First A node: %d\n", list_a -> content);
+	printf("Second A node: %d\n", list_a -> next -> content);
+	printf("First B node: %d\n", list_b -> content);
 
 	return (0);
-}
+}*/
