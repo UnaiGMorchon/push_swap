@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/16 13:27:29 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/16 15:03:46 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	ft_reva(t_node_list **lst_a)
 	if (!lst_a)
 		return ;
 	tmp_newfirst = ft_lstlast(*lst_a);
+	printf("new first: %d\n\n", tmp_newfirst -> content);
 	tmp_newlast = ft_lstfind(lst_a);
+	printf("new last: %d\n\n", tmp_newlast -> content);
 	ft_lstadd_front(lst_a, tmp_newfirst);
+	printf("new second: %d\n\n", tmp_newfirst -> next -> content);
 	ft_lstadd_back(lst_a, tmp_newlast);
 }
 
