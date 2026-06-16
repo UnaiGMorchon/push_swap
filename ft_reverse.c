@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 15:26:48 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:27:29 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 void	ft_reva(t_node_list **lst_a)
 {
-	t_node_list *tmp_last;
+	t_node_list *tmp_newfirst;
+	t_node_list	*tmp_newlast;
 	    
 	if (!lst_a)
 		return ;
-	tmp_last = ft_lstlast(*lst_a);
-	ft_lstfind(lst_a);
-	(*lst_a) -> next -> next = NULL;
-	ft_lstadd_front(lst_a, tmp_last);
-//	*lst_a = tmp_last;
+	tmp_newfirst = ft_lstlast(*lst_a);
+	tmp_newlast = ft_lstfind(lst_a);
+	ft_lstadd_front(lst_a, tmp_newfirst);
+	ft_lstadd_back(lst_a, tmp_newlast);
 }
 
 int	main(void)
@@ -58,6 +58,13 @@ int	main(void)
 		lst_b = lst -> next;
 	}
 	printf("Salida\n\n");*/
+
+    printf("First A node: %d\n", lst_a -> content);
+    printf("Second A node: %d\n", lst_a -> next -> content);
+    printf("Third A node: %d\n", lst_a -> next -> next -> content);
+    printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
+    printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
+    //printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
     ft_reva(&lst_a);
 	printf("First A node: %d\n", lst_a -> content);

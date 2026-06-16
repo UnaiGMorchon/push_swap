@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 15:44:53 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/16 10:22:34 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ t_node_list	*ft_lstlast(t_node_list *lst)
 	return (lst);
 }
 
-// REVISE
 t_node_list	*ft_lstfind(t_node_list **lst)
 {
 	
 	if (!lst || (*lst) -> next == NULL)
 		return (NULL);
 	while ((*lst) -> next != NULL && (*lst) -> next -> next != NULL)
-			*lst = (*lst) -> next;
+	{
+		*lst = (*lst) -> next;
+	}
 	return (*lst);
 }
 
@@ -56,6 +57,7 @@ void	ft_lstadd_front(t_node_list **lst, t_node_list *new_node)
 
 void	ft_lstadd_back(t_node_list **lst, t_node_list *new_node)
 {
+	//this is the one we made for pushswap
 	t_node_list	*last;
 
 	if (!lst || !new_node)
@@ -68,4 +70,27 @@ void	ft_lstadd_back(t_node_list **lst, t_node_list *new_node)
 	}
 	last = ft_lstlast(*lst);
 	last -> next = new_node;
+
+	//this is the one we made for pushswap MODIFIED - NON FUNCTIONAL
+	/*t_node_list *last;
+
+    if (!lst || !new_node)
+        return ;
+    if (*lst == NULL)
+    {
+        *lst = new_node;
+        return ;
+    }
+    last = ft_lstlast(*lst);
+    last -> next = new_node;
+	new_node -> next = NULL;*/
+
+
+	// this is the original that i made
+	/*if (!lst || !new_node)
+		return ;
+	if (*lst)
+		ft_lstlast(*lst)-> next = new_node;
+	else
+		*lst = new_node;*/
 }
