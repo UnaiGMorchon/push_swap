@@ -6,14 +6,14 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/18 10:58:40 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/18 11:52:36 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 #include <stdio.h>
 
-void	ft_lstclear(t_node_list **lst)
+/*void	ft_lstclear(t_node_list **lst)
 {
 	t_node_list	*buffer;
 
@@ -27,7 +27,7 @@ void	ft_lstclear(t_node_list **lst)
 		*lst = buffer;
 	}
 	free(*lst);
-}
+}*/
 
 void	ft_reva(t_node_list **lst_a)
 {
