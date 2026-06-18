@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/18 11:52:36 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/18 15:46:35 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	free(*lst);
 }*/
 
-void	ft_reva(t_node_list **lst_a)
+void	ft_rra(t_node_list **lst_a)
 {
 	t_node_list	*tmp_newfirst;
 	t_node_list	*tmp_newlast;
@@ -44,7 +44,7 @@ void	ft_reva(t_node_list **lst_a)
 	tmp_newlast -> next = NULL;
 }
 
-void	ft_revb(t_node_list **lst_b)
+void	ft_rrb(t_node_list **lst_b)
 {
 	t_node_list	*tmp_newfirst;
 	t_node_list	*tmp_newlast;
@@ -59,12 +59,12 @@ void	ft_revb(t_node_list **lst_b)
 	tmp_newlast -> next = NULL;
 }
 
-void	ft_revboth(t_node_list **lst_a, t_node_list **lst_b)
+void	ft_rrr(t_node_list **lst_a, t_node_list **lst_b)
 {
 	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
 		return ;
-	ft_reva(lst_a);
-	ft_revb(lst_b);
+	ft_rra(lst_a);
+	ft_rrb(lst_b);
 }
 
 /*
