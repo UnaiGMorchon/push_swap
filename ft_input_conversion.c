@@ -1,43 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushswap_utils2.c                               :+:      :+:    :+:   */
+/*   ft_input_conversion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/19 10:28:04 by patperez         ###   ########.fr       */
+/*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
+/*   Updated: 2026/06/19 10:03:35 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "pushswaplib.h"
 
-void    ft_lstclear(t_node_list **lst)
-{
-    t_node_list *buffer;
-
-    buffer = NULL;
-    if (!lst)
-        return ;
-    while (*lst)
-    {
-        buffer = (*lst)-> next;
-        free(*lst);
-        *lst = buffer;
-    }
-    free(*lst);
-}
-
-int	ft_lstsize(t_list *lst)
+void	input_conversion(input array)
 {
 	int	i;
+	t_node_list	lst;
 
 	i = 0;
-	while (lst != NULL)
+	while (input array)
 	{
-		lst = lst->next;
+		ft_lstadd_back(lst, input array[i]);
 		i++;
 	}
-	return (i);
 }
