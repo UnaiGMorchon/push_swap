@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/22 13:58:47 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/22 15:40:26 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ void	ft_sa(t_node_list **lst_a)
 	(*lst_a) = temp;
 }
 
+void    ft_ra(t_node_list **lst)
+{
+    t_node_list *tmp_first;
+    t_node_list *tmp_last;
+
+    if (!lst)
+        return ;
+    if ((*lst) == NULL || lst == NULL || (*lst)->next == NULL)
+        return ;
+    {
+        tmp_first = (*lst);
+        (*lst) = (*lst)->next;
+        tmp_first->next = NULL;
+        tmp_last = ft_lstlast(*lst);
+        tmp_last->next = tmp_first;
+    }
+}
+
 void	bubble_sort(t_node_list **lst)
 {
 	int	swapped;
@@ -31,12 +49,20 @@ void	bubble_sort(t_node_list **lst)
 	if (lst == NULL || *lst == NULL || (*lst) -> next == NULL)
 		return ;
 	swapped = 1;
-	while (lst)
+	while (swapped)
 	{
 		swapped = 0;
-		if (prev -> content > traverser -> content)
+		if (*lst -> content > *lst -> next -> content)
+		{
 			ft_sa(lst);
-		ft_ra(lst);
+			ft_ra(lst);
+			swapped = 1;
+		}
+		else if (*lst -> content < *lst -> next -> content)
+		{
+			ft_ra(lst);
+			swapped = 1;
+		}
 	}
 }
 
