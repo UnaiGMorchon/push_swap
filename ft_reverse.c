@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/19 09:53:15 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:01:42 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	ft_rrr(t_node_list **lst_a, t_node_list **lst_b)
 	ft_rrb(lst_b);
 }
 
-/*
+
 int	main(void)
 {
-	* STACK_A *
+	//* STACK_A *
 	t_node_list   *lst_a;
 
 	//lst_a = NULL;
@@ -66,25 +66,21 @@ int	main(void)
 
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);	
-	printf("Third A node: %d\n\n", lst_a -> next -> next -> content);
-	//printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	//printf("Fifth A node: %d\n\n", 
-		lst_a -> next -> next -> next -> next -> content);
-	//printf("Sixth A node: %d\n",
-		lst_a -> next -> next -> next -> next -> next -> content);
+	printf("Third A node: %d\n", lst_a -> next -> next -> content);
+	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
+	printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
+//	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
-	ft_reva(&lst_a);
+	ft_rra(&lst_a);
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);
 	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	//printf("Fifth A node: %d\n", 
-		lst_a -> next -> next -> next -> next -> content);
-	//printf("Sixth A node: %d\n", 
-		lst_a -> next -> next -> next -> next -> next -> content);
+	printf("Fifth A node: %d\n", lst_a -> next -> next -> next -> next -> content);
+//	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
 
-	* STACK_B *
+/*	* STACK_B *
 	t_node_list   *lst_b;
 
 	//lst_b = NULL;
@@ -120,8 +116,8 @@ int	main(void)
 	printf("First B node: %d\n", lst_b -> content);
     printf("Second B node: %d\n", lst_b -> next -> content);
     printf("Third B node: %d\n\n", lst_b -> next -> next -> content);
-
+*/
 	ft_lstclear(&lst_a);
-	ft_lstclear(&lst_b);
+	//ft_lstclear(&lst_b);
 	return (0);
-}*/
+}

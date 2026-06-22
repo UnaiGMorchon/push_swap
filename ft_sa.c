@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 09:00:49 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/22 11:53:29 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_sa(t_node_list **lst_a)
 	write(1, "sa\n", 3);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	t_node_list	nodo1;
 	t_node_list	nodo2;
@@ -76,4 +76,4 @@ int	main(void)
 	printf("2º Nodo: %d\n", mi_lista->next->content);
 	//printf("3º Nodo: %s\n\n", (char *)mi_lista->next->next->content);
 	return (0);
-}
+}*/

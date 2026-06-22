@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/19 10:28:04 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/22 08:58:36 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    ft_lstclear(t_node_list **lst)
     free(*lst);
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_node_list *lst)
 {
 	int	i;
 
