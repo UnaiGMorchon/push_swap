@@ -3,72 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/22 15:40:26 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:26:24 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-void	ft_sa(t_node_list **lst_a)
+void	bubble_sort(t_node_list **lst_a)
 {
-	t_node_list	*temp;
+	t_node_list	**lst_b;
 
-	if (lst_a == NULL || *lst_a == NULL || (*lst_a)->next == NULL)
+	printf("ENTER FUNCTION");
+	if (lst_a == NULL || *lst_a == NULL || (*lst_a) -> next == NULL)
 		return ;
-	temp = (*lst_a)->next;
-	(*lst_a)->next = temp->next;
-	temp->next = (*lst_a);
-	(*lst_a) = temp;
-}
-
-void    ft_ra(t_node_list **lst)
-{
-    t_node_list *tmp_first;
-    t_node_list *tmp_last;
-
-    if (!lst)
-        return ;
-    if ((*lst) == NULL || lst == NULL || (*lst)->next == NULL)
-        return ;
-    {
-        tmp_first = (*lst);
-        (*lst) = (*lst)->next;
-        tmp_first->next = NULL;
-        tmp_last = ft_lstlast(*lst);
-        tmp_last->next = tmp_first;
-    }
-}
-
-void	bubble_sort(t_node_list **lst)
-{
-	int	swapped;
-
-	if (lst == NULL || *lst == NULL || (*lst) -> next == NULL)
-		return ;
-	swapped = 1;
-	while (swapped)
+	lst_b = NULL;
+	while (lst_a)
 	{
-		swapped = 0;
-		if (*lst -> content > *lst -> next -> content)
+		if ((*lst_a) -> content < (*lst_a) -> next -> content ||
+			(*lst_a) -> next == NULL)
 		{
-			ft_sa(lst);
-			ft_ra(lst);
-			swapped = 1;
+			ft_pb(lst_b, lst_a);
+			if ((*lst_b) -> content < (*lst_b) -> next -> content)
+				ft_sb(lst_b);
+			else
+				while ((*lst_b) -> content > (*lst_b) -> next -> content)
+					ft_rb(lst_b);
 		}
-		else if (*lst -> content < *lst -> next -> content)
-		{
-			ft_ra(lst);
-			swapped = 1;
-		}
+		else
+			ft_ra(lst_a);
 	}
+	while (lst_b)
+		ft_pa(lst_a, lst_b);
+	ft_lstclear(lst_b);
 }
 
 int	main(void)
 {
-	t_node_list   *lst_a;
+	t_node_list	*lst_a;
 
 	lst_a = NULL;
 	lst_a = ft_lstnew(14);
@@ -85,6 +59,7 @@ int	main(void)
 	//printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
 	bubble_sort(&lst_a);
+
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);

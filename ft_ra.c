@@ -56,7 +56,7 @@ void	ft_rr(t_node_list **lst_a, t_node_list **lst_b)
 	ft_rb(lst_b);
 }
 
-int main(void)
+/*int main(void)
 {
 	t_node_list nodo1;
 	t_node_list nodo2;
@@ -99,4 +99,4 @@ int main(void)
 		printf("\n¡Error! La lista no termina en NULL.\n");
 
 	return (0);
-}
+}*/

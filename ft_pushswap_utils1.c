@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/18 11:00:58 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/23 08:56:36 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_node_list	*ft_lstfind(t_node_list **lst)
 {
 	t_node_list	*prev;
 
-	if (!lst || (*lst)-> next == NULL)
+	if (!lst || *lst == NULL || (*lst)-> next == NULL)
 		return (NULL);
 	while ((*lst)-> next != NULL && (*lst)-> next -> next != NULL)
 	{

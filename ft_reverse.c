@@ -52,7 +52,7 @@ void	ft_rrr(t_node_list **lst_a, t_node_list **lst_b)
 }
 
 
-int	main(void)
+/*int	main(void)
 {
 	//* STACK_A *
 	t_node_list   *lst_a;
@@ -80,7 +80,7 @@ int	main(void)
 //	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
 
-/*	* STACK_B *
+	* STACK_B *
 	t_node_list   *lst_b;
 
 	//lst_b = NULL;
@@ -116,8 +116,8 @@ int	main(void)
 	printf("First B node: %d\n", lst_b -> content);
     printf("Second B node: %d\n", lst_b -> next -> content);
     printf("Third B node: %d\n\n", lst_b -> next -> next -> content);
-*/
+
 	ft_lstclear(&lst_a);
 	//ft_lstclear(&lst_b);
 	return (0);
-}
+}*/
