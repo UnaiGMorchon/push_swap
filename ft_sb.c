@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 11:56:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 10:15:41 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/23 07:38:43 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_sb(t_node_list **lst_b)
 	(*lst_b) = temp;
 	write(1, "sb\n", 3);
 }
-/*
+ /*
 int	main(void)
 {
 	t_node_list	nodo1;
