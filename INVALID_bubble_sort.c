@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
+/*   INVALID_bubble_sort.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 13:26:24 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/24 11:02:11 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
+
+double	sqrt(double x)
+{
+	double	y;
+	int	p;
+	int	square;
+	int	c;
+
+	p = 0;
+	square = 0;
+	c = 0;
+	while (x > square)
+	{
+		p++;
+		square = (p + 1) * (p + 1);
+	}
+	y = (double)p;
+	while (c < 10)
+	{
+		y = (x / y + y) / 2;
+		if (y * y == x)
+			return (y);
+		c++;
+	}
+	return (y);
+}
 
 void	bubble_sort(t_node_list **lst_a)
 {
