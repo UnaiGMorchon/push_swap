@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:53:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/24 13:45:10 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:28:06 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ void	ft_ra(t_node_list **lst)
 		return ;
 	if ((*lst) == NULL || lst == NULL || (*lst)->next == NULL)
 		return ;
-	{
-		tmp_first = (*lst);
-		(*lst) = (*lst)->next;
-		tmp_first->next = NULL;
-		tmp_last = ft_lstlast(*lst);
-		tmp_last->next = tmp_first;
-	}
+	tmp_first = (*lst);
+	(*lst) = (*lst)->next;
+	tmp_first->next = NULL;
+	tmp_last = ft_lstlast(*lst);
+	tmp_last->next = tmp_first;
 	write(1, "THIS IS ROTATE A\n", 17);
 }
 void	ft_rb(t_node_list **lst)
@@ -39,13 +37,13 @@ void	ft_rb(t_node_list **lst)
 		return ;
 	if ((*lst) == NULL || lst == NULL || (*lst)->next == NULL)
 		return ;
-	{
-		tmp_first = (*lst);
-		(*lst) = (*lst)->next;
-		tmp_first->next = NULL;
-		tmp_last = ft_lstlast(*lst);
-		tmp_last->next = tmp_first;
-	}
+
+	tmp_first = (*lst);
+	(*lst) = (*lst)->next;
+	tmp_first->next = NULL;
+	tmp_last = ft_lstlast(*lst);
+	tmp_last->next = tmp_first;
+
 }
 
 void	ft_rr(t_node_list **lst_a, t_node_list **lst_b)

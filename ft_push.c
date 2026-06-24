@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/24 12:03:57 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:16:24 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	ft_pb(t_node_list **lst_b, t_node_list **lst_a)
 {
 	t_node_list	*tmp;
 
-	if (!lst_b || !lst_a)
-		return ;
+	/*if (!lst_b || !lst_a)
+		return ;*/
 	if (*lst_a == NULL)
 		return ;
 	tmp = (*lst_a)-> next;

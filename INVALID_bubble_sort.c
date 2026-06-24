@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/24 13:50:30 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 15:33:52 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,17 @@ double	sqroot(int x)
 int	ft_min_number(t_node_list **lst_a)
 {
 	int	temp;
+	t_node_list	*temp_list;
 
+	temp_list = *lst_a;
 	temp = (*lst_a) -> content;
-	while (lst_a)
+	while (temp_list -> next != NULL)
 	{
-		if (temp < (*lst_a) -> next -> content)
+		if (temp < temp_list -> next -> content)
 		{
-			temp = (*lst_a) -> content;
+			temp = temp_list -> content;
 		}
-		ft_ra(lst_a);
+		temp_list = temp_list -> next;
 	}
 	return (temp);
 }
@@ -65,29 +67,40 @@ void	ft_bucket(t_node_list **lst_a)
 	
 	if (lst_a == NULL || *lst_a == NULL || (*lst_a) -> next == NULL)
 		return ;
-	lst_b = NULL;
+	lst_b =  malloc(sizeof(t_node_list));
 	number = ft_min_number(lst_a);
 	total = ft_lstsize (*lst_a);
 	bucket_number = sqroot(total);
 	number_limit = (bucket_number + number);
 	end_of_bucket = ft_lstlast(*lst_a) -> content;
 
-	while (lst_a)
+	printf("nmber limit %i\n", number_limit);
+	printf("nmber %i\n", number);
+	printf("bucket %i\n", bucket_number);
+	while ((*lst_a)->next)
 	{
-		printf("nmber limit %i", number_limit);
+		/* printf("A NODE CONTENT: %d\n", (*lst_a) -> content); */
 		while ((*lst_a) -> content < number_limit)
 		{
 			ft_pb(lst_b, lst_a);
-			printf("THIS IS PUSH IN INNER WHILE");
+			printf("push %i\n", (*lst_b) -> content);
+			/* if ((*lst_b) ->next)
+				printf("push ---2 %i\n", (*lst_b) ->next -> content); */
 		}
 		if ((*lst_a) -> content == end_of_bucket)
 		{
 			number_limit = number_limit + bucket_number;
-			return ;
+			printf("nmber limit %i\n", number_limit);
 		}
-		/*else
-			ft_rb(lst_a);*/
+		else
+			ft_rb(lst_a);
 	}
+	if ((*lst_a) -> content == end_of_bucket)
+		{
+			ft_pb(lst_b, lst_a);
+			number_limit = number_limit + bucket_number;
+			printf("nmber limit %i\n", number_limit);
+		}
 }
 
 int	main(void)
@@ -114,7 +127,7 @@ int	main(void)
 	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);
 	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
+	//printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
 	//printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
 	ft_lstclear(&lst_a);
