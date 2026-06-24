@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:53:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/24 07:59:15 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 13:45:10 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_ra(t_node_list **lst)
 		tmp_last = ft_lstlast(*lst);
 		tmp_last->next = tmp_first;
 	}
-	write(1, "ss\n", 3);
+	write(1, "THIS IS ROTATE A\n", 17);
 }
 void	ft_rb(t_node_list **lst)
 {
@@ -55,7 +55,7 @@ void	ft_rr(t_node_list **lst_a, t_node_list **lst_b)
 	ft_ra(lst_a);
 	ft_rb(lst_b);
 }
-
+/*
 int main(void)
 {
 	t_node_list nodo1;
@@ -99,4 +99,4 @@ int main(void)
 		printf("\n¡Error! La lista no termina en NULL.\n");
 
 	return (0);
-}
+}*/
