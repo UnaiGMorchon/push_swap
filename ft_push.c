@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 10:35:14 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 08:03:57 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ int	main(void)
 		lst_a = lst_a -> next;
 	}
 	while (lst_b)
-    {
-        printf("%d\n", lst_b -> content);
-        lst_b = lst_b -> next;
-    }
+	{
+		printf("%d\n", lst_b -> content);
+		lst_b = lst_b -> next;
+	}
 	printf("Salida\n\n");*/
 
 	ft_pa(&lst_a, &lst_b);

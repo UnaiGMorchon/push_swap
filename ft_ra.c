@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:53:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 10:38:28 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 07:59:15 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@ void	ft_ra(t_node_list **lst)
 	}
 	write(1, "ss\n", 3);
 }
+void	ft_rb(t_node_list **lst)
+{
+	t_node_list *tmp_first;
+	t_node_list *tmp_last;
+
+	if (!lst)
+		return ;
+	if ((*lst) == NULL || lst == NULL || (*lst)->next == NULL)
+		return ;
+	{
+		tmp_first = (*lst);
+		(*lst) = (*lst)->next;
+		tmp_first->next = NULL;
+		tmp_last = ft_lstlast(*lst);
+		tmp_last->next = tmp_first;
+	}
+}
+
+void	ft_rr(t_node_list **lst_a, t_node_list **lst_b)
+{
+	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
+		return ;
+	ft_ra(lst_a);
+	ft_rb(lst_b);
+}
+
 int main(void)
 {
 	t_node_list nodo1;

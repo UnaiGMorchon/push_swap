@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 08:44:14 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 08:01:59 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,23 @@ int	main(void)
 	ft_lstadd_back(&lst_a, ft_lstnew(15));
 
 	printf("First A node: %d\n", lst_a -> content);
-	printf("Second A node: %d\n", lst_a -> next -> content);	
+	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);
 	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
-//	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
+	printf("Fifth A node: %d\n\n",
+		lst_a -> next -> next -> next -> next -> content);
+	// printf("Sixth A node: %d\n",
+	//	lst_a -> next -> next -> next -> next -> next -> content);
 
 	ft_rra(&lst_a);
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
 	printf("Third A node: %d\n", lst_a -> next -> next -> content);
 	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	printf("Fifth A node: %d\n", lst_a -> next -> next -> next -> next -> content);
-//	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
+	printf("Fifth A node: %d\n",
+		lst_a -> next -> next -> next -> next -> content);
+	// printf("Sixth A node: %d\n",
+	//	lst_a -> next -> next -> next -> next -> next -> content);
 
 
 /*	* STACK_B *
