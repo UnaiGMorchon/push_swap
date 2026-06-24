@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/24 07:55:04 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 09:35:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	bubble_sort(t_node_list **lst)
 {
 	int	swapped; // actuará como un interruptor (booleano) para saber si hubo cambios
 	int	size; // guardará el tamaño de la lista,
-	int	i; // será el contador para el bucl
+	int	i; // será el contador para el bucle
 
 // 1. Obtener el tamaño total de la lista
 	size = ft_lstsize(*lst); // contar cuántos elementos tiene la lista y guarda ese valor
