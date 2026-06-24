@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 13:45:46 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/24 07:55:04 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,34 @@ void	ft_ra(t_node_list **lst)
 
 void	bubble_sort(t_node_list **lst)
 {
-	int	swapped;
-	int	size;
-	int	i;
+	int	swapped; // actuará como un interruptor (booleano) para saber si hubo cambios
+	int	size; // guardará el tamaño de la lista,
+	int	i; // será el contador para el bucl
 
-	size = ft_lstsize(*lst);
+// 1. Obtener el tamaño total de la lista
+	size = ft_lstsize(*lst); // contar cuántos elementos tiene la lista y guarda ese valor
+// 2. Proteger la función: si no hay lista o solo tiene 1 nodo, no hace nada
 	if (*lst == NULL || (lst) == NULL || (*lst)-> next == NULL)
 		return ;
-
-	swapped = 1;
+// 3. Activar el interruptor para entrar al bucle
+	swapped = 1; // (verdadero) para asegurar que el bucle while principal se ejecute al menos una vez.
 	while (swapped)
 	{
-		swapped = 0;
+		swapped = 0; // Si al final de la vuelta sigue en 0, significa que la lista ya está ordenada y el bucle terminará.
 		i = 0;
-		while (i < size - 1)
+		// 4. Recorrer la lista nodo por nodo
+		while (i < size - 1) // recorrerá la lista nodo por nodo hasta llegar al penúltimo elemento (size - 1)
 		{
+			// Si el nodo actual es mayor que el siguiente, se intercambian
 			if ((*lst)-> content > (*lst)-> next -> content)
 			{
-				ft_sa(lst);
-				swapped = 1;
+				ft_sa(lst); // Intercambia los dos primeros nodos
+				swapped = 1; // Hubo un cambio, se necesitará otra vuelta
 			}
-			ft_ra(lst);
+			ft_ra(lst); // Rota la lista para pasar al siguiente par de nodos
 			i ++;
 		}
+		// 5. Rotación final para reajustar la lista antes de la siguiente pasada
 		ft_ra(lst);
 	}
 }
