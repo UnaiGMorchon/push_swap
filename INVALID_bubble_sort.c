@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/24 15:33:52 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/25 09:58:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ double	sqroot(int x)
 	return (y);
 }
 
+int	ft_max_number(t_node_list **lst_a)
+{
+	int	temp;
+	t_node_list	*temp_list;
+
+	temp_list = *lst_a;
+	temp = (*lst_a) -> content;
+	while (temp_list -> next != NULL)
+	{
+		if (temp > temp_list -> next -> content)
+		{
+			temp = temp_list -> content;
+		}
+		temp_list = temp_list -> next;
+	}
+	return (temp);
+}
+
 int	ft_min_number(t_node_list **lst_a)
 {
 	int	temp;
@@ -59,23 +77,26 @@ int	ft_min_number(t_node_list **lst_a)
 void	ft_bucket(t_node_list **lst_a)
 {
 	t_node_list	**lst_b;
-	int number; // Para guardar el VALOR del número más pequeño
+	int number_min; // Para guardar el VALOR del número más pequeño
 	int total; // Para guardar la cantidad total de elementos
 	int bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
 	int number_limit; // Para guardar tu "número límite" actual
 	int	end_of_bucket;
+	int	number_max;
 	
 	if (lst_a == NULL || *lst_a == NULL || (*lst_a) -> next == NULL)
 		return ;
 	lst_b =  malloc(sizeof(t_node_list));
-	number = ft_min_number(lst_a);
+	number_min = ft_min_number(lst_a);
+	number_max = ft_max_number(lst_a);
 	total = ft_lstsize (*lst_a);
 	bucket_number = sqroot(total);
-	number_limit = (bucket_number + number);
+	number_limit = (bucket_number + number_min);
 	end_of_bucket = ft_lstlast(*lst_a) -> content;
+	
 
 	printf("nmber limit %i\n", number_limit);
-	printf("nmber %i\n", number);
+	printf("nmber %i\n", number_min);
 	printf("bucket %i\n", bucket_number);
 	while ((*lst_a)->next)
 	{
@@ -84,23 +105,31 @@ void	ft_bucket(t_node_list **lst_a)
 		{
 			ft_pb(lst_b, lst_a);
 			printf("push %i\n", (*lst_b) -> content);
-			/* if ((*lst_b) ->next)
-				printf("push ---2 %i\n", (*lst_b) ->next -> content); */
+
+
 		}
 		if ((*lst_a) -> content == end_of_bucket)
 		{
 			number_limit = number_limit + bucket_number;
 			printf("nmber limit %i\n", number_limit);
 		}
-		else
-			ft_rb(lst_a);
+		if ((*lst_a) -> next != NULL)
+			ft_ra(lst_a);
 	}
-	if ((*lst_a) -> content == end_of_bucket)
+	/*if((*lst_a) == number_max)
+	{
+		while ((*lst_b))
 		{
-			ft_pb(lst_b, lst_a);
-			number_limit = number_limit + bucket_number;
-			printf("nmber limit %i\n", number_limit);
+			ft_pa();
 		}
+
+	}*/
+
+	printf("First B node: %d\n", (*lst_b) -> content);
+	printf("Second B node: %d\n", (*lst_b) -> next -> content);
+	printf("Third B node: %d\n", (*lst_b) -> next -> next -> content);
+	printf("Fourth B node: %d\n", (*lst_b) -> next -> next -> next -> content);
+	printf("Fifth B node: %d\n\n", (*lst_b) -> next -> next -> next -> next -> content);
 }
 
 int	main(void)
@@ -122,14 +151,14 @@ int	main(void)
 	//printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 
 	ft_bucket(&lst_a);
-
-	printf("First A node: %d\n", lst_a -> content);
-	printf("Second A node: %d\n", lst_a -> next -> content);
-	printf("Third A node: %d\n", lst_a -> next -> next -> content);
-	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	//printf("Fifth A node: %d\n\n", lst_a -> next -> next -> next -> next -> content);
+/*
+	printf("First B node: %d\n", lst_b -> content);
+	printf("Second B node: %d\n", lst_b -> next -> content);
+	printf("Third B node: %d\n", lst_b -> next -> next -> content);
+	printf("Fourth B node: %d\n", lst_b -> next -> next -> next -> content);
+	printf("Fifth B node: %d\n\n", lst_b -> next -> next -> next -> next -> content);
 	//printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
-
+*/
 	ft_lstclear(&lst_a);
 	return (0);
 }
