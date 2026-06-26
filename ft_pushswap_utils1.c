@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 07:55:50 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:43:51 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,22 @@ t_node_list	*ft_lstnew(int content)
 	if (!new_node)
 		return (NULL);
 	new_node -> next = NULL;
+	new_node -> prev = NULL;
 	new_node -> content = content;
 	return (new_node);
+}
+
+t_stack	*ft_newstack(void)
+{
+	t_stack	*stack;
+
+	stack = malloc(sizeof(t_stack));
+	if (stack == NULL)
+		return (NULL);
+	stack -> head = NULL;
+	stack -> tail = NULL;
+	stack -> size = 0;
+	return (stack);
 }
 
 t_node_list	*ft_lstlast(t_node_list *lst)
@@ -48,26 +62,25 @@ t_node_list	*ft_lstfind(t_node_list **lst)
 	return (prev);
 }
 
-void	ft_lstadd_front(t_node_list **lst, t_node_list *new_node)
+void	ft_lstadd_front(t_stack *lst, t_stack *new_node)
 {
 	if (!lst || !new_node)
 		return ;
-	new_node -> next = *lst;
-	*lst = new_node;
+	new_node -> head -> next = lst;
+	lst = new_node;
 }
 
-void	ft_lstadd_back(t_node_list **lst, t_node_list *new_node)
+void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 {
-	t_node_list	*last;
-
-	if (!lst || !new_node)
+	if (!stack || !new_node)
 		return ;
-	new_node -> next = NULL;
-	if (*lst == NULL)
+	if (stack -> head == NULL)
 	{
-		*lst = new_node;
-		return ;
+		stack->head = new_node;
+		stack->tail = new_node;
 	}
-	last = ft_lstlast(*lst);
-	last -> next = new_node;
+	stack-> tail-> next = new_node;
+	new_node -> prev = stack ->tail;
+	stack -> tail = new_node;
+	stack -> size += 1;
 }

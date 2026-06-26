@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/26 12:55:47 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:05:06 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,5 @@ int	main(void)
 	printf("1o nodo: %d\n", mi_lista -> head -> content);
 	printf("2º Nodo: %d\n", mi_lista -> head -> next -> content);
 	printf("3º Nodo: %d\n\n", mi_lista -> head -> next -> next -> content);
-
-
 	return (0);
 }
