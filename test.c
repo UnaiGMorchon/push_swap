@@ -95,14 +95,13 @@ void	ft_bucket(t_node_list **lst_a)
 	printf("nmber limit %i\n", number_limit);
 	printf("nmber %i\n", number_min);
 	printf("bucket %i\n", bucket_number);
-	while (*lst_a != NULL)
+	while (*lst_a != NULL && number_limit <= end_of_bucket)
 	{
 		while (*lst_a != NULL && (*lst_a) -> content < number_limit)
 		{
 			ft_pb(&lst_b, lst_a);
 			printf("push %i\n",lst_b -> content);
 		}
-
 		if ((*lst_a) -> content == end_of_bucket)
 		{
 			number_limit = number_limit + bucket_number;
@@ -111,9 +110,13 @@ void	ft_bucket(t_node_list **lst_a)
 		if ((*lst_a) -> next != NULL)
 			ft_ra(lst_a);
 	}
+	printf("salio \n");
+
 	if((*lst_a) -> content == number_max)
 	{
 		printf("last node %i\n", (*lst_a) -> content);
+		ft_pb(&lst_b, lst_a);
+		printf("push %i\n",lst_b -> content);
 	}
 	/* while ((*lst_b))
 		{
@@ -126,8 +129,8 @@ void	ft_bucket(t_node_list **lst_a)
 	printf("Fourth B node: %d\n", lst_b -> next -> next -> next -> content);
 	printf("Fifth B node: %d\n", lst_b -> next -> next -> next -> next -> content);
 	printf("Sixth B node: %d\n", lst_b -> next -> next -> next -> next -> next -> content);
-	printf("siete B node: %d\n", lst_b -> next -> next -> next -> next -> next -> next -> content); 
-	//printf("ocho B node: %d\n\n", (*lst_b) -> next -> next -> next -> next -> next -> next ->  next ->content);
+	printf("siete B node: %d\n", lst_b -> next -> next -> next -> next -> next -> next -> content);
+	printf("ocho B node: %d\n\n", lst_b -> next -> next -> next -> next -> next -> next ->  next ->content);
 }
 
 //void lstnode(lista_ref, cant_nodos) para hacer la lista bien problema que creo que es la lista vacia del b crear los nodos vacios
@@ -148,7 +151,7 @@ int	main(void)
 	ft_lstadd_back(&lst_a, ft_lstnew(16));
 	ft_lstadd_back(&lst_a, ft_lstnew(2));
 	ft_lstadd_back(&lst_a, ft_lstnew(18));
-	/*ft_lstadd_back(&lst_a, ft_lstnew(9)); */
+	/* ft_lstadd_back(&lst_a, ft_lstnew(9)); */
 
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
@@ -157,9 +160,9 @@ int	main(void)
 	printf("Fifth A node: %d\n", lst_a -> next -> next -> next -> next -> content);
 	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 	printf("siete A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next -> content);
-	//printf("ocho A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> content);
-	/*printf("nueve A node: %d\n\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> next -> content); */
-	
+	printf("ocho A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> content);
+/* 	printf("nueve A node: %d\n\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> next -> content);
+ */
 
 	ft_bucket(&lst_a);
 /*
