@@ -151,7 +151,7 @@ int	main(void)
 	ft_lstadd_back(&lst_a, ft_lstnew(16));
 	ft_lstadd_back(&lst_a, ft_lstnew(2));
 	ft_lstadd_back(&lst_a, ft_lstnew(18));
-	/* ft_lstadd_back(&lst_a, ft_lstnew(9)); */
+	ft_lstadd_back(&lst_a, ft_lstnew(9));
 
 	printf("First A node: %d\n", lst_a -> content);
 	printf("Second A node: %d\n", lst_a -> next -> content);
@@ -161,8 +161,8 @@ int	main(void)
 	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
 	printf("siete A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next -> content);
 	printf("ocho A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> content);
-/* 	printf("nueve A node: %d\n\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> next -> content);
- */
+	printf("nueve A node: %d\n\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> next -> content);
+
 
 	ft_bucket(&lst_a);
 /*
