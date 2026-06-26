@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/26 14:01:18 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/26 14:06:11 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,3 +91,4 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 	stack -> tail = new_node;
 	stack -> size += 1;
 }
+
