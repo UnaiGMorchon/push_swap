@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 13:04:03 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/26 12:33:27 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,18 @@
 # include <stddef.h>
 # include <stdio.h>
 
-typedef struct node
+typedef struct s_list
 {
 	int				content;
-	struct node		*next;
-}					t_node_list;
+	struct s_list		*prev;
+	struct s_list		*next;
+}	t_node_list;
+typedef struct	s_stack
+{
+	int				size;
+	struct t_node_list		*head;
+	struct t_node_list		*tail;
+}	t_stack;
 
 /* OPERATIONS */
 void		ft_sa(t_node_list **lst_a);
