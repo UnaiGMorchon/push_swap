@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/26 12:33:27 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/26 13:49:20 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct s_list
 typedef struct	s_stack
 {
 	int				size;
-	struct t_node_list		*head;
-	struct t_node_list		*tail;
+	t_node_list		*head;
+	t_node_list		*tail;
 }	t_stack;
 
 /* OPERATIONS */
-void		ft_sa(t_node_list **lst_a);
-void		ft_sb(t_node_list **lst_b);
-void		ft_ss(t_node_list **lst_a, t_node_list **lst_b);
+void		ft_sa(t_stack *lst_a);
+void		ft_sb(t_stack *lst_b);
+void		ft_ss(t_stack *lst_a, t_stack *lst_b);
 void		ft_pa(t_node_list **lst_a, t_node_list **lst_b);
 void		ft_pb(t_node_list **lst_b, t_node_list **lst_a);
 void		ft_ra(t_node_list **lst);
@@ -46,8 +46,8 @@ void		ft_rrr(t_node_list **lst_a, t_node_list **lst_b);
 /* UTILS */
 t_node_list	*ft_lstlast(t_node_list *lst);
 t_node_list	*ft_lstnew(int content);
-void		ft_lstadd_back(t_node_list **lst, t_node_list *new_node);
-void		ft_lstadd_front(t_node_list **lst, t_node_list *new_node);
+void		ft_lstadd_back(t_stack *stack, t_node_list *new_node);
+void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
 t_node_list	*ft_lstfind(t_node_list **lst);
 void		ft_lstclear(t_node_list **lst);
 int			ft_lstsize(t_node_list *lst);

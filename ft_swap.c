@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sa.c                                            :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/26 12:34:35 by patperez         ###   ########.fr       */
+/*   Updated: 2026/06/26 14:42:32 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-void	ft_sa(t_node_list **lst_a)
+void	ft_sa(t_stack *lst_a)
 {
-	t_node_list	*temp;
+	int	temp;
 
-	if (lst_a == NULL || *lst_a == NULL || (*lst_a)->next == NULL)
+	if (lst_a == NULL || lst_a -> size < 2)
 		return ;
-	temp = (*lst_a) -> next;
-	printf("TEMP CONTENT: %d", temp -> content);
-	(*lst_a)->next = temp->next;
-	temp->next = (*lst_a);
-	(*lst_a) = temp;
-	//write(1, "sa\n", 3);
+	temp = lst_a -> head -> content;
+	lst_a -> head -> content = lst_a -> head -> next -> content;
+	lst_a -> head -> next -> content = temp;
+}
+
+void	ft_sb(t_stack *lst_b)
+{
+	int	temp;
+
+	if (lst_b == NULL || lst_b -> size < 2)
+		return ;
+	temp = lst_b -> head -> content;
+	lst_b -> head -> content = lst_b -> head -> next -> content;
+	lst_b -> head -> next -> content = temp;
+}
+
+void	ft_ss(t_stack *lst_a, t_stack *lst_b)
+{
+	if ((lst_b == NULL || lst_b -> size < 2)
+		&& (lst_a == NULL || lst_a -> size < 2))
+	{
+		ft_sa(*lst_a);
+		ft_sb(*lst_b);
+	}
 }
 
 /*static void	ft_print_list(t_stack *stack, int size)
@@ -71,19 +89,14 @@ int	main(void)
 	nodo2 -> next = nodo3;   // Es el final de la lista
 	nodo2 -> prev = nodo1;
 
-// 2. Configuramos el segundo nodo
+	// 3. Configuramos el tercer nodo
 	nodo3 -> content = 66;
-	nodo3 -> next = nodo1;   // Es el final de la lista
+	nodo3 -> next = nodo1;
 	nodo3 -> prev = nodo2;
 
-	
-	// 3. El puntero de la lista apunta al primer nodo
 	mi_lista -> head = nodo1;
 	mi_lista -> tail = nodo3;
 	mi_lista -> size = 3;
-
-	/*printf("HEAD PREV: %d\n\n", mi_lista -> head -> prev -> content);
-	printf("TAIL NEXT: %d\n\n", mi_lista -> tail -> next -> content);*/
 
 	//ft_print_list(mi_lista, mi_lista -> size);
 	// Mostramos el estado inicial
@@ -93,7 +106,7 @@ int	main(void)
 	printf("3º Nodo: %d\n\n", mi_lista-> head -> next -> next -> content);
 
 	// 4. Llamamos a tu función pasándole la dirección del puntero
-	ft_sa(&mi_lista);
+	ft_sa(mi_lista);
 
 	// Mostramos el resultado
 	printf("Después del swap:\n");
