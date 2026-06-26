@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/26 13:43:51 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/26 14:01:18 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,19 @@ t_node_list	*ft_lstfind(t_node_list **lst)
 	return (prev);
 }
 
-void	ft_lstadd_front(t_stack *lst, t_stack *new_node)
+void	ft_lstadd_front(t_stack *stack, t_node_list *new_node)
 {
-	if (!lst || !new_node)
+	if (!stack || !new_node)
 		return ;
-	new_node -> head -> next = lst;
-	lst = new_node;
+	if (stack -> tail == NULL)
+	{
+		stack -> head = new_node;
+		stack -> tail = new_node;
+	}
+	new_node -> next = stack -> head;
+	new_node -> prev = stack -> tail;
+	stack-> head = new_node;
+	stack -> size +=1;
 }
 
 void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
@@ -80,7 +87,7 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 		stack->tail = new_node;
 	}
 	stack-> tail-> next = new_node;
-	new_node -> prev = stack ->tail;
+	new_node -> prev = stack -> tail;
 	stack -> tail = new_node;
 	stack -> size += 1;
 }
