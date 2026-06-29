@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 09:56:56 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 10:47:48 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ void	ft_pa(t_stack *lst_a, t_stack *lst_b)
 		return ;
 	node_to_move = lst_b-> head; // Guardo en temporal la cabeza
 	lst_b-> head = lst_b -> head-> next; // la cabeza pasa a ser el segundo
-	if(lst_b -> head != NULL) // si quedan nodos
+	if (lst_b -> size == 2) // si quedan nodos
+	{
 		lst_b-> head -> prev = NULL; // de lst_b prev a null
-	else // si no quedan nodos
-		lst_b -> tail = NULL; // lst_b tail a null
+		lst_b-> head -> next = NULL;
+		lst_b-> tail -> prev = NULL; // de lst_b prev a null
+		lst_b-> tail -> next = NULL;
+	}
 	lst_b -> size -=1; // restamos 1 a lst_b
 	node_to_move -> next = NULL;
 	node_to_move -> prev = NULL;
@@ -42,10 +45,13 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 		return ;
 	tmp = lst_a->head;
 	lst_a -> head = lst_a ->head ->next;
-	if (lst_a -> head != NULL)
-		lst_a -> head -> prev = NULL;
-	else
-		lst_a -> tail = NULL;
+	if (lst_a -> size == 2) // si quedan nodos
+	{
+		lst_a-> head -> prev = NULL; // de lst_b prev a null
+		lst_a-> head -> next = NULL;
+		lst_a-> tail -> prev = NULL; // de lst_b prev a null
+		lst_a-> tail -> next = NULL;
+	}
 	lst_a -> size -= 1;
 	tmp->next = NULL;
 	tmp->prev = NULL;
@@ -103,6 +109,7 @@ int	main(void)
 	// STACK_B
 	ft_lstadd_back(lst_b, node_b);
 	ft_lstadd_back(lst_b, ft_lstnew(22));
+	ft_lstadd_back(lst_b, ft_lstnew(33));
 
 	printf("---------------STACK A-----------\n");
 	ft_print_list(lst_a, lst_a -> size);
@@ -111,13 +118,22 @@ int	main(void)
 
 	ft_pa(lst_a, lst_b);
 	printf("---------------push A--------------- \n");
-	ft_print_list(lst_a, lst_a -> size); 
+	ft_print_list(lst_a, lst_a -> size);
 	
 	printf("---------------%d--------------- \n", lst_b->size);
 
 	ft_pb(lst_b, lst_a);
 	printf("---------------push B--------------- \n");
+	
+	printf("---------------push A--------------- \n");
 	ft_print_list(lst_b, lst_b -> size);
-	ft_print_list(lst_a, lst_a -> size);
+	printf("%d \n", lst_a->head->content);
+	printf("%d \n", lst_a->size);
+	printf("%d \n", lst_a->tail->content);
+	printf("%p \n", (void *)lst_a->tail);
+	printf("%p \n", (void *)lst_a->head);
+	printf("%p\n", (void *)lst_a->head->prev);
+	printf("%p", (void *)lst_a->tail->next);
+	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 10:01:23 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 10:12:25 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,14 @@ void	ft_lstadd_front(t_stack *stack, t_node_list *new_node)
 		stack -> head = new_node;
 		stack -> tail = new_node;
 	}
-	new_node -> next = stack -> head; // 1. El 'next' del nuevo apunta al que ANTES era el primero.
-	new_node -> prev = stack -> tail; // 2. OJO AQUÍ: Si es una lista circular, su 'prev' apunta al último.
-	stack-> head = new_node; // 3. Ahora el nuevo nodo es oficialmente la nueva cabeza de la lista.
+	else
+	{
+		new_node -> next = stack -> head; // 1. El 'next' del nuevo apunta al que ANTES era el primero.
+		new_node -> prev = stack -> tail; // 2. OJO AQUÍ: Si es una lista circular, su 'prev' apunta al último.
+		stack -> head -> prev = new_node;
+		stack -> tail -> next = new_node;
+		stack-> head = new_node; // 3. Ahora el nuevo nodo es oficialmente la nueva cabeza de la lista.
+	}
 	stack -> size +=1; // 4. Sumamos 1 al contador de tamaño.
 }
 
