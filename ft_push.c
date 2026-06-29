@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 10:47:48 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 12:35:12 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 	lst_a -> head = lst_a ->head ->next;
 	if (lst_a -> size == 2) // si quedan nodos
 	{
-		lst_a-> head -> prev = NULL; // de lst_b prev a null
+		lst_a-> head -> prev = NULL; // de head lst_b prev a null
 		lst_a-> head -> next = NULL;
-		lst_a-> tail -> prev = NULL; // de lst_b prev a null
+		lst_a-> tail -> prev = NULL; // de tail lst_b prev a null
 		lst_a-> tail -> next = NULL;
 	}
 	lst_a -> size -= 1;
@@ -119,12 +119,12 @@ int	main(void)
 	ft_pa(lst_a, lst_b);
 	printf("---------------push A--------------- \n");
 	ft_print_list(lst_a, lst_a -> size);
-	
+
 	printf("---------------%d--------------- \n", lst_b->size);
 
 	ft_pb(lst_b, lst_a);
 	printf("---------------push B--------------- \n");
-	
+
 	printf("---------------push A--------------- \n");
 	ft_print_list(lst_b, lst_b -> size);
 	printf("%d \n", lst_a->head->content);
@@ -134,6 +134,6 @@ int	main(void)
 	printf("%p \n", (void *)lst_a->head);
 	printf("%p\n", (void *)lst_a->head->prev);
 	printf("%p", (void *)lst_a->tail->next);
-	
+
 	return (0);
 }

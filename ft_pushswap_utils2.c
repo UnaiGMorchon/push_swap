@@ -6,27 +6,33 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/23 11:47:42 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 13:14:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "pushswaplib.h"
 
-void	ft_lstclear(t_node_list **lst)
+void	ft_lstclear(t_stack *lst)
 {
 	t_node_list *buffer;
+	t_node_list *tmp;
 
 	buffer = NULL;
 	if (!lst)
 		return ;
-	while (*lst)
+	tmp = lst -> head;
+	while (lst->size)
 	{
-		buffer = (*lst)-> next;
-		free(*lst);
-		*lst = buffer;
+		buffer = tmp-> next;
+		free(tmp);
+		tmp = buffer;
+		lst->size -= 1;
 	}
-	free(*lst);
+	lst->head = NULL;
+	lst->tail = NULL;
+	lst->size = 0;
+	free(lst);
 }
 
 int	ft_lstsize(t_node_list *lst)
