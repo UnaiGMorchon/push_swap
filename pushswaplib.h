@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/26 13:48:23 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 08:44:50 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ void		ft_rrb(t_node_list **lst_b);
 void		ft_rrr(t_node_list **lst_a, t_node_list **lst_b);
 
 /* UTILS */
-t_node_list	*ft_lstlast(t_node_list *lst);
+//t_node_list	*ft_lstlast(t_node_list *lst);
 t_node_list	*ft_lstnew(int content);
-void		ft_lstadd_back(t_stack *lst, t_node_list *new_node);
-void		ft_lstadd_front(t_stack *lst, t_stack *new_node);
-t_node_list	*ft_lstfind(t_node_list **lst);
+void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
+void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
+// t_node_list	*ft_lstfind(t_node_list **lst);
 void		ft_lstclear(t_node_list **lst);
 int			ft_lstsize(t_node_list *lst);
 
