@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 07:54:35 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 10:01:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,14 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 		stack->head = new_node;
 		stack->tail = new_node;
 	}
-	stack-> tail-> next = new_node; // 1. El 'next' del que ahora es el último, ahora apuntará al nuevo nodo.
-	new_node -> prev = stack -> tail; // 2. El 'prev' del nuevo nodo apunta al que era el último.
-	stack -> tail = new_node; // 3. Ahora el nuevo nodo se convierte oficialmente en el último ('tail').
+	else
+	{
+		new_node -> prev = stack -> tail; // 2. El 'prev' del nuevo nodo apunta al que era el último.
+		stack-> tail-> next = new_node; // 1. El 'next' del que ahora es el último, ahora apuntará al nuevo nodo.
+		stack -> tail = new_node; // 3. Ahora el nuevo nodo se convierte oficialmente en el último ('tail').
+	}
+	stack->head->prev = stack->tail;
+	stack->tail->next = stack->head;
 	stack -> size += 1; // 4. Sumamos 1 al tamaño.
 }
 

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 08:56:22 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 09:56:56 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	ft_pa(t_stack *lst_a, t_stack *lst_b)
 	else // si no quedan nodos
 		lst_b -> tail = NULL; // lst_b tail a null
 	lst_b -> size -=1; // restamos 1 a lst_b
-	node_to_move ->next = NULL;
-	node_to_move ->prev = NULL;
+	node_to_move -> next = NULL;
+	node_to_move -> prev = NULL;
 	ft_lstadd_front(lst_a, node_to_move); // meto el nodo en lst_a
 }
 
@@ -67,12 +67,16 @@ void	ft_print_list(t_stack *stack, int size)
 		"Node %d\n"
 			"  addr       : %p\n"
 			"  content    : %d\n"
+			"  prev content: %d\n"
 			"  prev       : %p\n"
+			"  next content: %d\n"
 			"  next       : %p\n\n",
 			counter,
 			(void *)lst_tmp,
 			lst_tmp->content,
+			lst_tmp->prev->content,
 			(void *)lst_tmp->prev,
+			lst_tmp->next->content,
 			(void *)lst_tmp->next
 		);
 		lst_tmp = lst_tmp->next;
@@ -80,7 +84,7 @@ void	ft_print_list(t_stack *stack, int size)
 	}
 }
 
-/* 
+
 int	main(void)
 {
 	t_stack	*lst_a;
@@ -88,34 +92,32 @@ int	main(void)
 	t_node_list	*node_a;
 	t_node_list	*node_b;
 
-	lst_a = NULL;
-	lst_b = NULL;
+	lst_a = ft_newstack();
+	lst_b = ft_newstack();
 	node_a = ft_lstnew(1);
 	node_b = ft_lstnew(2);
 	// STACK_A
-	ft_lstadd_back(&lst_a -> head, node_a);
-	ft_lstadd_back(&lst_a-> head, ft_lstnew(12));
-	ft_lstadd_back(&lst_a-> head, ft_lstnew(13));
+	ft_lstadd_back(lst_a, node_a);
+	ft_lstadd_back(lst_a, ft_lstnew(12));
+	ft_lstadd_back(lst_a, ft_lstnew(13));
 	// STACK_B
-	ft_lstadd_back(&lst_b-> head, node_b);
-	ft_lstadd_back(&lst_b-> head, ft_lstnew(22));
-	
-	while (lst_a)
-	{
-		printf("%d\n", lst_a -> head-> content);
-		lst_a = lst_a -> head ->  next;
-	}
-	while (lst_b)
-	{
-		printf("%d\n", lst_b -> head -> content);
-		lst_b = lst_b-> head -> next;
-	}
-	printf("Salida\n\n");
+	ft_lstadd_back(lst_b, node_b);
+	ft_lstadd_back(lst_b, ft_lstnew(22));
+
+	printf("---------------STACK A-----------\n");
+	ft_print_list(lst_a, lst_a -> size);
+	printf("---------------STACK B-----------\n");
+	ft_print_list(lst_b, lst_b -> size);
 
 	ft_pa(lst_a, lst_b);
-	printf("First A node: %d\n", lst_a -> head -> content);
-	printf("Second A node: %d\n", lst_a -> head -> next -> content);
-	printf("First B node: %d\n", lst_b -> head -> content);
+	printf("---------------push A--------------- \n");
+	ft_print_list(lst_a, lst_a -> size); 
+	
+	printf("---------------%d--------------- \n", lst_b->size);
 
+	ft_pb(lst_b, lst_a);
+	printf("---------------push B--------------- \n");
+	ft_print_list(lst_b, lst_b -> size);
+	ft_print_list(lst_a, lst_a -> size);
 	return (0);
-} */
+}
