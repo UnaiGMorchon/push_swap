@@ -27,8 +27,7 @@ double	sqroot(int x)
 	return (y);
 }
 
-
-int	ft_max_number(t_stack *lst_a)
+/* int	ft_max_number(t_stack *lst_a)
 {
 	int			temp;
 	t_node_list	*temp_list;
@@ -68,26 +67,24 @@ int	ft_min_number(t_stack *lst_a)
 	printf("TEMPmin>>>>> %i\n", temp);
 	return (temp);
 
-}
+} */
 
-
-
-void	ft_bucket(t_stack *lst_a)
+void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
-	t_stack	*lst_b;
-	int			number_min; // Para guardar el VALOR del número más pequeño
-	int			total; // Para guardar la cantidad total de elementos
-	int			bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
-	int			number_limit; // Para guardar tu "número límite" actual
-	int			end_of_bucket;
-	int			number_max;
+	int		number_min;
+	int		total;
+	int		bucket_number;
+	int		number_limit;
+	int		end_of_bucket;
+	int		number_max;
+
 	
 	if (lst_a == NULL || lst_a -> head -> next == NULL)
 		return ;
-	lst_b = NULL;
-	//lst_b =  malloc(sizeof(t_node_list));
-	number_min = ft_min_number(lst_a);
-	number_max = ft_max_number(lst_a);
+	//lst_b = NULL;
+	//lst_b =  malloc(sizeof(t_stack));
+	//number_min = ft_min_number(lst_a);
+	//number_max = ft_max_number(lst_a);
 	total = ft_lstsize (lst_a -> head);
 	bucket_number = sqroot(total);
 	number_limit = (bucket_number + number_min);
@@ -96,9 +93,9 @@ void	ft_bucket(t_stack *lst_a)
 	printf("number limit %i\n", number_limit);
 	printf("number %i\n", number_min);
 	printf("bucket %i\n", bucket_number);
-	while (lst_a != NULL && number_limit <= end_of_bucket)
+	while (lst_a-> head != NULL)
 	{
-		while (lst_a -> head != NULL && lst_a -> head -> content < number_limit)
+		while (lst_a != NULL && lst_a -> head -> content < number_limit)
 		{
 			ft_pb(lst_b, lst_a);
 			printf("push %i\n", lst_b -> head-> content);
@@ -155,8 +152,10 @@ static void	ft_print_list(t_stack *stack, int size)
 int	main(void)
 {
 	t_stack	*lst_a;
+	t_stack	*lst_b;
 
 	lst_a = ft_newstack();
+	lst_b = ft_newstack();
 	// STACK_A
 	ft_lstadd_back(lst_a, ft_lstnew(12));
 	ft_lstadd_back(lst_a, ft_lstnew(15));
@@ -167,13 +166,13 @@ int	main(void)
 	ft_lstadd_back(lst_a, ft_lstnew(2));
 	ft_lstadd_back(lst_a, ft_lstnew(9));
 	// STACK_B
-
 	printf("---------------STACK A-----------\n");
 	ft_print_list(lst_a, lst_a -> size);
 
-	ft_bucket(lst_a);
-	printf("---------------sorted--------------- \n");
-	ft_print_list(lst_a, lst_a -> size);
+	ft_bucket(lst_a, lst_b);
+
+	printf("---------------sorted B--------------- \n");
+	ft_print_list(lst_b, lst_b -> size);
 	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
 	ft_lstclear(lst_a);
 	return (0);

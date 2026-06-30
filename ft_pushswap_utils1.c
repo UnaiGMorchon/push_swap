@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 08:32:55 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 10:31:20 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_node_list	*ft_lstnew(int content)
 		return (NULL);
 	new_node -> next = NULL;
 	new_node -> prev = NULL;
+	new_node -> index = -1;
 	new_node -> content = content;
 	return (new_node);
 }

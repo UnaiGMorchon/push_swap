@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 09:22:42 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 09:35:04 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ int	ft_min_number(t_stack *lst_a)
 void	ft_bucket(t_stack *lst_a)
 {
 	t_stack	*lst_b;
-	int			number_min; // Para guardar el VALOR del número más pequeño
-	int			total; // Para guardar la cantidad total de elementos
-	int			bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
-	int			number_limit; // Para guardar tu "número límite" actual
-	int			end_of_bucket;
+	int		number_min; // Para guardar el VALOR del número más pequeño
+	int		total; // Para guardar la cantidad total de elementos
+	int		bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
+	int		number_limit; // Para guardar tu "número límite" actual
+	int		end_of_bucket;
 	//int	number_max;
 
 	if (lst_a == NULL || lst_a -> head -> next == NULL)
@@ -138,7 +138,7 @@ void	ft_bucket(t_stack *lst_a)
 
 }
 
-/* static void	ft_print_list(t_stack *stack, int size)
+static void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
 	t_node_list	*lst_tmp;
@@ -191,4 +191,4 @@ int	main(void)
 	ft_lstclear(lst_a);
 	return (0);
 
-} */
+}

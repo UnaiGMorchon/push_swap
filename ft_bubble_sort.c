@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 09:09:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 09:44:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	bubble_sort(t_stack *lst)
 	int	swapped;
 	int	i;
 
-	if (lst == NULL || (lst) == NULL || lst-> head -> next == NULL)
+	if (lst == NULL || lst-> head -> next == NULL)
 		return ;
 	swapped = 1;
 	while (swapped)
