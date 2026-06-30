@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 12:35:12 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 09:23:12 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,26 @@
 void	ft_pa(t_stack *lst_a, t_stack *lst_b)
 {
 	t_node_list	*node_to_move;
-
+// 1. Comprobar que las estructuras existan y que B no esté vacía
 	if (!lst_a || !lst_b || !lst_b-> head) // si no existen salgo
 		return ;
-	node_to_move = lst_b-> head; // Guardo en temporal la cabeza
+	node_to_move = lst_b-> head; // Guardo en temporal la cabeza Apuntar al nodo que vamos a mover (el primero de B)
 	lst_b-> head = lst_b -> head-> next; // la cabeza pasa a ser el segundo
-	if (lst_b -> size == 2) // si quedan nodos
+// 2. Mantener la circularidad de la lista B tras extraer el nodo
+	if (lst_b -> size == 1) // si quedan nodos
 	{
-		lst_b-> head -> prev = NULL; // de lst_b prev a null
-		lst_b-> head -> next = NULL;
-		lst_b-> tail -> prev = NULL; // de lst_b prev a null
-		lst_b-> tail -> next = NULL;
+// Si solo había un nodo, la lista B ahora queda vacía
+		lst_b->head = NULL; // de primer nodo ya no tiene prev a null
+		lst_b->tail = NULL;
+	}
+	else
+	{
+		lst_b->head->prev = lst_b->tail; // El nuevo primer nodo apunta hacia atrás al último
+		lst_b->tail->next = lst_b->head; // El último nodo apunta hacia adelante al nuevo primero
 	}
 	lst_b -> size -=1; // restamos 1 a lst_b
-	node_to_move -> next = NULL;
+// Limpiar los punteros del nodo que movemos para que no arrastre basura
+	node_to_move -> next = NULL; 
 	node_to_move -> prev = NULL;
 	ft_lstadd_front(lst_a, node_to_move); // meto el nodo en lst_a
 }
@@ -45,12 +51,15 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 		return ;
 	tmp = lst_a->head;
 	lst_a -> head = lst_a ->head ->next;
-	if (lst_a -> size == 2) // si quedan nodos
+	if (lst_a -> size == 1)
 	{
-		lst_a-> head -> prev = NULL; // de head lst_b prev a null
-		lst_a-> head -> next = NULL;
-		lst_a-> tail -> prev = NULL; // de tail lst_b prev a null
-		lst_a-> tail -> next = NULL;
+		lst_a->head = NULL;
+		lst_a->tail = NULL;
+	}
+	else
+	{
+		lst_a->head->prev = lst_a->tail;
+		lst_a->tail->next = lst_a->head;
 	}
 	lst_a -> size -= 1;
 	tmp->next = NULL;
@@ -58,7 +67,7 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 	ft_lstadd_front(lst_b, tmp);
 }
 
-
+/* 
 void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
@@ -70,7 +79,7 @@ void	ft_print_list(t_stack *stack, int size)
 	while (counter < size)
 	{
 		printf(
-		"Node %d\n"
+			"Node %d\n"
 			"  addr       : %p\n"
 			"  content    : %d\n"
 			"  prev content: %d\n"
@@ -84,7 +93,7 @@ void	ft_print_list(t_stack *stack, int size)
 			(void *)lst_tmp->prev,
 			lst_tmp->next->content,
 			(void *)lst_tmp->next
-		);
+			);
 		lst_tmp = lst_tmp->next;
 		counter++;
 	}
@@ -93,8 +102,8 @@ void	ft_print_list(t_stack *stack, int size)
 
 int	main(void)
 {
-	t_stack	*lst_a;
-	t_stack	*lst_b;
+	t_stack		*lst_a;
+	t_stack		*lst_b;
 	t_node_list	*node_a;
 	t_node_list	*node_b;
 
@@ -137,3 +146,4 @@ int	main(void)
 
 	return (0);
 }
+ */

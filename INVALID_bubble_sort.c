@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/25 12:36:59 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 09:22:42 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ double	sqroot(int x)
 	return (y);
 }
 
-int	ft_max_number(t_node_list **lst_a)
+int	ft_max_number(t_stack *lst_a)
 {
-	int	temp;
+	int			temp;
 	t_node_list	*temp_list;
 
-	temp_list = *lst_a;
-	temp = (*lst_a) -> content;
+	temp_list = lst_a -> head;
+	temp = lst_a -> head -> content;
 	while (temp_list -> next != NULL)
 	{
 		if (temp > temp_list -> next -> content)
@@ -56,13 +56,13 @@ int	ft_max_number(t_node_list **lst_a)
 	return (temp);
 }
 
-int	ft_min_number(t_node_list **lst_a)
+int	ft_min_number(t_stack *lst_a)
 {
-	int	temp;
+	int			temp;
 	t_node_list	*temp_list;
 
-	temp_list = *lst_a;
-	temp = (*lst_a) -> content;
+	temp_list = lst_a -> head;
+	temp = lst_a -> head -> content;
 	while (temp_list -> next != NULL)
 	{
 		if (temp > temp_list -> content)
@@ -73,55 +73,54 @@ int	ft_min_number(t_node_list **lst_a)
 	}
 	printf("TEMP>>>>> %i\n", temp);
 	return (temp);
-	
 }
 
-void	ft_bucket(t_node_list **lst_a)
+void	ft_bucket(t_stack *lst_a)
 {
-	t_node_list	**lst_b;
-	int number_min; // Para guardar el VALOR del número más pequeño
-	int total; // Para guardar la cantidad total de elementos
-	int bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
-	int number_limit; // Para guardar tu "número límite" actual
-	int	end_of_bucket;
+	t_stack	*lst_b;
+	int			number_min; // Para guardar el VALOR del número más pequeño
+	int			total; // Para guardar la cantidad total de elementos
+	int			bucket_number; // Para guardar el tamaño del bloque (raíz cuadrada)
+	int			number_limit; // Para guardar tu "número límite" actual
+	int			end_of_bucket;
 	//int	number_max;
 
-	if (lst_a == NULL || *lst_a == NULL || (*lst_a) -> next == NULL)
+	if (lst_a == NULL || lst_a -> head -> next == NULL)
 		return ;
-	lst_b =  malloc(sizeof(t_node_list));
+	lst_b =  malloc(sizeof(t_stack));
 	number_min = ft_min_number(lst_a);
 	printf("number min :%d\n", number_min);
 	//number_max = ft_max_number(lst_a);
-	total = ft_lstsize (*lst_a);
+	total = ft_lstsize (lst_a -> head);
 	bucket_number = sqroot(total);
 	number_limit = (bucket_number + number_min);
-	end_of_bucket = ft_lstlast(*lst_a) -> content;
+	end_of_bucket = lst_a -> tail -> content;
 
 	printf("nmber limit %i\n", number_limit);
 	printf("nmber %i\n", number_min);
 	printf("bucket %i\n", bucket_number);
-	while ((*lst_a) -> next)
+	while (lst_a -> head-> next)
 	{
-		while ((*lst_a) -> content > number_limit)
+		while (lst_a -> head -> content > number_limit)
 		{
 			ft_pb(lst_b, lst_a);
-			printf("push -> b %i\n", (*lst_b) -> content);
-			if ((*lst_b) -> next != NULL)
+			printf("push -> b %i\n", lst_b-> head -> content);
+			if (lst_b-> head -> next != NULL)
 			{
-				while ((*lst_b) -> content < (*lst_b) -> next -> content)
+				while (lst_b -> head -> content < lst_b -> head -> next -> content)
 				{
-					if ((*lst_b) -> content < (*lst_b) -> next -> content)
+					if (lst_b-> head -> content < lst_b -> head -> next -> content)
 						ft_sb(lst_b);
 					//ft_rb(lst_b);
 				}
 			}
 		}
-		if ((*lst_a) -> content == end_of_bucket)
+		if (lst_a -> head -> content == end_of_bucket)
 		{
 			number_limit = number_limit + bucket_number;
 			printf("NUMBER limit %i\n", number_limit);
 		}
-		if ((*lst_a) -> next != NULL)
+		if (lst_a -> head -> next != NULL)
 		{
 			ft_pb(lst_b, lst_a);
 		}
@@ -137,84 +136,59 @@ void	ft_bucket(t_node_list **lst_a)
 
 	} */
 
-	printf("First B node: %d\n", (*lst_b) -> content);
-	printf("Second B node: %d\n", (*lst_b) -> next -> content);
-	printf("Third B node: %d\n", (*lst_b) -> next -> next -> content);
-	printf("Fourth B node: %d\n", (*lst_b) -> next -> next -> next -> content);
-	printf("Fifth B node: %d\n", (*lst_b) -> next -> next -> next -> next -> content);
-	printf("Sixth B node: %d\n", (*lst_b) -> next -> next -> next -> next -> next -> content);
-	printf("siete B node: %d\n", (*lst_b) -> next -> next -> next -> next -> next -> next -> content);
-	printf("ocho B node: %d\n", (*lst_b) -> next -> next -> next -> next -> next -> next-> next -> content);
-	printf("nueve B node: %d\n\n", (*lst_b) -> next -> next -> next -> next -> next -> next-> next -> next -> content);
-	
-}*/
+}
+
+/* static void	ft_print_list(t_stack *stack, int size)
+{
+	int			counter;
+	t_node_list	*lst_tmp;
+
+	counter = 0;
+	lst_tmp = stack->head;
+
+	while (counter < size)
+	{
+		printf(
+			"Node %d\n"
+			"  addr       : %p\n"
+			"  content    : %d\n"
+			"  prev       : %p\n"
+			"  next       : %p\n\n",
+			counter,
+			(void *)lst_tmp,
+			lst_tmp->content,
+			(void *)lst_tmp->prev,
+			(void *)lst_tmp->next
+			);
+		lst_tmp = lst_tmp->next;
+		counter++;
+	}
+}
 
 int	main(void)
 {
-	t_node_list	*lst_a;
+	t_stack	*lst_a;
 
-	lst_a = NULL;
-	lst_a = ft_lstnew(14);
-	ft_lstadd_back(&lst_a, ft_lstnew(12));
-	ft_lstadd_back(&lst_a, ft_lstnew(15));
-	ft_lstadd_back(&lst_a, ft_lstnew(1));
-	ft_lstadd_back(&lst_a, ft_lstnew(13));
-	ft_lstadd_back(&lst_a, ft_lstnew(16));
-	ft_lstadd_back(&lst_a, ft_lstnew(18));
-	ft_lstadd_back(&lst_a, ft_lstnew(2));
-	ft_lstadd_back(&lst_a, ft_lstnew(9));
+	lst_a = ft_newstack();
+	// STACK_A
+	ft_lstadd_back(lst_a, ft_lstnew(12));
+	ft_lstadd_back(lst_a, ft_lstnew(15));
+	ft_lstadd_back(lst_a, ft_lstnew(1));
+	ft_lstadd_back(lst_a, ft_lstnew(13));
+	ft_lstadd_back(lst_a, ft_lstnew(16));
+	ft_lstadd_back(lst_a, ft_lstnew(18));
+	ft_lstadd_back(lst_a, ft_lstnew(2));
+	ft_lstadd_back(lst_a, ft_lstnew(9));
+	// STACK_B
 
-	printf("First A node: %d\n", lst_a -> content);
-	printf("Second A node: %d\n", lst_a -> next -> content);    
-	printf("Third A node: %d\n", lst_a -> next -> next -> content);
-	printf("Fourth A node: %d\n", lst_a -> next -> next -> next -> content);
-	printf("Fifth A node: %d\n", lst_a -> next -> next -> next -> next -> content);
-	printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
-	printf("siete A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next -> content);
-	printf("ocho A node: %d\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> content);
-	printf("nueve A node: %d\n\n", lst_a -> next -> next -> next -> next -> next -> next-> next -> next -> content);
-	
+	printf("---------------STACK A-----------\n");
+	ft_print_list(lst_a, lst_a -> size);
 
-	ft_bucket(&lst_a);
-/*
-	printf("First B node: %d\n", lst_b -> content);
-	printf("Second B node: %d\n", lst_b -> next -> content);
-	printf("Third B node: %d\n", lst_b -> next -> next -> content);
-	printf("Fourth B node: %d\n", lst_b -> next -> next -> next -> content);
-	printf("Fifth B node: %d\n\n", lst_b -> next -> next -> next -> next -> content);
-	//printf("Sixth A node: %d\n", lst_a -> next -> next -> next -> next -> next -> content);
-*/
-	ft_lstclear(&lst_a);
+	ft_bucket(lst_a);
+	printf("---------------sorted--------------- \n");
+	ft_print_list(lst_a, lst_a -> size);
+	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
+	ft_lstclear(lst_a);
 	return (0);
-}
 
-/*
-while (lst_a)
-	{
-		if ((*lst_a) -> content < (*lst_a) -> next -> content ||
-			(*lst_a) -> next == NULL)
-		{
-			ft_pb(lst_b, lst_a);
-			if ((*lst_b) -> content < (*lst_b) -> next -> content)
-				ft_sb(lst_b);
-			else
-				while ((*lst_b) -> content > (*lst_b) -> next -> content)
-					ft_rb(lst_b);
-		}
-		else
-			ft_ra(lst_a);
-	}
-	while (lst_b)
-		ft_pa(lst_a, lst_b);
-	ft_lstclear(lst_b);
-*/
-
-/*
-		while ((bucket + number) < (*lst_a) -> content)
-		{
-			ft_pb;
-		}
-		(bucket + number) + bucket;
-	}
-*/
-
+} */

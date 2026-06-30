@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 13:14:39 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 08:23:06 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_lstclear(t_stack *lst)
 {
-	t_node_list *buffer;
-	t_node_list *tmp;
+	t_node_list	*buffer;
+	t_node_list	*tmp;
 
 	buffer = NULL;
 	if (!lst)

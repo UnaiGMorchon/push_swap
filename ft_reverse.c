@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 13:24:15 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 09:09:34 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 }
 
 
-void	ft_print_list(t_stack *stack, int size)
+/* void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
 	t_node_list	*lst_tmp;
@@ -57,7 +57,7 @@ void	ft_print_list(t_stack *stack, int size)
 	while (counter < size)
 	{
 		printf(
-		"Node %d\n"
+			"Node %d\n"
 			"  addr       : %p\n"
 			"  content    : %d\n"
 			"  prev content: %d\n"
@@ -71,7 +71,7 @@ void	ft_print_list(t_stack *stack, int size)
 			(void *)lst_tmp->prev,
 			lst_tmp->next->content,
 			(void *)lst_tmp->next
-		);
+			);
 		lst_tmp = lst_tmp->next;
 		counter++;
 	}
@@ -81,9 +81,9 @@ int	main(void)
 {
 	//* STACK_A *
 	t_stack	*lst_a;
-
+ */
 	//lst_a = NULL;
-	lst_a = ft_newstack();
+/* 	lst_a = ft_newstack();
 	ft_lstadd_back(lst_a, ft_lstnew(12));
 	ft_lstadd_back(lst_a, ft_lstnew(13));
 	ft_lstadd_back(lst_a, ft_lstnew(14));
@@ -95,7 +95,7 @@ int	main(void)
 	ft_rra(lst_a);
 	printf("list reverse A: %d\n", lst_a -> size);
 	ft_print_list(lst_a, lst_a -> size);
-
+ */
 /* // * STACK_b *
 	t_stack	*lst_b;
 
@@ -113,7 +113,8 @@ int	main(void)
 	printf("list reverse B: %d\n", lst_b -> size);
 	ft_print_list(lst_b, lst_b -> size);
  */
-	ft_lstclear(lst_a);
+/* 	ft_lstclear(lst_a);
 	//ft_lstclear(lst_b);
 	return (0);
 }
+ */

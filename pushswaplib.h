@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/29 13:25:12 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/29 15:26:46 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ typedef struct s_stack
 }					t_stack;
 
 /* OPERATIONS */
-void		ft_sa(t_stack *lst_a);
-void		ft_sb(t_node_list **lst_b);
-void		ft_ss(t_node_list **lst_a, t_node_list **lst_b);
-void		ft_pa(t_stack *lst_a, t_stack *lst_b);
-void		ft_pb(t_stack *lst_b, t_stack *lst_a);
-void		ft_ra(t_node_list **lst);
-void		ft_rb(t_node_list **lst);
-void		ft_rr(t_node_list **lst_a, t_node_list **lst_b);
-void		ft_rra(t_stack *lst_a);
-void		ft_rrb(t_stack *lst_b);
-void		ft_rrr(t_stack *lst_a, t_stack *lst_b);
+void		ft_sa(t_stack *lst_a);//
+void		ft_sb(t_stack *lst_b);//
+void		ft_ss(t_stack*lst_a, t_stack *lst_b);//
+void		ft_pa(t_stack *lst_a, t_stack *lst_b);//
+void		ft_pb(t_stack *lst_b, t_stack *lst_a);//
+void		ft_ra(t_stack *lst_a); //
+void		ft_rb(t_stack *lst_b);//
+void		ft_rr(t_stack *lst_a, t_stack *lst_b);//
+void		ft_rra(t_stack *lst_a);//
+void		ft_rrb(t_stack *lst_b);//
+void		ft_rrr(t_stack *lst_a, t_stack *lst_b); //
 
 /* UTILS */
 t_node_list	*ft_lstnew(int content);
@@ -53,6 +53,6 @@ void		ft_lstclear(t_stack *lst);
 int			ft_lstsize(t_node_list *lst);
 
 /* ALGORITHMS */
-void		bubble_sort(t_node_list **lst);
+void		bubble_sort(t_stack *lst);
 
 #endif
