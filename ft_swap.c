@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/30 09:08:24 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 12:07:29 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	ft_sa(t_stack *lst_a)
 	if (lst_a == NULL || lst_a->size < 2)
 		return ;
 // 1. Guardar el valor del primer nodo en una variable temporal
-	temp = lst_a-> head->content;
+	temp = lst_a-> head-> content;
 // 2. Copiar el valor del segundo nodo en el primer nodo
-	lst_a ->head-> content = lst_a ->head->next-> content;
+	lst_a -> head -> content = lst_a -> head->next -> content;
 // 3. Pasar el valor original del primer nodo (guardado en temp) al segundo nodo
-	lst_a->head->next->content = temp;
+	lst_a-> head -> next-> content = temp;
 	write(1, "sa\n", 3);
 }
 

@@ -27,80 +27,57 @@ double	sqroot(int x)
 	return (y);
 }
 
-/* int	ft_max_number(t_stack *lst_a)
+void	ft_get_index(t_stack *lst_a)
 {
-	int			temp;
-	t_node_list	*temp_list;
+	int			index_count;
+	t_node_list	*current;
+	t_node_list	*current_aux;
 
-	temp_list = lst_a -> head;
-	temp = lst_a -> head -> content;
-	while (temp_list != NULL)
+	current = lst_a -> head;
+	while (current != NULL)
 	{
-		if (temp < temp_list -> content)
+		index_count = 0;
+		current_aux = lst_a -> head;
+		while (current_aux != NULL)
 		{
-			temp = temp_list -> content;
+			if (current_aux -> content < current -> content)
+			{
+				index_count += 1;
+			}
+			current_aux = current_aux -> next;
 		}
-		temp_list = temp_list -> next;
+		current -> index = index_count;
+		current = current ->next;
 	}
-	printf("TEMPmax>>>>> %i\n", temp);
-	return (temp);
-
 }
-
-int	ft_min_number(t_stack *lst_a)
-{
-	int			temp;
-	t_node_list	*temp_list;
-
-	if (!lst_a || !lst_a -> head)
-		return (0);
-	temp_list = lst_a -> head;
-	temp = lst_a -> head-> content;
-	while (temp_list != NULL)
-	{
-		if (temp > temp_list -> content)
-		{
-			temp = temp_list -> content;
-		}
-		temp_list = temp_list -> next;
-	}
-	printf("TEMPmin>>>>> %i\n", temp);
-	return (temp);
-
-} */
 
 void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
-	int		number_min;
-	int		total;
-	int		bucket_number;
-	int		number_limit;
-	int		end_of_bucket;
-	int		number_max;
+	int	total;
+	int	bucket_number;
+	int	number_limit;
+	int	count;
 
-	
 	if (lst_a == NULL || lst_a -> head -> next == NULL)
 		return ;
 	//lst_b = NULL;
 	//lst_b =  malloc(sizeof(t_stack));
-	//number_min = ft_min_number(lst_a);
-	//number_max = ft_max_number(lst_a);
 	total = ft_lstsize (lst_a -> head);
 	bucket_number = sqroot(total);
-	number_limit = (bucket_number + number_min);
-	end_of_bucket = lst_a-> tail -> content;
+	number_limit = bucket_number;
 
 	printf("number limit %i\n", number_limit);
-	printf("number %i\n", number_min);
 	printf("bucket %i\n", bucket_number);
+	count = 0;
 	while (lst_a-> head != NULL)
 	{
-		while (lst_a != NULL && lst_a -> head -> content < number_limit)
+		while (lst_a -> head != NULL && lst_a -> head -> index < number_limit)
 		{
 			ft_pb(lst_b, lst_a);
 			printf("push %i\n", lst_b -> head-> content);
+			count += 1;
 		}
-		if (lst_a -> head -> content == end_of_bucket)
+		if (count == ft_lstsize(lst_a -> head))
 		{
 			number_limit = number_limit + bucket_number;
 			printf("nmber limit %i\n", number_limit);
@@ -109,17 +86,6 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 			ft_ra(lst_a);
 	}
 	printf("salio \n");
-
-	if (lst_a -> head -> content == number_max)
-	{
-		printf("last node %i\n", lst_a -> head -> content);
-		ft_pb(lst_b, lst_a);
-		printf("push %i\n", lst_b -> head -> content);
-	}
-	/* while ((*lst_b))
-		{
-			ft_pa();
-		} */
 }
 
 static void	ft_print_list(t_stack *stack, int size)
