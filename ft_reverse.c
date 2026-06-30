@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 09:09:34 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/06/30 12:30:52 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_rrb(t_stack *lst_b)
 
 void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 {
-	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
+	if ((!lst_a || !lst_a == NULL) || (!lst_b || !lst_b == NULL))
 		return ;
 	ft_rra(lst_a);
 	ft_rrb(lst_b);
