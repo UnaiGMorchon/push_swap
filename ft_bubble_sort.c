@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:30:06 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:40:22 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	14.Call ft_ra one extra time after inner loop to fix final alignment of stack
 */
 
-void	bubble_sort(t_stack *lst)
+void	ft_bubble_sort(t_stack *lst)
 {
 	int	swapped;
 	int	i;
@@ -102,7 +102,7 @@ int	main(void)
 	printf("---------------STACK A-----------\n");
 	ft_print_list(lst_a, lst_a -> size);
 
-	bubble_sort(lst_a);
+	ft_bubble_sort(lst_a);
 	printf("---------------sorted--------------- \n");
 	ft_print_list(lst_a, lst_a -> size);
 	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);

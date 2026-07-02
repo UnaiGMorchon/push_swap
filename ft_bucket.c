@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:36:53 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:40:32 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
 		return ;
-	number_limit = sqroot(lst_a -> size);
+	number_limit = ft_sqroot(lst_a -> size);
 	end_bucket = number_limit;
 	while (lst_a -> size)
 	{

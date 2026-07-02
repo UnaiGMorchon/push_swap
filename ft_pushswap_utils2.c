@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:21:49 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:40:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_lstsize(t_node_list *lst)
 	14. Return the calculated square root approximation value.
 */
 
-double	sqroot(int x)
+double	ft_sqroot(int x)
 {
 	double	y;
 	int		p;
