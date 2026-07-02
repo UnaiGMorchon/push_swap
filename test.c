@@ -141,16 +141,13 @@ void	ft_get_index(t_stack *lst_a)
 
 void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
-	int	bucket_number;
 	int	number_limit;
 	int	exist_bucket;
 
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
 		return ;
-	bucket_number = sqroot(lst_a -> size);
-	number_limit = bucket_number;
+	number_limit = sqroot(lst_a -> size);
 	printf("number limit %i\n", number_limit);
-	printf("bucket %i\n", bucket_number);
 	while (lst_a -> size)
 	{
 		if (lst_a -> head -> index < number_limit)
@@ -167,7 +164,7 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 			}
 			else
 			{
-				number_limit += bucket_number;
+				number_limit += number_limit;
 				printf("nmber limit %i\n", number_limit);
 			}
 		}
@@ -234,8 +231,6 @@ int	main(void)
 	printf("---------------resultado A-----------\n");
 	ft_print_list(lst_a, lst_a -> size);
 
-	printf("---------------resultado B-----------\n");
-	ft_print_list(lst_b, lst_b -> size);
 	ft_lstclear(lst_a);
 	return (0);
 }
