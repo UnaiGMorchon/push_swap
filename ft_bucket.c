@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 12:23:35 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 12:35:03 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,30 +87,27 @@ void	ft_get_index(t_stack *lst_a)
 
 	current = lst_a -> head;
 	i = 0;
-	while (i < lst_a->size)
+	while (i++ < lst_a->size)
 	{
 		index_count = 0;
 		current_aux = lst_a->head;
 		j = 0;
-		while (j < lst_a->size)
+		while (j++ < lst_a->size)
 		{
 			if (current_aux -> content < current -> content)
 			{
 				index_count += 1;
 			}
 			current_aux = current_aux -> next;
-			j++;
 		}
 		current -> index = index_count;
 		current = current ->next;
-		i++;
 	}
 }
 
 void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
 	int	number_limit;
-	int	exist_bucket;
 	int	end_bucket;
 
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
@@ -121,14 +118,10 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 	{
 		if (lst_a -> head -> index < number_limit)
 			ft_pb(lst_b, lst_a);
+		else if (ft_exist_bucket(lst_a, number_limit))
+			ft_ra(lst_a);
 		else
-		{
-			exist_bucket = ft_exist_bucket(lst_a, number_limit);
-			if (exist_bucket)
-				ft_ra(lst_a);
-			else
-				number_limit += end_bucket;
-		}
+			number_limit += end_bucket;
 	}
 	while (lst_b -> size)
 	{
@@ -137,7 +130,7 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 	}
 }
 
-/* static void	ft_print_list(t_stack *stack, int size)
+static void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
 	t_node_list	*lst_tmp;
@@ -199,4 +192,3 @@ int	main(void)
 	ft_lstclear(lst_a);
 	return (0);
 }
- */
