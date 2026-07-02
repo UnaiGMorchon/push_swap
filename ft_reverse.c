@@ -6,12 +6,20 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 11:58:12 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:13:03 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 #include <stdio.h>
+/*
+	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
+	2. Assign the current head to the temporary variable (initial guard value).
+	3. Security check: if the stack pointer does not exist, exit the function.
+	4. Locate the node right before the current tail and save it as the new tail.
+	5. Shift the stack's head pointer backward to point to the current tail node.
+	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+*/
 
 void	ft_rra(t_stack *lst_a)
 {
@@ -25,6 +33,15 @@ void	ft_rra(t_stack *lst_a)
 	lst_a -> tail = tmp_newlast;
 }
 
+/*
+	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
+	2. Assign the current head to the temporary variable (initial guard value).
+	3. Security check: if the stack pointer does not exist, exit the function.
+	4. Locate the node right before the current tail and save it as the new tail.
+	5. Shift the stack's head pointer backward to point to the current tail node.
+	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+*/
+
 void	ft_rrb(t_stack *lst_b)
 {
 	t_node_list	*tmp_newlast;
@@ -37,6 +54,12 @@ void	ft_rrb(t_stack *lst_b)
 	lst_b -> tail = tmp_newlast;
 }
 
+/*
+	1. Security check: if either stack A or stack B does not exist, stop.
+	2. Call ft_rra to perform a reverse rotate operation on stack A.
+	3. Call ft_rrb to perform a reverse rotate operation on stack B.
+*/
+
 void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 {
 	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
@@ -44,7 +67,6 @@ void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 	ft_rra(lst_a);
 	ft_rrb(lst_b);
 }
-
 
 /* void	ft_print_list(t_stack *stack, int size)
 {

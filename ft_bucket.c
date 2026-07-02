@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 12:35:03 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 12:36:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 		ft_pa(lst_a, lst_b);
 	}
 }
-
+/* 
 static void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
@@ -192,3 +192,4 @@ int	main(void)
 	ft_lstclear(lst_a);
 	return (0);
 }
+ */

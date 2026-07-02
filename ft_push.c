@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 09:23:12 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:13:16 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,40 @@
 #include <stdlib.h>
 
 /* take first element atop b and put it atop a. nothing done if b empty */
+/*
+	1. Declare a pointer variable 'node_to_move' to store the node from B.
+	2. Security check: if pointers are NULL or stack B is empty, stop.
+	3. Save the current head of stack B into 'node_to_move'.
+	4. Move stack B's head pointer to the next node in the list.
+	5. If B had only 1 node, set head and tail to NULL (stack B becomes empty).
+	6. If B had more nodes, reconnect head's prev and tail's next to keep it circ
+	7. Decrement the total size counter of stack B by 1.
+	8. Isolate the moved node by setting its next and prev pointers to NULL.
+	9. Use ft_lstadd_front to insert the isolated node at the top of stack A.
+*/
+
 void	ft_pa(t_stack *lst_a, t_stack *lst_b)
 {
 	t_node_list	*node_to_move;
-// 1. Comprobar que las estructuras existan y que B no esté vacía
-	if (!lst_a || !lst_b || !lst_b-> head) // si no existen salgo
+
+	if (!lst_a || !lst_b || !lst_b-> head)
 		return ;
-	node_to_move = lst_b-> head; // Guardo en temporal la cabeza Apuntar al nodo que vamos a mover (el primero de B)
-	lst_b-> head = lst_b -> head-> next; // la cabeza pasa a ser el segundo
-// 2. Mantener la circularidad de la lista B tras extraer el nodo
-	if (lst_b -> size == 1) // si quedan nodos
+	node_to_move = lst_b-> head;
+	lst_b -> head = lst_b -> head -> next;
+	if (lst_b -> size == 1)
 	{
-// Si solo había un nodo, la lista B ahora queda vacía
-		lst_b->head = NULL; // de primer nodo ya no tiene prev a null
+		lst_b->head = NULL;
 		lst_b->tail = NULL;
 	}
 	else
 	{
-		lst_b->head->prev = lst_b->tail; // El nuevo primer nodo apunta hacia atrás al último
-		lst_b->tail->next = lst_b->head; // El último nodo apunta hacia adelante al nuevo primero
+		lst_b->head->prev = lst_b->tail;
+		lst_b->tail->next = lst_b->head;
 	}
-	lst_b -> size -=1; // restamos 1 a lst_b
-// Limpiar los punteros del nodo que movemos para que no arrastre basura
-	node_to_move -> next = NULL; 
+	lst_b -> size -= 1;
+	node_to_move -> next = NULL;
 	node_to_move -> prev = NULL;
-	ft_lstadd_front(lst_a, node_to_move); // meto el nodo en lst_a
+	ft_lstadd_front(lst_a, node_to_move);
 }
 
 /* take first element atop a and put it atop b. nothing done if a empty */

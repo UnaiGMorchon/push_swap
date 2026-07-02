@@ -6,52 +6,35 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 09:44:39 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:25:00 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-void	ft_sa(t_stack *lst_a)
-{
-	int	temp;
-// Verificar si la lista existe y si tiene al menos dos elementos para poder intercambiar
-	if (lst_a == NULL || lst_a->size < 2)
-		return ;
-// 1. Guardar el valor del primer nodo en una variable temporal
-	temp = lst_a-> head->content;
-// 2. Copiar el valor del segundo nodo en el primer nodo
-	lst_a ->head-> content = lst_a ->head->next-> content;
-// 3. Pasar el valor original del primer nodo (guardado en temp) al segundo nodo
-	lst_a->head->next->content = temp;
-	write(1, "sa\n", 3);
-}
-
-void	ft_ra(t_stack *lst_a)
-{
-	t_node_list	*tmp_first;
-
-	if (!lst_a)
-		return ;
-// 1. Guardas de seguridad: comprobar que la lista exista y tenga al menos dos nodos
-	if (lst_a == NULL || lst_a == NULL || lst_a -> head-> next == NULL)
-		return ;
-// 2. Guardar el nodo que actualmente está al principio en una variable temporal
-	tmp_first = lst_a -> head;
-// 3. Mover la cabeza de la lista al segundo nodo (el segundo pasa a ser el primero)
-	lst_a -> head = lst_a-> head -> next;
-// 4. Conectar el antiguo primer nodo al final de la lista (después del actual tail)
-	lst_a -> tail -> next = tmp_first;
-// 5. Actualizar el puntero tail para que apunte al nuevo último nodo
-	lst_a -> tail = tmp_first;
-}
+/*
+1. Declare 'swapped' as a boolean-like flag to check if elements were moved.
+2. Declare an integer 'i' to count the steps in the current sorting pass.
+3. Security check: if the stack or its head is NULL, stop immediately.
+4. Initialize the 'swapped' flag to 1 to force the while loop to start.
+5.Run the main sorting loop as long as at least one swap happened previous pass
+6. Reset the step counter 'i' to 0 at the beginning of each pass.
+7. Reset the 'swapped' flag to 0, assuming the list might already be sorted.
+8. Run an inner loop to check pairs up to the total stack size minus one.
+9.Compare the content of the current head node with the content of the next node
+10. If the current node is larger, call ft_sa to swap the top two elements.
+11. Set the 'swapped' flag to 1 because a change was made to the list.
+12. Call ft_ra to rotate the stack, shifting the next pair to the top.
+13. Increment the step counter 'i' by 1 to move forward.
+14.Call ft_ra one extra time after the inner loop to fix final alignment of stack
+*/
 
 void	bubble_sort(t_stack *lst)
 {
 	int	swapped;
 	int	i;
 
-	if (lst == NULL || lst-> head -> next == NULL)
+	if (lst == NULL || lst-> head == NULL)
 		return ;
 	swapped = 1;
 	while (swapped)
@@ -71,6 +54,7 @@ void	bubble_sort(t_stack *lst)
 		ft_ra(lst);
 	}
 }
+
 /* 
 static void	ft_print_list(t_stack *stack, int size)
 {

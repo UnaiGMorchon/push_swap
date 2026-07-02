@@ -6,30 +6,41 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 14:53:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/02 11:57:00 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:28:20 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
+/*
+	1. Declare a pointer 'tmp_first' to save the current head of the stack.
+	2.Security check: if stack A does not exist or has less than 2 elements,stop
+	3. Store the current first node (head) into the 'tmp_first' variable.
+	4. Move the stack's head pointer forward to the second node in the list.
+	5. Update the stack's tail pointer to match the new end of the list.
+*/
+
 void	ft_ra(t_stack *lst_a)
 {
-	t_node_list *tmp_first;
+	t_node_list	*tmp_first;
 
 	if (!lst_a)
 		return ;
-// 1. Guardas de seguridad: comprobar que la lista exista y tenga al menos dos nodos
 	if (lst_a == NULL || lst_a == NULL || lst_a -> head-> next == NULL)
 		return ;
-// 2. Guardar el nodo que actualmente está al principio en una variable temporal
 	tmp_first = lst_a -> head;
-// 3. Mover la cabeza de la lista al segundo nodo (el segundo pasa a ser el primero)
 	lst_a -> head = lst_a-> head -> next;
-// 4. Conectar el antiguo primer nodo al final de la lista (después del actual tail)
 	lst_a -> tail -> next = tmp_first;
-// 5. Actualizar el puntero tail para que apunte al nuevo último nodo
 	lst_a -> tail = tmp_first;
 }
+
+/*
+	1. Declare a pointer 'tmp_first' to save the current head of the stack.
+	2.Security check: if stack B does not exist or has less than 2 elements,stop
+	3. Store the current first node (head) into the 'tmp_first' variable.
+	4. Move the stack's head pointer forward to the second node in the list.
+	5. Update the stack's tail pointer to match the new end of the list.
+*/
 
 void	ft_rb(t_stack *lst_b)
 {
@@ -39,13 +50,17 @@ void	ft_rb(t_stack *lst_b)
 		return ;
 	if (lst_b == NULL || lst_b == NULL || lst_b -> head-> next == NULL)
 		return ;
-
 	tmp_first = lst_b -> head;
 	lst_b -> head = lst_b-> head -> next;
 	lst_b -> tail -> next = tmp_first;
 	lst_b -> tail = tmp_first;
-
 }
+
+/*
+	1. Security check: verify both stacks exist and both have at least 2 nodes.
+	2. Call ft_ra to rotate stack A (shifts the top element to the bottom).
+	3. Call ft_rb to rotate stack B (shifts the top element to the bottom).
+*/
 
 void	ft_rr(t_stack *lst_a, t_stack *lst_b)
 {
@@ -54,6 +69,7 @@ void	ft_rr(t_stack *lst_a, t_stack *lst_b)
 	ft_ra(lst_a);
 	ft_rb(lst_b);
 }
+
 /* 
 int	main(void)
 {
