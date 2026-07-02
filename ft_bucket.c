@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 12:22:25 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 12:23:35 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	ft_get_index(t_stack *lst_a)
 		index_count = 0;
 		current_aux = lst_a->head;
 		j = 0;
-		while (j++ < lst_a->size)
+		while (j < lst_a->size)
 		{
 			if (current_aux -> content < current -> content)
 			{
