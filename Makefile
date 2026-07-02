@@ -6,7 +6,7 @@
 #   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
-#   Updated: 2026/06/23 07:50:06 by ugarcia-           ###   ########.fr       #
+#   Updated: 2026/07/02 12:06:35 by ugarcia-           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,10 @@ NAME = pushswap.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = ft_push.c ft_ra.c ft_ss.c ft_sa.c ft_sb.c ft_reverse.c \
-ft_pushswap_utils1.c push_swap.c
+SRCS = ft_push.c ft_rotate.c ft_swap.c ft_reverse.c \
+ ft_pushswap_utils1.c ft_pushswap_utils2.c \
+ push_swap.c ft_bubble_sort.c ft_bucket.c
+
 
 OBJS = $(SRCS:.c=.o)
 

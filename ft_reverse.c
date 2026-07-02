@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 12:30:52 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 11:58:12 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_rrb(t_stack *lst_b)
 
 void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 {
-	if ((!lst_a || !lst_a == NULL) || (!lst_b || !lst_b == NULL))
+	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
 		return ;
 	ft_rra(lst_a);
 	ft_rrb(lst_b);
@@ -79,7 +79,7 @@ void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
 
 int	main(void)
 {
-	//* STACK_A *
+	// STACK_A
 	t_stack	*lst_a;
  */
 	//lst_a = NULL;
@@ -96,7 +96,7 @@ int	main(void)
 	printf("list reverse A: %d\n", lst_a -> size);
 	ft_print_list(lst_a, lst_a -> size);
  */
-/* // * STACK_b *
+/* // STACK_b
 	t_stack	*lst_b;
 
 	//lst_a = NULL;

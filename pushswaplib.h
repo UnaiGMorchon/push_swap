@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 12:26:37 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 12:02:18 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void		ft_get_index(t_stack *lst_a);
 
 /* ALGORITHMS */
 void		bubble_sort(t_stack *lst);
+void		ft_bucket(t_stack *lst_a, t_stack *lst_b);
 
 #endif

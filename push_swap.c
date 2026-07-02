@@ -6,13 +6,13 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/30 08:35:01 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/02 11:59:16 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	main(int argc, char **argv)
+/* int	main(int argc, char **argv)
 {
 	return (0);
-}
+} */
