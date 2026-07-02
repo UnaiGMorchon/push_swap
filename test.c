@@ -29,7 +29,7 @@ double	sqroot(int x)
 
 void	ft_ra(t_stack *lst_a)
 {
-	t_node_list *tmp_first;
+	t_node_list	*tmp_first;
 
 	if (!lst_a)
 		return ;
@@ -71,23 +71,50 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 	ft_lstadd_front(lst_b, tmp);
 }
 
-int	ft_max_index(t_stack *lst_b)
+t_node_list	*ft_max_index(t_stack *lst_b)
 {
 	t_node_list	*tmp;
-	int			max;
+	t_node_list	*max_node;
 	int			nodes;
 
 	tmp = lst_b -> head;
-	max = lst_b ->head -> index;
+	max_node = lst_b ->head;
 	nodes = 0;
 	while (nodes < lst_b -> size)
 	{
-		if (tmp -> index > max)
-			max = tmp -> index;
+		if (tmp -> index > max_node -> index)
+			max_node = tmp;
 		tmp = tmp -> next;
 		nodes++;
 	}
-	return (max);
+	return (max_node);
+}
+
+void	ft_rotate_decide(t_stack *lst_b)
+{
+	t_node_list	*tmp;
+	t_node_list	*tmp_max_index;
+	int			physical_node_position;
+
+	tmp_max_index = ft_max_index(lst_b);
+	while (lst_b -> head != tmp_max_index)
+	{
+		physical_node_position = 0;
+		tmp = lst_b -> head;
+		while (tmp != tmp_max_index)
+		{
+			tmp = tmp -> next;
+			physical_node_position++;
+		}
+		if (physical_node_position <= lst_b -> size / 2)
+		{
+			ft_rb(lst_b);
+		}
+		else
+		{
+			ft_rrb(lst_b);
+		}
+	}
 }
 
 int	ft_exist_bucket(t_stack *lst_a, int number_limit)
@@ -143,33 +170,30 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
 	int	number_limit;
 	int	exist_bucket;
+	int	end_bucket;
 
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
 		return ;
 	number_limit = sqroot(lst_a -> size);
-	printf("number limit %i\n", number_limit);
+	end_bucket = number_limit;
 	while (lst_a -> size)
 	{
 		if (lst_a -> head -> index < number_limit)
-		{
 			ft_pb(lst_b, lst_a);
-			printf("push %i\n", lst_b -> head-> content);
-		}
 		else
 		{
 			exist_bucket = ft_exist_bucket(lst_a, number_limit);
 			if (exist_bucket)
-			{
 				ft_ra(lst_a);
-			}
 			else
-			{
-				number_limit += number_limit;
-				printf("nmber limit %i\n", number_limit);
-			}
+				number_limit += end_bucket;
 		}
 	}
-	printf("salio \n");
+	while (lst_b -> size)
+	{
+		ft_rotate_decide(lst_b);
+		ft_pa(lst_a, lst_b);
+	}
 }
 
 static void	ft_print_list(t_stack *stack, int size)
@@ -179,7 +203,6 @@ static void	ft_print_list(t_stack *stack, int size)
 
 	counter = 0;
 	lst_tmp = stack->head;
-
 	while (counter < size)
 	{
 		printf(
