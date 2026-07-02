@@ -71,6 +71,44 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 	ft_lstadd_front(lst_b, tmp);
 }
 
+int	ft_max_index(t_stack *lst_b)
+{
+	t_node_list	*tmp;
+	int			max;
+	int			nodes;
+
+	tmp = lst_b -> head;
+	max = lst_b ->head -> index;
+	nodes = 0;
+	while (nodes < lst_b -> size)
+	{
+		if (tmp -> index > max)
+			max = tmp -> index;
+		tmp = tmp -> next;
+		nodes++;
+	}
+	return (max);
+}
+
+int	ft_exist_bucket(t_stack *lst_a, int number_limit)
+{
+	t_node_list	*tmp;
+	int			nodes;
+
+	tmp = lst_a -> head;
+	nodes = 0;
+	while (nodes < lst_a -> size)
+	{
+		if (tmp -> index < number_limit)
+		{
+			return (1);
+		}
+		tmp = tmp -> next;
+		nodes++;
+	}
+	return (0);
+}
+
 void	ft_get_index(t_stack *lst_a)
 {
 	int			index_count;
@@ -105,34 +143,34 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 {
 	int	bucket_number;
 	int	number_limit;
-	int	count;
-	int		end_of_bucket;
+	int	exist_bucket;
 
-	if (lst_a == NULL || lst_a -> head -> next == NULL)
+	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
 		return ;
-	//lst_b = NULL;
-	//lst_b =  malloc(sizeof(t_stack));
 	bucket_number = sqroot(lst_a -> size);
 	number_limit = bucket_number;
-	end_of_bucket = lst_a -> tail -> content;
-
 	printf("number limit %i\n", number_limit);
 	printf("bucket %i\n", bucket_number);
-	count = 0;
 	while (lst_a -> size)
 	{
-		while (lst_a -> head != NULL && lst_a -> head -> index < number_limit)
+		if (lst_a -> head -> index < number_limit)
 		{
 			ft_pb(lst_b, lst_a);
 			printf("push %i\n", lst_b -> head-> content);
-			count += 1;
 		}
-		if (lst_a -> head -> content >= end_of_bucket)
+		else
 		{
-			number_limit = number_limit + bucket_number;
-			printf("nmber limit %i\n", number_limit);
+			exist_bucket = ft_exist_bucket(lst_a, number_limit);
+			if (exist_bucket)
+			{
+				ft_ra(lst_a);
+			}
+			else
+			{
+				number_limit += bucket_number;
+				printf("nmber limit %i\n", number_limit);
+			}
 		}
-	ft_ra(lst_a);
 	}
 	printf("salio \n");
 }
@@ -192,6 +230,12 @@ int	main(void)
 	printf("---------------sorted B--------------- \n");
 	ft_print_list(lst_b, lst_b -> size);
 	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
+
+	printf("---------------resultado A-----------\n");
+	ft_print_list(lst_a, lst_a -> size);
+
+	printf("---------------resultado B-----------\n");
+	ft_print_list(lst_b, lst_b -> size);
 	ft_lstclear(lst_a);
 	return (0);
 }
