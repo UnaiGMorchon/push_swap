@@ -6,7 +6,7 @@
 #   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
-#   Updated: 2026/07/03 10:08:08 by ugarcia-           ###   ########.fr       #
+#   Updated: 2026/07/03 12:14:37 by ugarcia-           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,18 +23,18 @@ PRINTF_DIR = ../printf
 LIBFT = $(LIBFT_DIR)/libft.a
 PRINTF = $(PRINTF_DIR)/libftprintf.a
 
+OBJS = $(SRCS:.c=.o)
+
+all: $(LIBFT) $(PRINTF) $(NAME)
+
+$(NAME): $(OBJS) $(PRINTF) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) -o $(NAME)
+
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(PRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
-
-OBJS = $(SRCS:.c=.o)
-
-all: $(NAME)
-
-$(NAME): $(OBJS) $(PRINTF) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
