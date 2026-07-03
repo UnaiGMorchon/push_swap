@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/03 09:11:37 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/07/03 09:07:15 by ugarcia-          #+#    #+#             */
+/*   Updated: 2026/07/03 09:10:01 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-/*
-convertirlo a string separados por espacios, concatenar.
-trocear hacerle el split?. trocerar
-validar que sea números osea convertirlos a números isdigit? validar
-sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
-*/
-
-
-
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if (argc < 2)
-		return (1);
-	printf("Número total de argumentos: %d\n", argc);
-	printf("El primer número es: %s\n", argv[1]);
-	return (0);
+	size_t	i;
+	size_t	j;
+	size_t	len_dest;
+	size_t	len_src;
+
+	i = 0;
+	j = 0;
+	len_dest = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	i = len_dest;
+	j = 0;
+
+	if (size <= len_dest)
+		return (size + len_src);
+	while (src[j] != '\0' && j < size - len_dest - 1)
+	{
+		dst[i] = src[j];
+		i++;
+		j++;
+	}
+	dst[i] = '\0';
+	return (len_dest + len_src);
 }

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:39:50 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/03 09:10:24 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void		ft_lstclear(t_stack *lst);
 int			ft_lstsize(t_node_list *lst);
 void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
+size_t		ft_strlcat(char *dst, const char *src, size_t size);
+size_t		ft_strlen(const char *s);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst);
