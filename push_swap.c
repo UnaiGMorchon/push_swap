@@ -6,14 +6,14 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/03 12:45:15 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/03 13:53:43 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-convertirlo a string separados por espacios, concatenar.
+convertirlo a string separados por espacios, concatenar. (contar los que tenemos?)
 trocear hacerle el split?. trocerar
 validar que sea números, convertirlos a números isdigit? validar
 sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
@@ -24,6 +24,18 @@ int	main(int argc, char **argv)
 	char	dest[50] = "";
 	int		i;
 	char	string;
+	//char	**resultado_split;
+
+	if (argc < 2)
+		return (1);
+
+	/* i = 1;
+	while (i < argc)
+	{
+		resultado_split = ft_split(argv[i], ' ');
+		i++;
+	}
+ */
 
 	i = 1;
 	while (i < argc)
@@ -32,11 +44,10 @@ int	main(int argc, char **argv)
 		i++;
 	}
 
-	if (argc < 2)
-		return (1);
 	printf("Número total de argumentos: %d\n", argc);
 	printf("El primer número es: %s\n", argv[1]);
 	printf("total string size: %d\n", string);
+	//printf("total string size: %p\n", resultado_split);
 	printf("string destino: %s\n", dest);
 	return (0);
 }
