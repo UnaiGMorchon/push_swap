@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:40:07 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/06 08:55:46 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ double	ft_sqroot(int x)
 	8. Move 'temp_list' forward to the next node in the circular list.
 	9. Return the maximum integer value found in the stack.
 */
-
+/* 
 int	ft_max_number(t_stack *lst_a)
 {
 	int			temp;
@@ -144,7 +144,7 @@ int	ft_max_number(t_stack *lst_a)
 		temp_list = temp_list -> next;
 	}
 	return (temp);
-}
+} */
 
 /*
 	1. Declare 'temp' to store the minimum integer content found.
@@ -157,7 +157,7 @@ int	ft_max_number(t_stack *lst_a)
 	8. Move 'temp_list' forward to the next node in the circular list.
 	9. Return the minimum integer value found in the stack.
 */
-
+/* 
 int	ft_min_number(t_stack *lst_a)
 {
 	int			temp;
@@ -175,3 +175,4 @@ int	ft_min_number(t_stack *lst_a)
 	}
 	return (temp);
 }
+ */
