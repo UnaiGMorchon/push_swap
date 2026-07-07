@@ -6,27 +6,34 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/06 13:08:43 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/07 08:49:23 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	ft_is_validint(char *input)
+int	ft_is_validint(char *argv)
 {
 	int	i;
 
 	i = 0;
+	printf("INPUT %s\n", argv);
 	if (input[i] == '-')
 		i++;
-	while (input[i] != '\0')
+	while (argv[i])
 	{
-		if (ft_isdigit(input[i]) != 1)
+		if (!ft_isdigit(argv[i]))
+		{
+			printf("ERROR: NOT A DIGIT\n");
 			return (0); // return error message?
+		}
 		i++;
 	}
-	if (ft_atoi(input) > 2147483647 || ft_atoi(input) < -2147483648)
+	if (ft_atoi(argv) < -2147483648 && ft_atoi(argv) > 2147483647)
+	{
+		printf("ERROR: OVERFLOW\N");
 		return (0); // return error message?
+	}
 	return (1);
 }
 
