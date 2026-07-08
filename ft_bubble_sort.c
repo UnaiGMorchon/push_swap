@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/07 15:00:02 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/08 08:55:56 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	main(void)
 	// STACK_B
 
 	printf("---------------STACK A-----------\n");
-	ft_print_list(lst_a, lst_a -> size);
+	//ft_print_list(lst_a, lst_a -> size);
 
 	ft_bubble_sort(lst_a);
 	printf("---------------sorted--------------- \n");
