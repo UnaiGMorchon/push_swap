@@ -3,56 +3,140 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/06/12 09:22:34 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/02 13:13:03 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 #include <stdio.h>
+/*
+	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
+	2. Assign the current head to the temporary variable (initial guard value).
+	3. Security check: if the stack pointer does not exist, exit the function.
+	4. Locate the node right before the current tail and save it as the new tail.
+	5. Shift the stack's head pointer backward to point to the current tail node.
+	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+*/
 
-void	ft_ra(node_list **stack_a)
+void	ft_rra(t_stack *lst_a)
 {
+	t_node_list	*tmp_newlast;
 
+	tmp_newlast = lst_a -> head;
+	if (!lst_a || lst_a == NULL)
+		return ;
+	tmp_newlast = lst_a -> tail-> prev;
+	lst_a -> head = lst_a -> tail;
+	lst_a -> tail = tmp_newlast;
+}
+
+/*
+	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
+	2. Assign the current head to the temporary variable (initial guard value).
+	3. Security check: if the stack pointer does not exist, exit the function.
+	4. Locate the node right before the current tail and save it as the new tail.
+	5. Shift the stack's head pointer backward to point to the current tail node.
+	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+*/
+
+void	ft_rrb(t_stack *lst_b)
+{
+	t_node_list	*tmp_newlast;
+
+	tmp_newlast = lst_b -> head;
+	if (!lst_b || lst_b == NULL)
+		return ;
+	tmp_newlast = lst_b -> tail-> prev;
+	lst_b -> head = lst_b -> tail;
+	lst_b -> tail = tmp_newlast;
+}
+
+/*
+	1. Security check: if either stack A or stack B does not exist, stop.
+	2. Call ft_rra to perform a reverse rotate operation on stack A.
+	3. Call ft_rrb to perform a reverse rotate operation on stack B.
+*/
+
+void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
+{
+	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
+		return ;
+	ft_rra(lst_a);
+	ft_rrb(lst_b);
+}
+
+/* void	ft_print_list(t_stack *stack, int size)
+{
+	int			counter;
+	t_node_list	*lst_tmp;
+
+	counter = 0;
+	lst_tmp = stack->head;
+
+	while (counter < size)
+	{
+		printf(
+			"Node %d\n"
+			"  addr       : %p\n"
+			"  content    : %d\n"
+			"  prev content: %d\n"
+			"  prev       : %p\n"
+			"  next content: %d\n"
+			"  next       : %p\n\n",
+			counter,
+			(void *)lst_tmp,
+			lst_tmp->content,
+			lst_tmp->prev->content,
+			(void *)lst_tmp->prev,
+			lst_tmp->next->content,
+			(void *)lst_tmp->next
+			);
+		lst_tmp = lst_tmp->next;
+		counter++;
+	}
 }
 
 int	main(void)
 {
-	node_list   *stack_a;
-	node_list   *stack_b;
-	node_list   *node_a;
-	node_list   *node_b;
+	// STACK_A
+	t_stack	*lst_a;
+ */
+	//lst_a = NULL;
+/* 	lst_a = ft_newstack();
+	ft_lstadd_back(lst_a, ft_lstnew(12));
+	ft_lstadd_back(lst_a, ft_lstnew(13));
+	ft_lstadd_back(lst_a, ft_lstnew(14));
+	ft_lstadd_back(lst_a, ft_lstnew(15));
 
-	stack_a = NULL;
-	stack_b = NULL;
-	node_a = ft_lstnew(1);
-	node_b = ft_lstnew(2);
-	/* STACK_A */
-	ft_lstadd_back(&stack_a, node_a);
-	ft_lstadd_back(&stack_a, ft_lstnew(12));
-	ft_lstadd_back(&stack_a, ft_lstnew(13));
-	/* STACK_B */
-	ft_lstadd_back(&stack_b, node_b);
-	ft_lstadd_back(&stack_b, ft_lstnew(22));
+	printf("list A: %d\n", lst_a -> size);
+	ft_print_list(lst_a, lst_a -> size);
 
-	/*while (stack_a)
-	{
-		printf("%d\n", stack_a -> content);
-		stack_a = stack_a -> next;
-	}
-	while (stack_b)
-	{
-	printf("%d\n", stack_b -> content);
-		stack_b = stack_b -> next;
-	}
-	printf("Salida\n\n");*/
+	ft_rra(lst_a);
+	printf("list reverse A: %d\n", lst_a -> size);
+	ft_print_list(lst_a, lst_a -> size);
+ */
+/* // STACK_b
+	t_stack	*lst_b;
 
-    ft_ra(&stack_a);
-	printf("First A node: %d\n", stack_a -> content);
-	printf("Second A node: %d\n", stack_a -> next -> content);
-	printf("First B node: %d\n", stack_b -> content);
+	//lst_a = NULL;
+	lst_b = ft_newstack();
+	ft_lstadd_back(lst_b, ft_lstnew(12));
+	ft_lstadd_back(lst_b, ft_lstnew(13));
+	ft_lstadd_back(lst_b, ft_lstnew(14));
+	ft_lstadd_back(lst_b, ft_lstnew(15));
 
+	printf("list B: %d\n", lst_b -> size);
+	ft_print_list(lst_b, lst_b -> size);
+
+	ft_rrb(lst_b);
+	printf("list reverse B: %d\n", lst_b -> size);
+	ft_print_list(lst_b, lst_b -> size);
+ */
+/* 	ft_lstclear(lst_a);
+	//ft_lstclear(lst_b);
 	return (0);
 }
+ */

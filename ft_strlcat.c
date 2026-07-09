@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ss.c                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/11 14:42:04 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/06/12 09:01:06 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/07/03 09:07:15 by ugarcia-          #+#    #+#             */
+/*   Updated: 2026/07/06 10:28:53 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-void	ft_ss(t_node_list **lst_a, t_node_list **lst_b)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if ((lst_b == NULL || *lst_b == NULL || (*lst_b)->next == NULL)
-		&& (lst_a == NULL || *lst_a == NULL || (*lst_a)->next == NULL))
+	size_t	i;
+	size_t	j;
+	size_t	len_dest;
+	size_t	len_src;
+
+	i = 0;
+	j = 0;
+	len_dest = ft_strlen(dst);
+	len_src = ft_strlen(src);
+	i = len_dest;
+	j = 0;
+
+	if (size <= len_dest)
+		return (size + len_src);
+	while (src[j] != '\0' && j < size - len_dest - 1)
 	{
-		ft_sa(*lst_a);
-		ft_sb(*lst_b);
-		write(1, "ss\n", 3);
+		dst[i] = src[j];
+		i++;
+		j++;
 	}
+	dst[i] = '\0';
+	return (len_dest + len_src);
 }
