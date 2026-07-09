@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 13:46:50 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 15:24:58 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,27 @@ long int	ft_is_validint(char **argv)
 	return (1);
 }
 
-/*int	ft_isrepeat(char **argv)
+int	ft_isrepeat(char **args)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = i + 1;
-	while (argv[i] != '\0')
+	j = -1;
+	while (args[++j][i])
 	{
-		while (argv[i] != argv[j])
+		while (args[i] != args[j])
 		{
-			if (argv[i] == argv[j])
+			printf("repeat antes %s\n", args[j]);
+			if (args[i] == args[j])
+			printf("repeat despues %s\n", args[j]);
 				return (0); // return error message?
-			j++;
+			i++;
 		}
-		i++;
+		j++;
 	}
 	return (1);
 }
-
+/* 
 void	input_conversion(int input)
 {
 	int	i;
@@ -72,10 +73,4 @@ void	input_conversion(int input)
 		ft_lstadd_front(lst_a, input[i]);
 		i++;
 	}
-}*/
-
-// char *test1 = "hola mundo\n";
-
-// char **test2[2];
-// [0] *"hola"
-// [1] *"mundo\n"
+ }*/
