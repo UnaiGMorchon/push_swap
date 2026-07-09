@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 11:50:40 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:07:43 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,7 @@ char		**ft_split(char const *s, char c);
 int			ft_isdigit(int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 int			ft_atoi(const char *nptr);
-char		**ft_split(char const *s, char c);
-
+char		*ft_strdup(char *src);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst);

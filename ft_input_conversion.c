@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 12:07:47 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:42:01 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,28 @@
 long int	ft_is_validint(char **argv)
 {
 	int			i;
+	int			j;
 	long int	result;
 
-	i = 0;
-	printf("INPUT %s\n", *argv); // *argv es exactamente lo mismo que argv[0]
-	if ((*argv)[i] == '-')
-		i++;
-	while ((*argv)[i]) // while (*argv[i]) se va a mover por los diferentes argumentos de la línea de comandos, no por los caracteres de un solo argumento. Para moverte por los caracteres de una sola cadena, necesitas escribirlo como (*argv)[i] o usar argv[0][i].
+	j = -1;
+	while (argv[++j])
 	{
-		if (ft_split(*argv, ' '))
+		printf("INPUT %s\n", argv[j]); // *argv es exactamente lo mismo que argv[0]
+		i = 0;
+		if (argv[j][0] == '-')
+			i++;
+		while (argv[j][i]) // while (*argv[i]) se va a mover por los diferentes argumentos de la línea de comandos, no por los caracteres de un solo argumento. Para moverte por los caracteres de una sola cadena, necesitas escribirlo como (*argv)[i] o usar argv[0][i].
 		{
-			printf("ERROR: NOT hecho split\n");
-			return (0); // return error message?
-			if (!ft_isdigit((*argv)[i]))
+			if (!ft_isdigit(argv[j][i++]))
 			{
-				printf("ERROR: NOT A DIGIT\n");
 				return (0); // return error message?
 			}
 		}
-		i++;
-	}
-	result = ft_atoi(*argv);
-	if (result > 2147483647 || result < -2147483648)
-	{
-		printf("ERROR: OVERFLOW\n");
-		return (0); // return error message?
+		result = ft_atoi(argv[j]);
+		if (result > 2147483647 || result < -2147483648)
+		{
+			return (0); // return error message?
+		}
 	}
 	return (1);
 }
@@ -76,3 +73,9 @@ void	input_conversion(int input)
 		i++;
 	}
 }*/
+
+// char *test1 = "hola mundo\n";
+
+// char **test2[2];
+// [0] *"hola"
+// [1] *"mundo\n"
