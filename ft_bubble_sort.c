@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 09:22:33 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 09:51:31 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ static void	ft_print_list(t_stack *stack, int size)
 }
 */
 
-int	main(void)
+/*int	main(void)
 {
 	t_stack	*lst_a;
 
@@ -93,11 +93,11 @@ int	main(void)
 	ft_lstadd_back(lst_a, ft_lstnew(12));
 	ft_lstadd_back(lst_a, ft_lstnew(15));
 	ft_lstadd_back(lst_a, ft_lstnew(1));
-	/*ft_lstadd_back(lst_a, ft_lstnew(13));
+	ft_lstadd_back(lst_a, ft_lstnew(13));
 	ft_lstadd_back(lst_a, ft_lstnew(16));
 	ft_lstadd_back(lst_a, ft_lstnew(18));
 	ft_lstadd_back(lst_a, ft_lstnew(2));
-	ft_lstadd_back(lst_a, ft_lstnew(9));*/
+	ft_lstadd_back(lst_a, ft_lstnew(9));
 	// STACK_B
 
 	printf("---------------STACK A-----------\n");
@@ -105,8 +105,8 @@ int	main(void)
 
 	ft_bubble_sort(lst_a);
 	printf("---------------sorted--------------- \n");
-	ft_print_list(lst_a, lst_a -> size);
+	//ft_print_list(lst_a, lst_a -> size);
 	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
 	ft_lstclear(lst_a);
 	return (0);
-}
+}*/

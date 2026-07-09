@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 09:36:51 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 09:54:18 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int			ft_atoi(const char *nptr);
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst);
 void		ft_bucket(t_stack *lst_a, t_stack *lst_b);
+float		disorder_metric(t_stack *lst);
 
 #endif

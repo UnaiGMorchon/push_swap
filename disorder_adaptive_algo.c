@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/08 13:54:12 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/09 09:44:14 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ float	disorder_metric(t_stack *lst)
 	return (mistakes / total_pairs);
 }
 
-void	adaptive_algo(t_stack *lst)
+/*void	adaptive_algo(t_stack *lst)
 {
 	float	disorder;
 
@@ -60,7 +60,7 @@ void	adaptive_algo(t_stack *lst)
 		show nothing ?? empty bench ??
 	if (bench selected)
 		output benchmark info
-}
+}*/
 
 #include <stdio.h>
 int	main (void)
@@ -70,11 +70,11 @@ int	main (void)
 	lst_a = ft_newstack();
 	// STACK_A
 	ft_lstadd_back(lst_a, ft_lstnew(12));
-	ft_lstadd_back(lst_a, ft_lstnew(2));
-	ft_lstadd_back(lst_a, ft_lstnew(1));
 	ft_lstadd_back(lst_a, ft_lstnew(15));
+	ft_lstadd_back(lst_a, ft_lstnew(1));
+	ft_lstadd_back(lst_a, ft_lstnew(2));
 	ft_lstadd_back(lst_a, ft_lstnew(16));
-	ft_lstadd_back(lst_a, ft_lstnew(18));
+	ft_lstadd_back(lst_a, ft_lstnew(567));
 	ft_lstadd_back(lst_a, ft_lstnew(13));
 	ft_lstadd_back(lst_a, ft_lstnew(9));
 	
