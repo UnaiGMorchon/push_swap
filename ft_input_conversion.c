@@ -6,33 +6,36 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/07 09:12:29 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:03:50 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	ft_is_validint(char **argv)
+long int	ft_is_validint(char **argv)
 {
-	int	i;
+	int			i;
+	int			j;
+	long int	result;
 
-	i = 0;
-	printf("INPUT %s\n", *argv);
-	if (*argv[i] == '-')
-		i++;
-	while (*argv[i])
+	j = -1;
+	while (argv[++j])
 	{
-		if (!ft_isdigit(*argv[i]))
+		i = 0;
+		if (argv[j][0] == '-')
+			i++;
+		while (argv[j][i])
 		{
-			printf("ERROR: NOT A DIGIT\n");
+			if (!ft_isdigit(argv[j][i++]))
+			{
+				return (0); // return error message?
+			}
+		}
+		result = ft_atol(argv[j]);
+		if (result > 2147483647 || result < -2147483648)
+		{
 			return (0); // return error message?
 		}
-		i++;
-	}
-	if (ft_atoi(*argv) > -2147483648 && ft_atoi(*argv) > 2147483647)
-	{
-		printf("ERROR: OVERFLOW\n");
-		return (0); // return error message?
 	}
 	return (1);
 }

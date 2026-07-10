@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 09:34:16 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 13:17:42 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
 */
 
-void	ft_rra(t_stack *lst_a)
+void	ft_rra(t_stack *lst_a, t_bench *bench)
 {
 	t_node_list	*tmp_newlast;
 
@@ -31,6 +31,9 @@ void	ft_rra(t_stack *lst_a)
 	tmp_newlast = lst_a -> tail-> prev;
 	lst_a -> head = lst_a -> tail;
 	lst_a -> tail = tmp_newlast;
+	bench -> rra += 1;
+	bench -> total += 1;
+	write(1, "rra\n", 4);
 }
 
 /*
@@ -42,7 +45,7 @@ void	ft_rra(t_stack *lst_a)
 	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
 */
 
-void	ft_rrb(t_stack *lst_b)
+void	ft_rrb(t_stack *lst_b, t_bench *bench)
 {
 	t_node_list	*tmp_newlast;
 
@@ -52,6 +55,9 @@ void	ft_rrb(t_stack *lst_b)
 	tmp_newlast = lst_b -> tail-> prev;
 	lst_b -> head = lst_b -> tail;
 	lst_b -> tail = tmp_newlast;
+	bench -> rrb += 1;
+	bench -> total += 1;
+	write(1, "rrb\n", 4);
 }
 
 /*
@@ -60,12 +66,17 @@ void	ft_rrb(t_stack *lst_b)
 	3. Call ft_rrb to perform a reverse rotate operation on stack B.
 */
 
-void	ft_rrr(t_stack *lst_a, t_stack *lst_b)
+void	ft_rrr(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 {
 	if ((!lst_a || lst_a == NULL) || (!lst_b || lst_b == NULL))
 		return ;
-	ft_rra(lst_a);
-	ft_rrb(lst_b);
+	ft_rra(lst_a, bench);
+	ft_rrb(lst_b, bench);
+	bench -> rrr += 1;
+	bench -> rra -= 1;
+	bench -> rrb -= 1;
+	bench -> total -= 1;
+	write(1, "rrr\n", 4);
 }
 
 /* void	ft_print_list(t_stack *stack, int size)

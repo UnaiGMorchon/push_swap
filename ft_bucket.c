@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/06 09:27:18 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/09 14:59:49 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_node_list	*ft_max_index(t_stack *lst_b)
 	13. Call ft_rrb to reverse rotate down since the node is in the second half.
 */
 
-void	ft_rotate_decide(t_stack *lst_b)
+void	ft_rotate_decide(t_stack *lst_b, t_bench *bench)
 {
 	t_node_list	*tmp;
 	t_node_list	*tmp_max_index;
@@ -79,11 +79,11 @@ void	ft_rotate_decide(t_stack *lst_b)
 		}
 		if (physical_node_position <= lst_b -> size / 2)
 		{
-			ft_rb(lst_b);
+			ft_rb(lst_b, bench);
 		}
 		else
 		{
-			ft_rrb(lst_b);
+			ft_rrb(lst_b, bench);
 		}
 	}
 }
@@ -183,7 +183,7 @@ void	ft_get_index(t_stack *lst_a)
 	12. Push the sorted element back to the top of stack A.
 */
 
-void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
+void	ft_bucket(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 {
 	int	number_limit;
 	int	end_bucket;
@@ -195,16 +195,16 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b)
 	while (lst_a -> size)
 	{
 		if (lst_a -> head -> index < number_limit)
-			ft_pb(lst_b, lst_a);
+			ft_pb(lst_b, lst_a, bench);
 		else if (ft_exist_bucket(lst_a, number_limit))
-			ft_ra(lst_a);
+			ft_ra(lst_a, bench);
 		else
 			number_limit += end_bucket;
 	}
 	while (lst_b -> size)
 	{
-		ft_rotate_decide(lst_b);
-		ft_pa(lst_a, lst_b);
+		ft_rotate_decide(lst_b, bench);
+		ft_pa(lst_a, lst_b, bench);
 	}
 }
 /* 
