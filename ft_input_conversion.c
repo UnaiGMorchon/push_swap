@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 08:41:47 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/10 13:24:12 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**new_args(int argc, char **argv, char **args)
 	else
 	{
 		i = 1;
-		args = (char**)malloc(sizeof(char*) * (argc)); // falta free???
+		args = (char **)malloc(sizeof(char*) * (argc)); // falta free???
 		if (args == NULL)
 			return (NULL);
 		while (argv[i])
@@ -31,6 +31,13 @@ char	**new_args(int argc, char **argv, char **args)
 		}
 		args[i - 1] = NULL;
 	}
+	//printf("%s\n", *args);
+	/* i = 0;
+	while (args[i])
+	{
+		printf("%s\n", args[i]);
+		i++;
+	} */
 	return (args);
 }
 
@@ -87,16 +94,24 @@ int	ft_isrepeat(char **args)
 	}
 	return (1);
 }
-/* 
-void	input_conversion(int input)
+
+t_stack	*input_conversion(char **args)
 {
-	int	i;
-	t_node_list	*lst_a;
+	int			i;
+	t_stack		*stack_a;
+	t_node_list	*new;
 
 	i = 0;
-	while (input)
+	stack_a = ft_newstack();
+	if (!stack_a)
+		return (NULL);
+	while (args[i])
 	{
-		ft_lstadd_front(lst_a, input[i]);
+		new = ft_lstnew(ft_atol(args[i]));
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
- }*/
+	return (stack_a);
+}
+
+

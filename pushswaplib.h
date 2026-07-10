@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 14:51:31 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/10 10:10:37 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ double		ft_sqroot(int x);
 long int	ft_is_validint(char **argv);
 int			ft_isrepeat(char **argv);
 char		**new_args(int argc, char **argv, char **args);
+int			push_swap(int argc, char **argv);
+t_stack		*input_conversion(char **args);
 
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
@@ -66,8 +68,10 @@ char		*ft_strjoin(char const *s1, char const *s2);
 long int	ft_atol(const char *nptr);
 char		*ft_strdup(char *src);
 
+
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst);
 void		ft_bucket(t_stack *lst_a, t_stack *lst_b);
+
 
 #endif
