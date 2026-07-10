@@ -15,9 +15,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_push.c ft_rotate.c ft_swap.c ft_reverse.c \
- ft_pushswap_utils1.c ft_pushswap_utils2.c \
- push_swap.c ft_bubble_sort.c ft_bucket.c \
- ft_input_conversion.c disorder_adaptive_algo.c
+ ft_pushswap_utils1.c ft_pushswap_utils2.c push_swap.c ft_bubble_sort.c \
+ ft_bucket.c ft_input_conversion.c disorder_adaptive_algo.c main.c
 
 LIBFT_DIR = ../libft
 PRINTF_DIR = ../printf

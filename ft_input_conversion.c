@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 13:32:11 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:18:16 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_isrepeat(char **args)
 	return (1);
 }
 
-t_stack	input_conversion(char **args)
+t_stack	*input_conversion(char **args)
 {
 	int	i;
 	t_stack	*stack_a;

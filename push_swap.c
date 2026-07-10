@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 14:09:22 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:30:46 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,34 @@ char	**new_args(int argc, char **argv, char **args)
 	return (args);
 }
 
-char	ft_valid_and_convert(char **args)
+t_stack	*ft_valid_and_convert(char **args)
 {
 	if ((ft_is_validint(args)) == 0 || (ft_isrepeat(args)) == 0)
 	{
 		write(1, "Error\n", 6);
-		return (0);
+		return (NULL);
 	}
-	input_conversion(args);
-	return (args);
+	return (input_conversion(args));
 }
 
-char	ft_flag_search_parsing(char **args)
+void	ft_flag_search_parsing(char **args, t_bench *bench)
 {
 	if (ft_strncmp(args[0], "--simple", 8) == 0 || ft_strncmp(args[1], "--simple", 8) == 0)
 	{
-		ft_valid_and_convert(args);
-		return (ft_bubble_sort(lst, bench));
+		ft_bubble_sort(ft_valid_and_convert(args), bench);
 	}
 	else if (ft_strncmp(args[0], "--medium", 8) == 0 || ft_strncmp(args[1], "--medium", 8) == 0)
 	{
-		ft_valid_and_convert(args);
-		return (ft_bucket(lst_a, lst_b, bench));
+		ft_bucket(ft_valid_and_convert(args), bench);
 	}
-	else if (ft_strncmp(args[0], "--complex", 9) == 0 || ft_strncmp(args[1], "--complex", 9) == 0);
+/*	else if (ft_strncmp(args[0], "--complex", 9) == 0 || ft_strncmp(args[1], "--complex", 9) == 0)
 	{
-		ft_valid_and_convert(args);
-		return (ft_radix(lst_a, lst_b, bench));
+		return (ft_radix(ft_valid_and_convert(args), lst_b, bench));
 	}
 	else if (ft_strncmp(args[0], "--adaptive", 10) == 0 || ft_strncmp(args[1], "--adaptive", 10) == 0)
 	{
-		ft_valid_and_convert(args);
-		return (ft_adaptive_algo(lst_a, bench)); // FINISH ADAPTIVE ALGO
-	}
-	return (0);
+		return (ft_adaptive_algo(ft_valid_and_convert(args), bench)); // FINISH ADAPTIVE ALGO
+	}*/
 }
 
 int	push_swap(int argc, char **argv)
@@ -81,14 +75,27 @@ int	push_swap(int argc, char **argv)
 	char	**args;
 	t_bench	*bench;
 
+	t_stack	*aux;
+	int		count;
+	t_node_list	*tmp;
+
 	args = NULL;
-	bench = initialise_bench(bench);
+	bench = initialise_bench();
 
 	/* argument parsing */
 	args = new_args(argc, argv, args);
 	// DISORDER
-	ft_flag_search_parsing(args); // this calls valid and convert, which returns stack_a
+	ft_flag_search_parsing(args, bench); // this calls valid and convert, which returns stack_a
 									// select strategy (if not entered via console)
+	aux = input_conversion(args);
+	count = 0;
+	tmp = aux ->head;
+	while (count < aux->size)
+	{
+		//printf("%d\n", tmp->content);
+		tmp = tmp->next;
+		count++;
+	}
 
 	/* print bench (it called via console) */
 	return (0);

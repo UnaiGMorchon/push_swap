@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 11:44:28 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:24:31 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,11 +183,13 @@ void	ft_get_index(t_stack *lst_a)
 	12. Push the sorted element back to the top of stack A.
 */
 
-void	ft_bucket(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
+void	ft_bucket(t_stack *lst_a, t_bench *bench)
 {
 	int	number_limit;
 	int	end_bucket;
+	t_stack	*lst_b;
 
+	lst_b = ft_newstack();
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
 		return ;
 	number_limit = ft_sqroot(lst_a -> size);
@@ -206,5 +208,6 @@ void	ft_bucket(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 		ft_rotate_decide(lst_b, bench);
 		ft_pa(lst_a, lst_b, bench);
 	}
+	ft_lstclear(lst_b);
 }
 

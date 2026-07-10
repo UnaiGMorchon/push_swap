@@ -6,14 +6,17 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 13:25:17 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:32:56 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-t_bench	*initialise_bench(t_bench *bench)
+t_bench	*initialise_bench()
 {
+	t_bench	*bench;
+
+	bench = malloc(sizeof(t_bench *));
 	bench -> disorder = 0.0;
 	bench -> strategy = '\0';
 	bench -> total = 0;
@@ -67,7 +70,7 @@ char	print_bench(t_bench *bench)
 	return (0);
 }
 
-void	ft_adaptive_algo(t_stack *lst)
+/*void	ft_adaptive_algo(t_stack *lst)
 {
 	float	disorder;
 
@@ -85,4 +88,4 @@ void	ft_adaptive_algo(t_stack *lst)
 		show nothing ?? empty bench ??
 	if (bench selected)
 		output benchmark info
-}
+}*/
