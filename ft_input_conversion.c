@@ -6,53 +6,57 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 14:03:50 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 13:32:11 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-long int	ft_is_validint(char **argv)
+long int	ft_is_validint(char **args)
 {
 	int			i;
 	int			j;
 	long int	result;
 
 	j = -1;
-	while (argv[++j])
+	while (args[++j])
 	{
 		i = 0;
-		if (argv[j][0] == '-')
+		if (args[j][0] == '-')
 			i++;
-		while (argv[j][i])
+		while (args[j][i])
 		{
-			if (!ft_isdigit(argv[j][i++]))
+			if (!ft_isdigit(args[j][i++]))
 			{
-				return (0); // return error message?
+				return (0);
 			}
 		}
-		result = ft_atol(argv[j]);
+		result = ft_atol(args[j]);
 		if (result > 2147483647 || result < -2147483648)
 		{
-			return (0); // return error message?
+			return (0);
 		}
 	}
 	return (1);
 }
 
-/*int	ft_isrepeat(char **argv)
+int	ft_isrepeat(char **args)
 {
 	int	i;
 	int	j;
+	long int	result;
+	long int	temp;
 
 	i = 0;
-	j = i + 1;
-	while (argv[i] != '\0')
+	while (args[i])
 	{
-		while (argv[i] != argv[j])
+		j = 0;
+		result = ft_atol(args[i]);
+		while (j < i)
 		{
-			if (argv[i] == argv[j])
-				return (0); // return error message?
+			temp = ft_atol(args[j]);
+			if (result == temp)
+				return (0);
 			j++;
 		}
 		i++;
@@ -60,15 +64,21 @@ long int	ft_is_validint(char **argv)
 	return (1);
 }
 
-void	input_conversion(int input)
+t_stack	input_conversion(char **args)
 {
 	int	i;
-	t_node_list	*lst_a;
+	t_stack	*stack_a;
+	t_node_list	*new;
 
 	i = 0;
-	while (input)
+	stack_a = ft_newstack();
+	if (!stack_a)
+		return (NULL);
+	while (args[i])
 	{
-		ft_lstadd_front(lst_a, input[i]);
+		new = ft_lstnew(ft_atol(args[i]));
+		ft_lstadd_back(stack_a, new);
 		i++;
 	}
-}*/
+	return (stack_a);
+}

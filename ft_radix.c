@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 12:38:28 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/10 11:45:45 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,41 +64,4 @@ void	ft_radix(t_stack **lst_a, t_stack **lst_b, t_bench bench)
 		ft_lstclear(lst_b);
 		i++;
 	}
-}
-
-int	main(void)
-{
-	t_stack	*lst_a;
-	t_stack	*lst_b;
-
-	lst_a = ft_newstack();
-	lst_b = ft_newstack();
-	// STACK_A
-	ft_lstadd_back(lst_a, ft_lstnew(12));
-	ft_lstadd_back(lst_a, ft_lstnew(15));
-	ft_lstadd_back(lst_a, ft_lstnew(1));
-	ft_lstadd_back(lst_a, ft_lstnew(13));
-	ft_lstadd_back(lst_a, ft_lstnew(16));
-	ft_lstadd_back(lst_a, ft_lstnew(18));
-	ft_lstadd_back(lst_a, ft_lstnew(2));
-	ft_lstadd_back(lst_a, ft_lstnew(9));
-	// STACK_B
-	ft_get_index(lst_a);
-	printf("---------------STACK A-----------\n");
-	//ft_print_list(lst_a, lst_a -> size);
-
-	ft_radix(lst_a, lst_b);
-
-	printf("---------------sorted B--------------- \n");
-	ft_print_list(lst_b, lst_b -> size);
-	printf("---------------%d lista tamaño B-----------\n", lst_b-> size);
-	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
-
-	printf("---------------resultado A-----------\n");
-	ft_print_list(lst_a, lst_a -> size);
-
-	ft_lstclear(lst_a);
-	return (0);
-}
-	return (0);
 }
