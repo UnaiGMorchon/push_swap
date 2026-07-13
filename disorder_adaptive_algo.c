@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:32:56 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/13 12:44:03 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_bench	*initialise_bench()
 {
 	t_bench	*bench;
 
-	bench = malloc(sizeof(t_bench *));
+	bench = malloc(sizeof(t_bench));
 	bench -> disorder = 0.0;
 	bench -> strategy = '\0';
 	bench -> total = 0;
@@ -63,29 +63,39 @@ float	disorder_metric(t_stack *lst)
 	return (mistakes / total_pairs);
 }
 
-char	print_bench(t_bench *bench)
+/*char	print_bench(t_stack *lst, t_bench *bench)
 {
-	//disorder = disorder_metric(lst) * 100;
-	printf("BENCH PRINT TEST %d", bench -> sa);
+	bench -> disorder = disorder_metric(lst) * 100;
+	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
+	ft_printf("[bench] strategy: %s\n", bench -> strategy);
+	ft_printf("[bench] total: %d\n", bench -> total);
+	ft_printf("sa: %d", bench -> sa);
+	ft_printf("sb: %d", bench -> sb);
+	ft_printf("ss: %d", bench -> ss);
+	ft_printf("pa: %d", bench -> pa);
+	ft_printf("pb: %d", bench -> pb);
+	ft_printf("ra: %d", bench -> ra);
+	ft_printf("rb: %d", bench -> rb);
+	ft_printf("rr: %d", bench -> rr);
+	ft_printf("rra: %d", bench -> rra);
+	ft_printf("rrb: %d", bench -> rrb);
+	ft_printf("rrr: %d", bench -> rrr);
 	return (0);
-}
+}*/
 
-/*void	ft_adaptive_algo(t_stack *lst)
+void	ft_adaptive_algo(t_stack *lst, char **args, t_bench *bench)
 {
 	float	disorder;
 
-	disorder = disorder_metric(lst_a) * 100;
 	if (lst == NULL || lst -> head == NULL)
 		return ;
 	disorder = disorder_metric(lst);
 	if (disorder < 0.2)
-		call bubble
+		ft_bubble_sort(ft_valid_and_convert(args, bench), bench);
 	else if (disorder >= 0.2 && disorder < 0.5)
-		call bucket
-	else if (disorder >= 0.5)
-		call radix
+		ft_bucket(ft_valid_and_convert(args, bench), bench);
+	/*else if (disorder >= 0.5)
+		ft_radix(ft_valid_and_convert(args, bench), bench);*/
 	else if (disorder == 0)
-		show nothing ?? empty bench ??
-	if (bench selected)
-		output benchmark info
-}*/
+		return ;
+}

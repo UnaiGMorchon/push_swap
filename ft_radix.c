@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:18:58 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/13 12:10:09 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ int	get_max_bits(t_stack *lst)
 	return (bits);
 }
 
-void	ft_radix(t_stack **lst_a, t_stack **lst_b, t_bench bench)
+void	ft_radix(t_stack **lst_a, t_bench *bench)
 {
 	t_node_list	*head_mark;
+	t_stack	*lst_b;
 	int	i;
 	int	j;
 	int	size;
 	int	max_bits;
 
+	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
+        return ;
+	lst_b = ft_newstack();
 	i = 0;
 	head_mark = *lst_a;
 	size = ft_lstsize(lst_a);

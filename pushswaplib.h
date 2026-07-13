@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:31:26 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/13 12:37:28 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stack
 typedef struct s_bench
 {
 	float	disorder;
-	char	strategy;
+	char	*strategy;
 	int		total;
 	int		sa;
 	int		sb;
@@ -86,7 +86,7 @@ int			ft_isdigit(int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 long int	ft_atol(const char *nptr);
 char		**new_args(int argc, char **argv, char **args);
-t_stack	*ft_valid_and_convert(char **args);
+t_stack	*ft_valid_and_convert(char **args, t_bench *bench);
 void	ft_flag_search_parsing(char **args, t_bench *bench);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
