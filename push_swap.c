@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 13:35:31 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 15:52:02 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,16 @@ void	separate_flags(char **argv, t_isflag *flag_bench, int *i)
 		flag_bench -> flag = argv[*i];
 		*i += 1;
 	}
+	else
+		{
+			flag_bench -> flag = "--adaptive";
+		}
 }
 
-char	**new_args(int argc, char **argv, char **args, int *i)
+char	**new_args(int argc, char **argv, int *i)
 {
-	int	j;
+	int		j;
+	char	**args;
 
 	j = 0;
 	if (argc == 2)
@@ -78,61 +83,14 @@ char	**new_args(int argc, char **argv, char **args, int *i)
 			j++;
 		}
 	}
-	j = 0;
-	while (args[j])
-	{
-		printf("%s\n argumentos\n", args[j]);
-		j++;
-	}
 	return (args);
 }
 
-/* char	**new_args(int argc, char **argv, char **args)
+t_stack	*ft_valid_and_convert(char **args)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	**split;
-
-	i = 1;
-	j = 0;
-	args = malloc(sizeof(char*)*(argc));
-	if (args == NULL)
-		return (NULL);
-	while (argv[i]) // lo mismo que i < argc
-	{
-		if (!ft_is_flag(argv[i]))
-		{
-			split = ft_split(argv[i], ' ');
-			if (!split)
-				return (NULL);
-			printf("%s\n --------------split---------\n", split[i]);
-			k = 0;
-			while (split[k])
-			{
-				args[j] = ft_strdup(argv[k]);
-				j++;
-				k++;
-			}
-			free_split (split);
-		}
-		i++;
-	}
-	args[j] = NULL;
-	i = 0;
-	while (args[i])
-	{
-		printf("%s\n argumentos\n", args[i]);
-		i++;
-	}
-	return (args);
-} */
-
-t_stack	*ft_valid_and_convert(char **args, t_bench *bench)
-{
+	printf("WE'RE IN VALID AND CONVERT");
 	if ((ft_is_validint(args)) == 0 || (ft_isrepeat(args)) == 0)
 	{
-		free(bench); //have to free upon error
 		free(args);
 		exit(write(1, "Error\n", 6));
 	}
@@ -141,28 +99,28 @@ t_stack	*ft_valid_and_convert(char **args, t_bench *bench)
 
 void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 {
-	if (ft_strncmp(flag_bench -> flag, "--simple", 8))
+	if (ft_strncmp(flag_bench -> flag, "--simple", 8) == 0)
 	{
 		bench -> strategy = "Simple / O(n2)";
-		ft_bubble_sort(ft_valid_and_convert(args, bench), bench);
+		ft_bubble_sort(ft_valid_and_convert(args), bench);
 	}
-	else if (ft_strncmp(flag_bench -> flag, "--medium", 8))
+	else if (ft_strncmp(flag_bench -> flag, "--medium", 8) == 0)
 	{
 		bench -> strategy = "Medium / O(n√n)";
-		ft_bucket(ft_valid_and_convert(args, bench), bench);
+		ft_bucket(ft_valid_and_convert(args), bench);
 	}
-/*	else if (ft_strncmp(flag_bench -> flag, "--complex", 9))
+	else if (ft_strncmp(flag_bench -> flag, "--complex", 9))
 	{
 		bench -> strategy = "Complex / O(n log n)";
-		return (ft_radix(ft_valid_and_convert(args, bench), bench));
+		return (ft_radix(ft_valid_and_convert(args), bench));
 	}
-	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10))
+	/*else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10))
 	{
 		bench -> strategy = "Adaptive";
-		return (ft_adaptive_algo(ft_valid_and_convert(args, bench), bench));
+		return (ft_adaptive_algo(ft_valid_and_convert(args), bench));
 	}*/
 	else
-		ft_bucket(ft_valid_and_convert(args, bench), bench);
+		ft_bucket(ft_valid_and_convert(args), bench);
 }
 
 int	push_swap(int argc, char **argv)
@@ -171,18 +129,24 @@ int	push_swap(int argc, char **argv)
 	t_bench		*bench;
 	t_isflag	*flag_bench;
 	int			i;
+/* 	int			j; */
 
-	i = 1;
+/* 	j = 0;
+ */	i = 1;
 	args = NULL;
 	bench = initialise_bench();
 	flag_bench = initialise_flag_bench();
-
-	/* argument parsing */
 	separate_flags(argv, flag_bench, &i);
-	args = new_args(argc, argv, args, &i);
-	// DISORDER
+	args = new_args(argc, argv, &i);
+	/* 
+	while (args[j])
+	{
+		printf(" argumentos%s\n", args[j]);
+		j++;
+	}  */
 	ft_flag_search_parsing(args, flag_bench, bench); // this calls valid and convert, which returns stack_a
 									// select strategy (if not entered via console)
+	
 	input_conversion(args);
 
 	/* print bench (it called via console) */
