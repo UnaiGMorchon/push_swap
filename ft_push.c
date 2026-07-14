@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:13:16 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 07:48:44 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 	9. Use ft_lstadd_front to insert the isolated node at the top of stack A.
 */
 
-void	ft_pa(t_stack *lst_a, t_stack *lst_b)
+void	ft_pa(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 {
 	t_node_list	*node_to_move;
 
@@ -49,10 +49,13 @@ void	ft_pa(t_stack *lst_a, t_stack *lst_b)
 	node_to_move -> next = NULL;
 	node_to_move -> prev = NULL;
 	ft_lstadd_front(lst_a, node_to_move);
+	bench -> pa += 1;
+	bench -> total += 1;
+	write(1, "pa\n", 3);
 }
 
 /* take first element atop a and put it atop b. nothing done if a empty */
-void	ft_pb(t_stack *lst_b, t_stack *lst_a)
+void	ft_pb(t_stack *lst_b, t_stack *lst_a, t_bench *bench)
 {
 	t_node_list	*tmp;
 
@@ -74,42 +77,12 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a)
 	tmp->next = NULL;
 	tmp->prev = NULL;
 	ft_lstadd_front(lst_b, tmp);
+	bench -> pb += 1;
+	bench -> total += 1;
+	write(1, "pb\n", 3);
 }
 
-/* 
-void	ft_print_list(t_stack *stack, int size)
-{
-	int			counter;
-	t_node_list	*lst_tmp;
-
-	counter = 0;
-	lst_tmp = stack->head;
-
-	while (counter < size)
-	{
-		printf(
-			"Node %d\n"
-			"  addr       : %p\n"
-			"  content    : %d\n"
-			"  prev content: %d\n"
-			"  prev       : %p\n"
-			"  next content: %d\n"
-			"  next       : %p\n\n",
-			counter,
-			(void *)lst_tmp,
-			lst_tmp->content,
-			lst_tmp->prev->content,
-			(void *)lst_tmp->prev,
-			lst_tmp->next->content,
-			(void *)lst_tmp->next
-			);
-		lst_tmp = lst_tmp->next;
-		counter++;
-	}
-}
-
-
-int	main(void)
+/*int	main(void)
 {
 	t_stack		*lst_a;
 	t_stack		*lst_b;
@@ -154,5 +127,4 @@ int	main(void)
 	printf("%p", (void *)lst_a->tail->next);
 
 	return (0);
-}
- */
+}*/

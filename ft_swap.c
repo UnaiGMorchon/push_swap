@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/02 13:13:56 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 07:58:17 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 	10. Write the operation string "sa\n" to the standard output.
 */
 
-void	ft_sa(t_stack *lst_a)
+void	ft_sa(t_stack *lst_a, t_bench *bench)
 {
 	int	temp;
 	int	temp_index;
@@ -38,6 +38,8 @@ void	ft_sa(t_stack *lst_a)
 	lst_a -> head -> index = lst_a -> head-> next -> index;
 	lst_a-> head -> next-> content = temp;
 	lst_a-> head -> next-> index = temp_index;
+	bench -> sa += 1;
+	bench -> total += 1;
 	write(1, "sa\n", 3);
 }
 
@@ -54,7 +56,7 @@ void	ft_sa(t_stack *lst_a)
 	10. Write the operation string "sb\n" to the standard output.
 */
 
-void	ft_sb(t_stack *lst_b)
+void	ft_sb(t_stack *lst_b, t_bench *bench)
 {
 	int	temp;
 	int	temp_index;
@@ -67,6 +69,8 @@ void	ft_sb(t_stack *lst_b)
 	lst_b -> head -> index = lst_b -> head-> next -> index;
 	lst_b->head->next->content = temp;
 	lst_b-> head -> next-> index = temp_index;
+	bench -> sb += 1;
+	bench -> total += 1;
 	write(1, "sb\n", 3);
 }
 
@@ -77,12 +81,16 @@ void	ft_sb(t_stack *lst_b)
 	4. Write the combined operation string "ss\n" to the standard output.
 */
 
-void	ft_ss(t_stack *lst_a, t_stack *lst_b)
+void	ft_ss(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 {
 	if (!lst_a || lst_a->size < 2 || !lst_b || lst_b->size < 2)
 	{
-		ft_sa(lst_a);
-		ft_sb(lst_b);
+		ft_sa(lst_a, bench);
+		ft_sb(lst_b, bench);
+		bench -> ss += 1;
+		bench -> sa -= 1;
+		bench -> sb -= 1;
+		bench -> total -= 1;
 		write(1, "ss\n", 3);
 	}
 }

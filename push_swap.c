@@ -6,38 +6,186 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 13:24:57 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 13:35:31 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	push_swap(int argc, char **argv)
+int	ft_is_bench(char *str)
 {
-	char	**args;
-	t_stack	*aux;
-	int		count;
-	t_node_list	*tmp;
+	if (ft_strncmp(str, "--bench", 7) == 0)
+		return (1);
+	return (0);
+}
 
-	args = NULL;
-	if (argc < 2)
-		return (0);
-	args = new_args(argc, argv, args);
+int	ft_is_flag(char *str)
+{
+	if (ft_strncmp(str, "--simple", 8) == 0)
+		return (1);
+	if (ft_strncmp(str, "--medium", 8) == 0)
+		return (1);
+	if (ft_strncmp(str, "--complex", 10) == 0)
+		return (1);
+	if (ft_strncmp(str, "--adaptive", 11) == 0)
+		return (1);
+	return (0);
+}
+
+void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+
+void	separate_flags(char **argv, t_isflag *flag_bench, int *i)
+{
+	if (ft_is_bench(argv[*i]) == 1)
+	{
+		flag_bench -> bench = argv[*i];
+		*i += 1;
+	}
+	if (ft_is_flag(argv[*i]) == 1)
+	{
+		flag_bench -> flag = argv[*i];
+		*i += 1;
+	}
+}
+
+char	**new_args(int argc, char **argv, char **args, int *i)
+{
+	int	j;
+
+	j = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		args = (char **)malloc(sizeof(char*) * (argc));
+		if (args == NULL)
+			return (NULL);
+		while (argv[*i])
+		{
+			args[j] = ft_strdup(argv[*i]);
+			*i += 1;
+			j++;
+		}
+	}
+	j = 0;
+	while (args[j])
+	{
+		printf("%s\n argumentos\n", args[j]);
+		j++;
+	}
+	return (args);
+}
+
+/* char	**new_args(int argc, char **argv, char **args)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**split;
+
+	i = 1;
+	j = 0;
+	args = malloc(sizeof(char*)*(argc));
+	if (args == NULL)
+		return (NULL);
+	while (argv[i]) // lo mismo que i < argc
+	{
+		if (!ft_is_flag(argv[i]))
+		{
+			split = ft_split(argv[i], ' ');
+			if (!split)
+				return (NULL);
+			printf("%s\n --------------split---------\n", split[i]);
+			k = 0;
+			while (split[k])
+			{
+				args[j] = ft_strdup(argv[k]);
+				j++;
+				k++;
+			}
+			free_split (split);
+		}
+		i++;
+	}
+	args[j] = NULL;
+	i = 0;
+	while (args[i])
+	{
+		printf("%s\n argumentos\n", args[i]);
+		i++;
+	}
+	return (args);
+} */
+
+t_stack	*ft_valid_and_convert(char **args, t_bench *bench)
+{
 	if ((ft_is_validint(args)) == 0 || (ft_isrepeat(args)) == 0)
 	{
-		write(1, "Error\n", 6);
-		return (0);
+		free(bench); //have to free upon error
+		free(args);
+		exit(write(1, "Error\n", 6));
 	}
-	aux = input_conversion(args);
-	count = 0;
-	tmp = aux ->head;
-	while (count < aux->size)
+	return (input_conversion(args));
+}
+
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
+{
+	if (ft_strncmp(flag_bench -> flag, "--simple", 8))
 	{
-		//printf("%d\n", tmp->content);
-		tmp = tmp->next;
-		count++;
+		bench -> strategy = "Simple / O(n2)";
+		ft_bubble_sort(ft_valid_and_convert(args, bench), bench);
 	}
-	// calcular desorden
-	// parseo flags bench
-	return (1);
+	else if (ft_strncmp(flag_bench -> flag, "--medium", 8))
+	{
+		bench -> strategy = "Medium / O(n√n)";
+		ft_bucket(ft_valid_and_convert(args, bench), bench);
+	}
+/*	else if (ft_strncmp(flag_bench -> flag, "--complex", 9))
+	{
+		bench -> strategy = "Complex / O(n log n)";
+		return (ft_radix(ft_valid_and_convert(args, bench), bench));
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10))
+	{
+		bench -> strategy = "Adaptive";
+		return (ft_adaptive_algo(ft_valid_and_convert(args, bench), bench));
+	}*/
+	else
+		ft_bucket(ft_valid_and_convert(args, bench), bench);
+}
+
+int	push_swap(int argc, char **argv)
+{
+	char		**args;
+	t_bench		*bench;
+	t_isflag	*flag_bench;
+	int			i;
+
+	i = 1;
+	args = NULL;
+	bench = initialise_bench();
+	flag_bench = initialise_flag_bench();
+
+	/* argument parsing */
+	separate_flags(argv, flag_bench, &i);
+	args = new_args(argc, argv, args, &i);
+	// DISORDER
+	ft_flag_search_parsing(args, flag_bench, bench); // this calls valid and convert, which returns stack_a
+									// select strategy (if not entered via console)
+	input_conversion(args);
+
+	/* print bench (it called via console) */
+	free(args);
+	return (0);
 }

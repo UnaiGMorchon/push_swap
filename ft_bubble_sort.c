@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/02 13:40:22 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 07:43:48 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 	14.Call ft_ra one extra time after inner loop to fix final alignment of stack
 */
 
-void	ft_bubble_sort(t_stack *lst)
+void	ft_bubble_sort(t_stack *lst, t_bench *bench)
 {
 	int	swapped;
 	int	i;
@@ -45,13 +45,13 @@ void	ft_bubble_sort(t_stack *lst)
 		{
 			if (lst-> head-> content > lst-> head -> next -> content)
 			{
-				ft_sa(lst);
+				ft_sa(lst, bench);
 				swapped = 1;
 			}
-			ft_ra(lst);
+			ft_ra(lst, bench);
 			i ++;
 		}
-		ft_ra(lst);
+		ft_ra(lst, bench);
 	}
 }
 

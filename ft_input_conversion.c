@@ -6,40 +6,11 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 13:24:12 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/14 08:00:08 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-
-char	**new_args(int argc, char **argv, char **args)
-{
-	int	i;
-
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
-	{
-		i = 1;
-		args = (char **)malloc(sizeof(char*) * (argc)); // falta free???
-		if (args == NULL)
-			return (NULL);
-		while (argv[i])
-		{
-			args[i - 1] = ft_strdup(argv[i]);
-			i++;
-		}
-		args[i - 1] = NULL;
-	}
-	//printf("%s\n", *args);
-	/* i = 0;
-	while (args[i])
-	{
-		printf("%s\n", args[i]);
-		i++;
-	} */
-	return (args);
-}
 
 long int	ft_is_validint(char **args)
 {

@@ -6,7 +6,7 @@
 #   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
-#   Updated: 2026/07/10 09:33:22 by ugarcia-           ###   ########.fr       #
+#   Updated: 2026/07/14 08:49:02 by ugarcia-           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = ft_push.c ft_rotate.c ft_swap.c ft_reverse.c \
  ft_pushswap_utils1.c ft_pushswap_utils2.c \
  push_swap.c ft_bubble_sort.c ft_bucket.c \
- ft_input_conversion.c main.c
+ ft_input_conversion.c main.c disorder_adaptive_algo.c
 
 LIBFT_DIR = ../libft
 PRINTF_DIR = ../printf
