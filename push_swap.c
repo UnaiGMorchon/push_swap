@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 15:52:02 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 10:11:02 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,16 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 		bench -> strategy = "Medium / O(n√n)";
 		ft_bucket(ft_valid_and_convert(args), bench);
 	}
-	else if (ft_strncmp(flag_bench -> flag, "--complex", 9))
+	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
 	{
 		bench -> strategy = "Complex / O(n log n)";
-		return (ft_radix(ft_valid_and_convert(args), bench));
+		ft_radix(ft_valid_and_convert(args), bench);
 	}
-	/*else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10))
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0)
 	{
 		bench -> strategy = "Adaptive";
-		return (ft_adaptive_algo(ft_valid_and_convert(args), bench));
-	}*/
-	else
-		ft_bucket(ft_valid_and_convert(args), bench);
+		ft_adaptive_algo(ft_valid_and_convert(args), bench);
+	}
 }
 
 int	push_swap(int argc, char **argv)
@@ -147,8 +145,6 @@ int	push_swap(int argc, char **argv)
 	ft_flag_search_parsing(args, flag_bench, bench); // this calls valid and convert, which returns stack_a
 									// select strategy (if not entered via console)
 	
-	input_conversion(args);
-
 	/* print bench (it called via console) */
 	free(args);
 	return (0);

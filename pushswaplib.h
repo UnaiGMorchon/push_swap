@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 15:53:14 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 10:14:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int			ft_printf(char const *string, ...);
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
 void		ft_bucket(t_stack *lst_a, t_bench *bench);
 void		ft_radix(t_stack *lst_a, t_bench *bench);
+void		ft_adaptive_algo(t_stack *lst, t_bench *bench);
 float		disorder_metric(t_stack *lst);
 t_bench		*initialise_bench(void);
 t_isflag	*initialise_flag_bench(void);

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 08:40:32 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 10:10:08 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,8 +190,7 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 	t_stack	*lst_b;
 
 	lst_b = ft_newstack();
-	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
-		return ;
+	ft_get_index(lst_a);
 	number_limit = ft_sqroot(lst_a -> size);
 	end_bucket = number_limit;
 	while (lst_a -> size)
@@ -212,6 +211,28 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 }
 
 /* 
+t_bench	*initialise_bench(void)
+	{
+		t_bench	*bench;
+
+		bench = malloc(sizeof(t_bench));
+		bench -> disorder = 0.0;
+		bench -> strategy = '\0';
+		bench -> total = 0;
+		bench -> sa = 0;
+		bench -> sb = 0;
+		bench -> ss = 0;
+		bench -> pa = 0;
+		bench -> pb = 0;
+		bench -> ra = 0;
+		bench -> rb = 0;
+		bench -> rr = 0;
+		bench -> rra = 0;
+		bench -> rrb = 0;
+		bench -> rrr = 0;
+		return (bench);
+	}
+
 static void	ft_print_list(t_stack *stack, int size)
 {
 	int			counter;
@@ -239,14 +260,15 @@ static void	ft_print_list(t_stack *stack, int size)
 		counter++;
 	}
 }
-
+	
 int	main(void)
 {
 	t_stack	*lst_a;
-	t_stack	*lst_b;
+	t_bench	*bench;
 
+	bench = initialise_bench();
 	lst_a = ft_newstack();
-	lst_b = ft_newstack();
+	
 	// STACK_A
 	ft_lstadd_back(lst_a, ft_lstnew(12));
 	ft_lstadd_back(lst_a, ft_lstnew(15));
@@ -257,11 +279,11 @@ int	main(void)
 	ft_lstadd_back(lst_a, ft_lstnew(2));
 	ft_lstadd_back(lst_a, ft_lstnew(9));
 	// STACK_B
-	ft_get_index(lst_a);
+	
 	printf("---------------STACK A-----------\n");
 	ft_print_list(lst_a, lst_a -> size);
 
-	ft_bucket(lst_a, lst_b);
+	ft_bucket(lst_a, bench);
 
 	printf("---------------sorted B--------------- \n");
 	ft_print_list(lst_b, lst_b -> size);
@@ -274,4 +296,4 @@ int	main(void)
 	ft_lstclear(lst_a);
 	return (0);
 }
- */
+ */ 

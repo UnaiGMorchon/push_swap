@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 15:21:36 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 10:28:05 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,19 +93,17 @@ char	print_bench(t_stack *lst, t_bench *bench)
 	return (0);
 }
 
-void	ft_adaptive_algo(t_stack *lst, char **args, t_bench *bench)
+void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 {
 	float	disorder;
 
-	if (lst == NULL || lst -> head == NULL)
-		return ;
 	disorder = disorder_metric(lst);
-	if (disorder < 0.2)
-		ft_bubble_sort(ft_valid_and_convert(args), bench);
-	else if (disorder >= 0.2 && disorder < 0.5)
-		ft_bucket(ft_valid_and_convert(args), bench);
-	/*else if (disorder >= 0.5)
-		ft_radix(ft_valid_and_convert(args, bench), bench);*/
-	else if (disorder == 0)
+	if (disorder == 0)
 		print_bench(lst, bench);
+	else if (disorder < 0.2)
+		ft_bubble_sort(lst, bench);
+	else if (disorder >= 0.2 && disorder < 0.5)
+		ft_bucket(lst, bench);
+	else if (disorder >= 0.5)
+		ft_radix(lst, bench);
 }
