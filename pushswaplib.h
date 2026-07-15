@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswaplib.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/13 12:37:28 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/15 08:40:15 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ typedef struct s_bench
 	int		rrr;
 }					t_bench;
 
+typedef struct s_isflag
+{
+	char	*flag;
+	char	*bench;
+}					t_isflag;
+
 /* OPERATIONS */
 void		ft_sa(t_stack *lst_a, t_bench *bench);
 void		ft_sb(t_stack *lst_b, t_bench *bench);
@@ -85,17 +91,20 @@ char		**ft_split(char const *s, char c);
 int			ft_isdigit(int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 long int	ft_atol(const char *nptr);
-char		**new_args(int argc, char **argv, char **args);
-t_stack	*ft_valid_and_convert(char **args, t_bench *bench);
-void	ft_flag_search_parsing(char **args, t_bench *bench);
+char		**new_args(int argc, char **argv, int *i);
+t_stack	*ft_valid_and_convert(char **args);
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+void		separate_flags(char **argv, t_isflag *flag_bench, int *i);
+int			ft_printf(char const *string, ...);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
 void		ft_bucket(t_stack *lst_a, t_bench *bench);
-void		ft_radix(t_stack **lst_a, t_stack **lst_b, t_bench *bench);
+void		ft_radix(t_stack **lst_a, t_bench *bench);
 float		disorder_metric(t_stack *lst);
-t_bench		*initialise_bench();
+t_bench		*initialise_bench(void);
+t_isflag	*initialise_flag_bench(void);
 
 
 #endif

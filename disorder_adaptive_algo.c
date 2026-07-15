@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   disorder_adaptive_algo.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/13 12:44:03 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/15 08:27:09 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-t_bench	*initialise_bench()
+t_bench	*initialise_bench(void)
 {
 	t_bench	*bench;
 
@@ -32,6 +32,16 @@ t_bench	*initialise_bench()
 	bench -> rrb = 0;
 	bench -> rrr = 0;
 	return (bench);
+}
+
+t_isflag	*initialise_flag_bench(void)
+{
+	t_isflag	*flag_bench;
+
+	flag_bench = malloc(sizeof(t_isflag));
+	flag_bench -> flag = NULL;
+	flag_bench -> bench = NULL;
+	return (flag_bench);
 }
 
 float	disorder_metric(t_stack *lst)
@@ -63,25 +73,25 @@ float	disorder_metric(t_stack *lst)
 	return (mistakes / total_pairs);
 }
 
-/*char	print_bench(t_stack *lst, t_bench *bench)
+char	print_bench(t_stack *lst, t_bench *bench)
 {
 	bench -> disorder = disorder_metric(lst) * 100;
 	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
 	ft_printf("[bench] strategy: %s\n", bench -> strategy);
 	ft_printf("[bench] total: %d\n", bench -> total);
-	ft_printf("sa: %d", bench -> sa);
-	ft_printf("sb: %d", bench -> sb);
-	ft_printf("ss: %d", bench -> ss);
-	ft_printf("pa: %d", bench -> pa);
-	ft_printf("pb: %d", bench -> pb);
-	ft_printf("ra: %d", bench -> ra);
-	ft_printf("rb: %d", bench -> rb);
-	ft_printf("rr: %d", bench -> rr);
-	ft_printf("rra: %d", bench -> rra);
-	ft_printf("rrb: %d", bench -> rrb);
-	ft_printf("rrr: %d", bench -> rrr);
+	ft_printf("sa: %d\n", bench -> sa);
+	ft_printf("sb: %d\n", bench -> sb);
+	ft_printf("ss: %d\n", bench -> ss);
+	ft_printf("pa: %d\n", bench -> pa);
+	ft_printf("pb: %d\n", bench -> pb);
+	ft_printf("ra: %d\n", bench -> ra);
+	ft_printf("rb: %d\n", bench -> rb);
+	ft_printf("rr: %d\n", bench -> rr);
+	ft_printf("rra: %d\n", bench -> rra);
+	ft_printf("rrb: %d\n", bench -> rrb);
+	ft_printf("rrr: %d\n", bench -> rrr);
 	return (0);
-}*/
+}
 
 void	ft_adaptive_algo(t_stack *lst, char **args, t_bench *bench)
 {
@@ -91,11 +101,11 @@ void	ft_adaptive_algo(t_stack *lst, char **args, t_bench *bench)
 		return ;
 	disorder = disorder_metric(lst);
 	if (disorder < 0.2)
-		ft_bubble_sort(ft_valid_and_convert(args, bench), bench);
+		ft_bubble_sort(ft_valid_and_convert(args), bench);
 	else if (disorder >= 0.2 && disorder < 0.5)
-		ft_bucket(ft_valid_and_convert(args, bench), bench);
+		ft_bucket(ft_valid_and_convert(args), bench);
 	/*else if (disorder >= 0.5)
-		ft_radix(ft_valid_and_convert(args, bench), bench);*/
+		ft_radix(ft_valid_and_convert(args), bench);*/
 	else if (disorder == 0)
-		return ;
+		print_bench(lst, bench);
 }

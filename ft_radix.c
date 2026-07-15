@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_radix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/13 12:10:09 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/15 08:48:24 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	get_max_bits(t_stack *lst)
 	int	bits;
 
 	i = 0;
-	bites = 0;
-	copy = *lst -> head;
-	while (copy -> next != head)
+	bits = 0;
+	copy = lst -> head;
+	while (copy -> next != lst -> head)
 	{
-		while (*copy[i])
+		while (i < copy)
 		{
 			bits++;
 			i++;
@@ -36,36 +36,32 @@ int	get_max_bits(t_stack *lst)
 	return (bits);
 }
 
-void	ft_radix(t_stack **lst_a, t_bench *bench)
+void	ft_radix(t_stack *lst_a, t_bench *bench)
 {
-	t_node_list	*head_mark;
 	t_stack	*lst_b;
 	int	i;
 	int	j;
-	int	size;
 	int	max_bits;
+	t_node_list	*tmp_lst_a;
 
 	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
-        return ;
+		return ;
 	lst_b = ft_newstack();
 	i = 0;
-	head_mark = *lst_a;
-	size = ft_lstsize(lst_a);
+	tmp_lst_a = lst_a -> head;
 	max_bits = get_max_bits(lst_a);
-	while (i < max_bits)
+	while (i++ < max_bits)
 	{
 		j = 0;
-		while (j++ < size)
+		while (j++ < lst_a -> size)
 		{
-			head_mark = *lst_a;
-			if (((head_a -> index >> i) & 1) == 1)
-				ra(lst_a, bench);
+			if (((tmp_lst_a -> index >> i) & 1) == 1)
+				ft_ra(lst_a, bench);
 			else
-				pb(lst_b, lst_a, bench);
+				ft_pb(lst_b, lst_a, bench);
 		}
-		while (*lst_b)
-			pa(lst_a, lst_b, bench);
+		while (lst_b)
+			ft_pa(lst_a, lst_b, bench);
 		ft_lstclear(lst_b);
-		i++;
 	}
 }
