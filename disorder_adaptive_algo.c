@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 10:28:05 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 13:46:43 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_bench	*initialise_bench(void)
 
 	bench = malloc(sizeof(t_bench));
 	bench -> disorder = 0.0;
-	bench -> strategy = '\0';
+	bench -> strategy = NULL;
 	bench -> total = 0;
 	bench -> sa = 0;
 	bench -> sb = 0;
@@ -73,14 +73,13 @@ float	disorder_metric(t_stack *lst)
 	return (mistakes / total_pairs);
 }
 
-char	print_bench(t_stack *lst, t_bench *bench)
+char	print_bench(t_bench *bench)
 {
-	bench -> disorder = disorder_metric(lst) * 100;
-	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
+	//ft_printf("[bench] disorder: %f\n", bench -> disorder);
 	ft_printf("[bench] strategy: %s\n", bench -> strategy);
 	ft_printf("[bench] total: %d\n", bench -> total);
 	ft_printf("sa: %d\n", bench -> sa);
-	ft_printf("sb: %d\n", bench -> sb);
+	/*ft_printf("sb: %d\n", bench -> sb);
 	ft_printf("ss: %d\n", bench -> ss);
 	ft_printf("pa: %d\n", bench -> pa);
 	ft_printf("pb: %d\n", bench -> pb);
@@ -89,7 +88,9 @@ char	print_bench(t_stack *lst, t_bench *bench)
 	ft_printf("rr: %d\n", bench -> rr);
 	ft_printf("rra: %d\n", bench -> rra);
 	ft_printf("rrb: %d\n", bench -> rrb);
-	ft_printf("rrr: %d\n", bench -> rrr);
+	ft_printf("rrr: %d\n", bench -> rrr);*/
+
+	write(2, &bench-> rrr, 1);
 	return (0);
 }
 
@@ -98,12 +99,20 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 	float	disorder;
 
 	disorder = disorder_metric(lst);
-	if (disorder == 0)
-		print_bench(lst, bench);
-	else if (disorder < 0.2)
+	bench -> disorder = disorder * 100;
+	if (disorder > 0 && disorder < 0.2)
+	{
+		bench -> strategy = "Adaptive / O(n2)";
 		ft_bubble_sort(lst, bench);
+	}
 	else if (disorder >= 0.2 && disorder < 0.5)
+	{
+		bench -> strategy = "Adaptive / O(n√n)";
 		ft_bucket(lst, bench);
+	}
 	else if (disorder >= 0.5)
+	{
+		bench -> strategy = "Adaptive / O(n log n)";
 		ft_radix(lst, bench);
+	}
 }

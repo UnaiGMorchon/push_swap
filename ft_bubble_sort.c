@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/14 07:43:48 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:07:37 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	ft_bubble_sort(t_stack *lst, t_bench *bench)
 	int	swapped;
 	int	i;
 
-	if (lst == NULL || lst-> head == NULL)
-		return ;
 	swapped = 1;
 	while (swapped)
 	{

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 10:14:39 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:52:10 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+
 
 typedef struct s_list
 {
@@ -92,11 +93,13 @@ int			ft_isdigit(int c);
 char		*ft_strjoin(char const *s1, char const *s2);
 long int	ft_atol(const char *nptr);
 char		**new_args(int argc, char **argv, int *i);
-t_stack		*ft_valid_and_convert(char **args);
+t_stack		*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench);
 void		ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		separate_flags(char **argv, t_isflag *flag_bench, int *i);
 int			ft_printf(char const *string, ...);
+char		print_bench(t_bench *bench);
+void		free_split(char **split);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
