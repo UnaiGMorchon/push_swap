@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 09:47:12 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 12:45:48 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ t_stack		*ft_newstack(void);
 void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
 void		ft_lstadd_back(t_stack *stack, t_node_list *new_node);
 void		ft_lstclear(t_stack *lst);
-int			ft_lstsize(t_node_list *lst);
 void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);

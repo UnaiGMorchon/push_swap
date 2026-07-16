@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 09:30:11 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 12:43:58 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,31 @@ t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
 		exit(write(2, "Error\n", 6));
 	}
 	return (input_conversion(args));
+}
+
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
+{
+	t_stack	*converted_stack;
+
+	converted_stack = ft_valid_and_convert(args, bench, flag_bench);
+	if (ft_strncmp(flag_bench -> flag, "--simple", 8) == 0)
+	{
+		bench -> strategy = "Simple / O(n2)";
+		ft_bubble_sort(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--medium", 8) == 0)
+	{
+		bench -> strategy = "Medium / O(n√n)";
+		ft_bucket(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
+	{
+		bench -> strategy = "Complex / O(n log n)";
+		(ft_radix(converted_stack, bench));
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
+	{
+		ft_adaptive_algo(converted_stack, bench);
+	}
+	ft_lstclear(converted_stack);
 }

@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 08:34:07 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 13:41:19 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 	disorder = disorder_metric(lst);
 	bench -> disorder = disorder * 100.0f; // ???
 	disorder = disorder_metric(lst);
+	if (lst -> size <= 5)
+	{
+		bench -> strategy = "Adaptive / O(n2)";
+		ft_shortlist_sort(lst, bench);
+	}
 	if (disorder > 0 && disorder < 0.2)
 	{
 		bench -> strategy = "Adaptive / O(n2)";

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pushswap_utils1.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 09:32:46 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/16 12:48:33 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,4 +134,42 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 	stack->head->prev = stack->tail;
 	stack->tail->next = stack->head;
 	stack -> size += 1;
+}
+/*
+	1. Declare 'buffer' to save the next node pointer before freeing current one
+	2. Declare 'tmp' to iterate through the stack nodes.
+	3. Initialize 'buffer' to NULL as a defensive programming mechanism.
+	4. Security check: if the stack pointer does not exist, exit the function.
+	5. Point 'tmp' to the first node (head) of the stack to begin the loop.
+	6. Loop through the stack until all nodes are processed based on stack size.
+	7. Save the next node's address into 'buffer' to prevent memory loss.
+	8. Free the memory allocated for the current node pointed by 'tmp'.
+	9. Move 'tmp' to the next node saved in the buffer.
+	10.Decrement the stack size counter for every node that is successfully freed
+	11. Once the loop ends, set the stack's head pointer to NULL.
+	12. Set the stack's tail pointer to NULL.
+	13. Ensure the stack size counter is explicitly set to 0.
+	14. Free the memory allocated for the main stack control structure.
+*/
+
+void	ft_lstclear(t_stack *lst)
+{
+	t_node_list	*tmp;
+
+	if (!lst)
+		return ;
+	tmp = NULL;
+	while (lst-> size != 0)
+	{
+		tmp = lst-> head -> next;
+		free(lst-> head);
+		lst-> head = tmp;
+		if (tmp == lst-> tail)
+		{
+			free(lst-> tail);
+			free(tmp);
+		}
+		lst-> size -= 1;
+	}
+	free(lst);
 }
