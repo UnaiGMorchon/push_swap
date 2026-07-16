@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bucket.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:24:31 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 08:55:04 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,13 +185,12 @@ void	ft_get_index(t_stack *lst_a)
 
 void	ft_bucket(t_stack *lst_a, t_bench *bench)
 {
-	int	number_limit;
-	int	end_bucket;
+	int		number_limit;
+	int		end_bucket;
 	t_stack	*lst_b;
 
 	lst_b = ft_newstack();
-	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
-		return ;
+	ft_get_index(lst_a);
 	number_limit = ft_sqroot(lst_a -> size);
 	end_bucket = number_limit;
 	while (lst_a -> size)
@@ -210,4 +209,3 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 	}
 	ft_lstclear(lst_b);
 }
-

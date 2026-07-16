@@ -6,62 +6,52 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 08:48:24 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 09:14:23 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	get_max_bits(t_stack *lst)
+int	get_max_bits(int size)
 {
-	t_node_list	*copy;
-	int	i;
 	int	bits;
 
-	i = 0;
 	bits = 0;
-	copy = lst -> head;
-	while (copy -> next != lst -> head)
+	while (size != 0)
 	{
-		while (i < copy)
-		{
-			bits++;
-			i++;
-		}
-		if (bits > i)
-			bits = i;
-		i = 0;
-		copy = copy -> next;
+		size = size / 2;
+		bits++;
 	}
 	return (bits);
 }
 
 void	ft_radix(t_stack *lst_a, t_bench *bench)
 {
-	t_stack	*lst_b;
-	int	i;
-	int	j;
-	int	max_bits;
-	t_node_list	*tmp_lst_a;
+	t_stack		*lst_b;
+	int			i;
+	int			j;
+	int			max_bits;
+	int			size;
 
-	if (lst_a == NULL || lst_a -> head == NULL || lst_a -> size <= 1)
-		return ;
 	lst_b = ft_newstack();
 	i = 0;
-	tmp_lst_a = lst_a -> head;
-	max_bits = get_max_bits(lst_a);
-	while (i++ < max_bits)
+	ft_get_index(lst_a);
+	size = lst_a -> size;
+	max_bits = get_max_bits(lst_a -> size - 1);
+	while (i < max_bits)
 	{
 		j = 0;
-		while (j++ < lst_a -> size)
+		while (j < size)
 		{
-			if (((tmp_lst_a -> index >> i) & 1) == 1)
+			if (((lst_a -> head -> index >> i) & 1) == 1)
 				ft_ra(lst_a, bench);
 			else
 				ft_pb(lst_b, lst_a, bench);
+			j++;
 		}
-		while (lst_b)
+		while (lst_b -> size)
 			ft_pa(lst_a, lst_b, bench);
-		ft_lstclear(lst_b);
+		i++;
 	}
+	ft_lstclear(lst_b);
 }

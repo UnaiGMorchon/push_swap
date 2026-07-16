@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bubble_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:26:50 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 08:35:00 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	ft_bubble_sort(t_stack *lst, t_bench *bench)
 	int	swapped;
 	int	i;
 
-	if (lst == NULL || lst-> head == NULL)
-		return ;
 	swapped = 1;
 	while (swapped)
 	{

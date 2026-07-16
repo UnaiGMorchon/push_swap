@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input_conversion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/10 15:18:16 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/16 09:30:11 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ long int	ft_is_validint(char **args)
 
 int	ft_isrepeat(char **args)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
 	long int	result;
 	long int	temp;
 
@@ -66,9 +66,8 @@ int	ft_isrepeat(char **args)
 
 t_stack	*input_conversion(char **args)
 {
-	int	i;
-	t_stack	*stack_a;
-	t_node_list	*new;
+	int			i;
+	t_stack		*stack_a;
 
 	i = 0;
 	stack_a = ft_newstack();
@@ -76,9 +75,21 @@ t_stack	*input_conversion(char **args)
 		return (NULL);
 	while (args[i])
 	{
-		new = ft_lstnew(ft_atol(args[i]));
-		ft_lstadd_back(stack_a, new);
+		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
 		i++;
 	}
+	free_split(args);
 	return (stack_a);
+}
+
+t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
+{
+	if (ft_is_validint(args) == 0 || ft_isrepeat(args) == 0)
+	{
+		free(bench);
+		free(flag_bench);
+		free_split(args);
+		exit(write(2, "Error\n", 6));
+	}
+	return (input_conversion(args));
 }
