@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 09:24:52 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:10:42 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 	14. Free the memory allocated for the main stack control structure.
 */
 
-void	ft_lstclear(t_stack *lst)
+void	ft_clearstack(t_stack *lst)
 {
 	t_node_list	*buffer;
 	t_node_list	*tmp;

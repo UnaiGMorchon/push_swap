@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:03:32 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:10:51 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ void	ft_radix(t_stack *lst_a, t_bench *bench)
 		while (lst_b -> size)
 			ft_pa(lst_a, lst_b, bench);
 	}
-	ft_lstclear(lst_b);
+	ft_clearstack(lst_b);
 }

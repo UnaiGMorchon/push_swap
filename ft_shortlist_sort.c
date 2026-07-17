@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:52:16 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 14:06:37 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:11:12 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	shortlist_under_three(t_stack *lst, t_bench *bench)
 			counter++;
 		}
 	}
-	ft_lstclear(lst);
+	ft_clearstack(lst);
 }
 
 static void	shortlist_under_five(t_stack *lst, t_bench *bench)
@@ -62,7 +62,7 @@ static void	shortlist_under_five(t_stack *lst, t_bench *bench)
 		ft_sb(lst_b, bench);
 	while (lst_b -> size)
 		ft_pa(lst, lst_b, bench);
-	ft_lstclear(lst_b);
+	ft_clearstack(lst_b);
 }
 
 void	ft_shortlist_sort(t_stack *lst, t_bench *bench)
@@ -71,5 +71,5 @@ void	ft_shortlist_sort(t_stack *lst, t_bench *bench)
 		shortlist_under_three(lst, bench);
 	if (lst -> size == 4 || lst -> size == 5)
 		shortlist_under_five(lst, bench);
-	ft_lstclear(lst);
+	ft_clearstack(lst);
 }

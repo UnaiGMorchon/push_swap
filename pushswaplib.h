@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 11:40:33 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:12:58 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+# include "./libft/libft.h"
 
 typedef struct s_list
 {
@@ -77,7 +78,7 @@ t_node_list	*ft_lstnew(int content);
 t_stack		*ft_newstack(void);
 void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
 void		ft_lstadd_back(t_stack *stack, t_node_list *new_node);
-void		ft_lstclear(t_stack *lst);
+void		ft_clearstack(t_stack *lst);
 void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);

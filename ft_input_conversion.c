@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 11:11:59 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:10:23 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 	{
 		bench -> strategy = "Complex / O(n log n)";
 		ft_radix(converted_stack, bench);
-		ft_lstclear(converted_stack);
+		ft_clearstack(converted_stack);
 	}
 	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
 	{
