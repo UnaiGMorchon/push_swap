@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:17:04 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 11:39:11 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,24 @@ double	ft_sqroot(int x)
 	return (y);
 }
 
+t_node_list	*ft_min_index(t_stack *lst)
+{
+	t_node_list	*tmp;
+	t_node_list	*min_node;
+	int			nodes;
+
+	tmp = lst -> head;
+	min_node = lst ->head;
+	nodes = 0;
+	while (nodes < lst -> size)
+	{
+		if (tmp -> index < min_node -> index)
+			min_node = tmp;
+		tmp = tmp -> next;
+		nodes++;
+	}
+	return (min_node);
+}
 /*
 	1. Declare 'temp' to store the maximum integer content found.
 	2. Declare a pointer 'temp_list' to iterate through stack A nodes.
@@ -122,20 +140,20 @@ int	ft_max_number(t_stack *lst_a)
 	9. Return the minimum integer value found in the stack.
 */
 
-int	ft_min_number(t_stack *lst_a)
+/*int	ft_min_number(t_stack *lst_a)
 {
 	int			temp;
-	t_node_list	*temp_list;
+	t_stack		*temp_list;
 
 	temp_list = lst_a -> head;
 	temp = lst_a -> head -> content;
-	while (temp_list -> next != NULL)
+	while (temp_list -> size)
 	{
-		if (temp > temp_list -> content)
+		if (temp > temp_list -> head -> content)
 		{
-			temp = temp_list -> content;
+			temp = temp_list -> head -> content;
 		}
-		temp_list = temp_list -> next;
+		temp_list = temp_list -> head -> next;
 	}
 	return (temp);
-}
+}*/

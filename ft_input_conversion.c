@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:01:26 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 11:11:59 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ t_stack	*input_conversion(char **args)
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
 		i++;
 	}
-	//free_split(args);
 	return (stack_a);
 }
 

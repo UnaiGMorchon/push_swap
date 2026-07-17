@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:08:22 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:04:33 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ float	disorder_metric(t_stack *lst)
 			tmp = tmp -> next;
 			j++;
 		}
-		lst -> head = lst -> head -> next;
+		tmp = tmp -> next;
 		i++;
 	}
 	return (mistakes / total_pairs);
 }
 
-char	print_bench(t_bench *bench/*, t_isflag *flag_bench*/)
+char	print_bench(t_bench *bench)
 {
 	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
 	ft_printf("[bench] strategy: %s\n", bench -> strategy);
@@ -89,10 +89,6 @@ char	print_bench(t_bench *bench/*, t_isflag *flag_bench*/)
 	ft_printf("rra: %d\n", bench -> rra);
 	ft_printf("rrb: %d\n", bench -> rrb);
 	ft_printf("rrr: %d\n", bench -> rrr);
-
-	write(2, &bench->rrr, 1);
-	//free(bench);
-	//free(flag_bench);
 	return (0);
 }
 
@@ -102,13 +98,13 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 
 	disorder = disorder_metric(lst);
 	bench -> disorder = disorder * 100.0f; // ???
-	disorder = disorder_metric(lst);
 	if (lst -> size <= 5)
 	{
 		bench -> strategy = "Adaptive / O(n2)";
+		ft_get_index(lst);
 		ft_shortlist_sort(lst, bench);
 	}
-	if (disorder < 0.2)
+	else if (disorder < 0.2)
 	{
 		bench -> strategy = "Adaptive / O(n2)";
 		ft_bubble_sort(lst, bench);

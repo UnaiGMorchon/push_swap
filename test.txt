@@ -1,0 +1,103 @@
+ra
+sa
+ra
+sa
+ra
+sa
+ra
+sa
+ra
+sa
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+sa
+ra
+sa
+ra
+sa
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+sa
+ra
+sa
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+sa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+[bench] strategy: Adaptive / O(n2)
+[bench] total: 90
+sa: 18
+sb: 0
+ss: 0
+pa: 0
+pb: 0
+ra: 72
+rb: 0
+rr: 0
+rra: 0
+rrb: 0
+rrr: 0

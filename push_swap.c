@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 09:39:12 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 11:12:41 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	push_swap(int argc, char **argv)
 	args = new_args(argc, argv, &i);
 	ft_flag_search_parsing(args, flag_bench, bench);
 	if (flag_bench -> bench || bench -> disorder == 0)
-		print_bench(bench/* , flag_bench */);
+		print_bench(bench);
 	free_split(args);
 	free(flag_bench);
 	free(bench);
