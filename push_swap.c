@@ -6,18 +6,11 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 14:58:13 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:59:25 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-
-/*
-convertirlo a string separados por espacios, concatenar. (contar los que tenemos?)
-trocear hacerle el split?. trocerar
-validar que sea números, convertirlos a números isdigit? validar
-sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
-*/
 
 int	ft_is_bench(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 15:10:42 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:25:17 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 	8. Return the successfully created and initialized new node.
 */
 
-t_node_list	*ft_lstnew(int content)
+t_node_list	*ft_newnode(int content)
 {
 	t_node_list	*new_node;
 
@@ -75,7 +75,7 @@ t_stack	*ft_newstack(void)
 	11. Increment the total size counter of the stack by 1.
 */
 
-void	ft_lstadd_front(t_stack *stack, t_node_list *new_node)
+void	ft_stackadd_front(t_stack *stack, t_node_list *new_node)
 {
 	if (!stack || !new_node)
 		return ;
@@ -112,7 +112,7 @@ void	ft_lstadd_front(t_stack *stack, t_node_list *new_node)
 	13. Increment the total size counter of the stack by 1.
 */
 
-void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
+void	ft_stackadd_back(t_stack *stack, t_node_list *new_node)
 {
 	if (!stack || !new_node)
 		return ;

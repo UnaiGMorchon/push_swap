@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 11:39:11 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:57:06 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,62 +98,3 @@ t_node_list	*ft_min_index(t_stack *lst)
 	}
 	return (min_node);
 }
-/*
-	1. Declare 'temp' to store the maximum integer content found.
-	2. Declare a pointer 'temp_list' to iterate through stack A nodes.
-	3. Set 'temp_list' to the head node of stack A to begin processing.
-	4. Initialize 'temp' with the content of the first node.
-	5.Loop through the stack nodes using stack size to avoid infinite circ loops.
-	6. If the current node content is greater than the saved 'temp', update it.
-	7. Store the higher content value into the 'temp' variable.
-	8. Move 'temp_list' forward to the next node in the circular list.
-	9. Return the maximum integer value found in the stack.
-*/
-/* 
-int	ft_max_number(t_stack *lst_a)
-{
-	int			temp;
-	t_node_list	*temp_list;
-
-	temp_list = lst_a -> head;
-	temp = lst_a -> head -> content;
-	while (temp_list -> next != NULL)
-	{
-		if (temp > temp_list -> next -> content)
-		{
-			temp = temp_list -> content;
-		}
-		temp_list = temp_list -> next;
-	}
-	return (temp);
-} */
-
-/*
-	1. Declare 'temp' to store the minimum integer content found.
-	2. Declare a pointer 'temp_list' to iterate through stack A nodes.
-	3. Set 'temp_list' to the head node of stack A to begin processing.
-	4. Initialize 'temp' with the content of the first node.
-	5.Loop through the stack nodes using stack size to avoid infinite circ loops.
-	6. If the current node content is lower than the saved 'temp', update it.
-	7. Store the lower content value into the 'temp' variable.
-	8. Move 'temp_list' forward to the next node in the circular list.
-	9. Return the minimum integer value found in the stack.
-*/
-
-/*int	ft_min_number(t_stack *lst_a)
-{
-	int			temp;
-	t_stack		*temp_list;
-
-	temp_list = lst_a -> head;
-	temp = lst_a -> head -> content;
-	while (temp_list -> size)
-	{
-		if (temp > temp_list -> head -> content)
-		{
-			temp = temp_list -> head -> content;
-		}
-		temp_list = temp_list -> head -> next;
-	}
-	return (temp);
-}*/

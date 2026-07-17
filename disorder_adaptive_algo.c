@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 15:04:46 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:55:27 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,38 @@ float	disorder_metric(t_stack *lst)
 
 char	print_bench(t_bench *bench)
 {
-	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
-	//ft_printf("[bench] strategy: %s\n", bench -> strategy);
+	// REMEMBER TO FIGURE OUT HOW TO PRINT F
+	ft_putstr_fd("[bench] disorder: ", 2);
+	ft_putnbr_fd(bench -> disorder, 2);
+	write(2, "\n", 1);
+	ft_putstr_fd("[bench] strategy: ", 2);
+	ft_putstr_fd(bench -> strategy, 2);
+	write(2, "\n", 1);
+	ft_putstr_fd("[bench] total: ", 2);
 	ft_putnbr_fd(bench -> total, 2);
-	/*ft_printf("[bench] total: %d\n", bench -> total);
-	ft_printf("sa: %d\n", bench -> sa);
-	ft_printf("sb: %d\n", bench -> sb);
-	ft_printf("ss: %d\n", bench -> ss);
-	ft_printf("pa: %d\n", bench -> pa);
-	ft_printf("pb: %d\n", bench -> pb);
-	ft_printf("ra: %d\n", bench -> ra);
-	ft_printf("rb: %d\n", bench -> rb);
-	ft_printf("rr: %d\n", bench -> rr);
-	ft_printf("rra: %d\n", bench -> rra);
-	ft_printf("rrb: %d\n", bench -> rrb);
-	ft_printf("rrr: %d\n", bench -> rrr);*/
+	write(2, "\n", 1);
+	ft_putstr_fd("[bench] sa: ", 2);
+	ft_putnbr_fd(bench -> sa, 2);
+	ft_putstr_fd(" sb: ", 2);
+	ft_putnbr_fd(bench -> sb, 2);
+	ft_putstr_fd(" ss: ", 2);
+	ft_putnbr_fd(bench -> ss, 2);
+	ft_putstr_fd(" pa: ", 2);
+	ft_putnbr_fd(bench -> pa, 2);
+	ft_putstr_fd(" pb: ", 2);
+	ft_putnbr_fd(bench -> pb, 2);
+	ft_putstr_fd("\n[bench] ra: ", 2);
+	ft_putnbr_fd(bench -> ra, 2);
+	ft_putstr_fd(" rb: ", 2);
+	ft_putnbr_fd(bench -> rb, 2);
+	ft_putstr_fd(" rr: ", 2);
+	ft_putnbr_fd(bench -> rr, 2);
+	ft_putstr_fd(" rra: ", 2);
+	ft_putnbr_fd(bench -> rra, 2);
+	ft_putstr_fd(" rrb: ", 2);
+	ft_putnbr_fd(bench -> rrb, 2);
+	ft_putstr_fd(" rrr: ", 2);
+	ft_putnbr_fd(bench -> rrr, 2);
 	return (0);
 }
 
@@ -99,7 +116,6 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 
 	disorder = disorder_metric(lst);
 	bench -> disorder = disorder * 100.0f; // ???
-	printf("disorder: %f", disorder);
 	if (lst -> size <= 5)
 	{
 		bench -> strategy = "Adaptive / O(n2)";

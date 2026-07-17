@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 15:10:23 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 15:53:15 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_stack	*input_conversion(char **args)
 		return (NULL);
 	while (args[i])
 	{
-		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
+		ft_stackadd_back(stack_a, ft_newnode(ft_atol(args[i])));
 		i++;
 	}
 	return (stack_a);
@@ -114,7 +114,8 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 		ft_radix(converted_stack, bench);
 		ft_clearstack(converted_stack);
 	}
-	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0
+		|| !flag_bench -> flag)
 	{
 		ft_adaptive_algo(converted_stack, bench);
 	}

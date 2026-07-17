@@ -1,5 +1,5 @@
-pb
-sa
-rra
-pa
-disorder: 0.000000
+[bench] disorder: 0
+[bench] strategy: Adaptive / O(n2)
+[bench] total: 4
+[bench] sa: 1 sb: 0 ss: 0 pa: 1 pb: 1
+[bench] ra: 0 rb: 0 rr: 0 rra: 1 rrb: 0 rrr: 0
