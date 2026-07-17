@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 12:43:58 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:01:26 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_stack	*input_conversion(char **args)
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
 		i++;
 	}
-	free_split(args);
+	//free_split(args);
 	return (stack_a);
 }
 
@@ -112,11 +112,11 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
 	{
 		bench -> strategy = "Complex / O(n log n)";
-		(ft_radix(converted_stack, bench));
+		ft_radix(converted_stack, bench);
+		ft_lstclear(converted_stack);
 	}
 	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
 	{
 		ft_adaptive_algo(converted_stack, bench);
 	}
-	ft_lstclear(converted_stack);
 }

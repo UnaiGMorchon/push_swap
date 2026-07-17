@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 12:48:33 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 09:24:52 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,22 +154,22 @@ void	ft_lstadd_back(t_stack *stack, t_node_list *new_node)
 
 void	ft_lstclear(t_stack *lst)
 {
+	t_node_list	*buffer;
 	t_node_list	*tmp;
 
+	buffer = NULL;
 	if (!lst)
 		return ;
-	tmp = NULL;
-	while (lst-> size != 0)
+	tmp = lst -> head;
+	while (lst->size)
 	{
-		tmp = lst-> head -> next;
-		free(lst-> head);
-		lst-> head = tmp;
-		if (tmp == lst-> tail)
-		{
-			free(lst-> tail);
-			free(tmp);
-		}
-		lst-> size -= 1;
+		buffer = tmp-> next;
+		free(tmp);
+		tmp = buffer;
+		lst->size -= 1;
 	}
+	lst->head = NULL;
+	lst->tail = NULL;
+	lst->size = 0;
 	free(lst);
 }

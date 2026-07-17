@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 09:14:23 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:03:32 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,18 @@ void	ft_radix(t_stack *lst_a, t_bench *bench)
 	ft_get_index(lst_a);
 	size = lst_a -> size;
 	max_bits = get_max_bits(lst_a -> size - 1);
-	while (i < max_bits)
+	while (i++ < max_bits)
 	{
 		j = 0;
-		while (j < size)
+		while (j++ < size)
 		{
 			if (((lst_a -> head -> index >> i) & 1) == 1)
 				ft_ra(lst_a, bench);
 			else
 				ft_pb(lst_b, lst_a, bench);
-			j++;
 		}
 		while (lst_b -> size)
 			ft_pa(lst_a, lst_b, bench);
-		i++;
 	}
 	ft_lstclear(lst_b);
 }

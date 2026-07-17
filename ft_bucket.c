@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 08:55:04 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 09:51:11 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,4 +208,5 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 		ft_pa(lst_a, lst_b, bench);
 	}
 	ft_lstclear(lst_b);
+	ft_lstclear(lst_a);
 }

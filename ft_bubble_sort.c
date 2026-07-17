@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 08:35:00 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:02:23 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	ft_bubble_sort(t_stack *lst, t_bench *bench)
 		}
 		ft_ra(lst, bench);
 	}
+	ft_lstclear(lst);
 }

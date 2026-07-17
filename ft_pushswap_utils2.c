@@ -6,7 +6,7 @@
 /*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/16 10:59:33 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:17:04 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	ft_max_number(t_stack *lst_a)
 	8. Move 'temp_list' forward to the next node in the circular list.
 	9. Return the minimum integer value found in the stack.
 */
-/* 
+
 int	ft_min_number(t_stack *lst_a)
 {
 	int			temp;
@@ -139,4 +139,3 @@ int	ft_min_number(t_stack *lst_a)
 	}
 	return (temp);
 }
- */
