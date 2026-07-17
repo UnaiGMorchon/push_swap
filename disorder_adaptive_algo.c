@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 13:46:43 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:52:11 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ float	disorder_metric(t_stack *lst)
 	return (mistakes / total_pairs);
 }
 
-char	print_bench(t_bench *bench)
+char	print_bench(t_bench *bench/*, t_isflag *flag_bench*/)
 {
-	//ft_printf("[bench] disorder: %f\n", bench -> disorder);
+	//ft_printf("[bench] disorder: %f\n", bench -> disorder;
 	ft_printf("[bench] strategy: %s\n", bench -> strategy);
 	ft_printf("[bench] total: %d\n", bench -> total);
 	ft_printf("sa: %d\n", bench -> sa);
-	/*ft_printf("sb: %d\n", bench -> sb);
+	ft_printf("sb: %d\n", bench -> sb);
 	ft_printf("ss: %d\n", bench -> ss);
 	ft_printf("pa: %d\n", bench -> pa);
 	ft_printf("pb: %d\n", bench -> pb);
@@ -88,9 +88,11 @@ char	print_bench(t_bench *bench)
 	ft_printf("rr: %d\n", bench -> rr);
 	ft_printf("rra: %d\n", bench -> rra);
 	ft_printf("rrb: %d\n", bench -> rrb);
-	ft_printf("rrr: %d\n", bench -> rrr);*/
+	ft_printf("rrr: %d\n", bench -> rrr);
 
-	write(2, &bench-> rrr, 1);
+	write(2, &bench->rrr, 1);
+	//free(bench);
+	//free(flag_bench);
 	return (0);
 }
 
@@ -99,8 +101,14 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 	float	disorder;
 
 	disorder = disorder_metric(lst);
-	bench -> disorder = disorder * 100;
-	if (disorder > 0 && disorder < 0.2)
+	bench -> disorder = disorder * 100.0f;
+	disorder = disorder_metric(lst);
+	if (lst -> size <= 5)
+	{
+		bench -> strategy = "Adaptive / O(n2)";
+		ft_shortlist_sort(lst, bench);
+	}
+	if (disorder < 0.2)
 	{
 		bench -> strategy = "Adaptive / O(n2)";
 		ft_bubble_sort(lst, bench);

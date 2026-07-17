@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 16:11:36 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 11:05:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ long int	ft_is_validint(char **args)
 	while (args[++j])
 	{
 		i = 0;
-		if (args[j][i] == '-')
+		if (args[j][0] == '-')
 			i++;
 		while (args[j][i])
 		{
@@ -33,7 +33,9 @@ long int	ft_is_validint(char **args)
 		}
 		result = ft_atol(args[j]);
 		if (result > 2147483647 || result < -2147483648)
+		{
 			return (0);
+		}
 	}
 	return (1);
 }
@@ -54,9 +56,7 @@ int	ft_isrepeat(char **args)
 		{
 			temp = ft_atol(args[j]);
 			if (result == temp)
-			{
 				return (0);
-			}
 			j++;
 		}
 		i++;
@@ -78,6 +78,46 @@ t_stack	*input_conversion(char **args)
 		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
 		i++;
 	}
-	free_split(args);
+	//free_split(args);
 	return (stack_a);
+}
+
+t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
+{
+	if (ft_is_validint(args) == 0 || ft_isrepeat(args) == 0)
+	{
+		free(bench);
+		free(flag_bench);
+		free_split(args);
+		exit(write(2, "Error\n", 6));
+	}
+	return (input_conversion(args));
+}
+
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
+{
+	t_stack	*converted_stack;
+
+	converted_stack = ft_valid_and_convert(args, bench, flag_bench);
+	if (ft_strncmp(flag_bench -> flag, "--simple", 8) == 0)
+	{
+		bench -> strategy = "Simple / O(n2)";
+		ft_bubble_sort(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--medium", 8) == 0)
+	{
+		bench -> strategy = "Medium / O(n√n)";
+		ft_bucket(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
+	{
+		bench -> strategy = "Complex / O(n log n)";
+		ft_get_index(converted_stack);
+		ft_radix(converted_stack, bench);
+		ft_lstclear(converted_stack);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
+	{
+		ft_adaptive_algo(converted_stack, bench);
+	}
 }

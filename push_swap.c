@@ -6,11 +6,18 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 16:14:13 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:38:58 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
+
+/*
+convertirlo a string separados por espacios, concatenar. (contar los que tenemos?)
+trocear hacerle el split?. trocerar
+validar que sea números, convertirlos a números isdigit? validar
+sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
+*/
 
 int	ft_is_bench(char *str)
 {
@@ -50,31 +57,6 @@ void	separate_flags(char **argv, t_isflag *flag_bench, int *i)
 	}
 }
 
-void	free_split(char **split)
-{
-	int	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
-}
-
-int	args_count(int *i, int argc)
-{
-	int	counter;
-
-	counter = 0;
-	while (counter < (argc - *i))
-	{
-		counter++;
-	}
-	return (counter);
-}
-
 char	**new_args(int argc, char **argv, int *i)
 {
 	int		j;
@@ -83,61 +65,23 @@ char	**new_args(int argc, char **argv, int *i)
 
 	j = 0;
 	param = args_count(i, argc);
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else
+	if (param == 1)
 	{
-		args = (char **)malloc(sizeof(char*) * (param + 1));
-		if (args == NULL)
-			return (NULL);
-		while (argv[*i])
-		{
-			args[j] = ft_strdup(argv[*i]);
-			*i += 1;
-			j++;
-		}
-		args[j] = NULL;
+		args = ft_split(argv[*i], ' ');
+		*i += 1;
+		return (args);
 	}
+	args = (char **)malloc(sizeof(char*) * (param + 1));
+	if (args == NULL)
+		return (NULL);
+	while (argv[*i])
+	{
+		args[j] = ft_strdup(argv[*i]);
+		*i += 1;
+		j++;
+	}
+	args[j] = NULL;
 	return (args);
-}
-
-t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
-{
-	if (ft_is_validint(args) == 0 || ft_isrepeat(args) == 0)
-	{
-		free(bench);
-		free(flag_bench);
-		free_split(args);
-		exit(write(2, "Error\n", 6));
-	}
-	return (input_conversion(args));
-}
-
-void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
-{
-	t_stack	*stack_a;
-
-	stack_a = ft_valid_and_convert(args, bench, flag_bench);
-	if (ft_strncmp(flag_bench -> flag, "--simple", 8) == 0)
-	{
-		bench -> strategy = "Simple / O(n2)";
-		ft_bubble_sort(stack_a, bench);
-	}
-	else if (ft_strncmp(flag_bench -> flag, "--medium", 8) == 0)
-	{
-		bench -> strategy = "Medium / O(n√n)";
-		ft_bucket(stack_a, bench);
-	}
-	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
-	{
-		bench -> strategy = "Complex / O(n log n)";
-		ft_radix(stack_a, bench);
-	}
-	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench->flag)
-	{
-		ft_adaptive_algo(stack_a, bench);
-	}
-	ft_lstclear(stack_a);
 }
 
 int	push_swap(int argc, char **argv)
@@ -146,19 +90,17 @@ int	push_swap(int argc, char **argv)
 	t_bench		*bench;
 	t_isflag	*flag_bench;
 	int			i;
-/* 	int			j; */
 
-/* 	j = 0;
- */	i = 1;
+	i = 1;
 	args = NULL;
 	bench = initialise_bench();
 	flag_bench = initialise_flag_bench();
 	separate_flags(argv, flag_bench, &i);
 	args = new_args(argc, argv, &i);
-	ft_flag_search_parsing(args, flag_bench, bench); // this calls valid and convert, which returns stack_a
-									// select strategy (if not entered via console)
+	ft_flag_search_parsing(args, flag_bench, bench);
 	if (flag_bench -> bench || bench -> disorder == 0)
-		print_bench(bench);
+		print_bench(bench/* , flag_bench */);
+	free_split(args);
 	free(flag_bench);
 	free(bench);
 	return (0);

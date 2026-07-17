@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 10:03:29 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 11:22:41 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,14 @@ void	ft_radix(t_stack *lst_a, t_bench *bench)
 	int			i;
 	int			j;
 	int			max_bits;
-	int			size;
 
 	lst_b = ft_newstack();
 	i = 0;
-	ft_get_index(lst_a);
-	size = lst_a -> size;
 	max_bits = get_max_bits(lst_a->size - 1);
 	while (i < max_bits)
 	{
 		j = 0;
-		while (j < size)
+		while (j < lst_a -> size)
 		{
 			if (((lst_a -> head -> index >> i) & 1) == 1)
 				ft_ra(lst_a, bench);

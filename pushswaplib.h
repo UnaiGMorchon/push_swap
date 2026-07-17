@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 14:52:10 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:42:36 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
-
 
 typedef struct s_list
 {
@@ -79,7 +78,6 @@ t_stack		*ft_newstack(void);
 void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
 void		ft_lstadd_back(t_stack *stack, t_node_list *new_node);
 void		ft_lstclear(t_stack *lst);
-int			ft_lstsize(t_node_list *lst);
 void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);
@@ -98,14 +96,16 @@ void		ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 void		separate_flags(char **argv, t_isflag *flag_bench, int *i);
 int			ft_printf(char const *string, ...);
-char		print_bench(t_bench *bench);
+char		print_bench(t_bench *bench/* , t_isflag *flag_bench */);
 void		free_split(char **split);
+int			args_count(int *i, int argc);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
 void		ft_bucket(t_stack *lst_a, t_bench *bench);
 void		ft_radix(t_stack *lst_a, t_bench *bench);
 void		ft_adaptive_algo(t_stack *lst, t_bench *bench);
+void		ft_shortlist_sort(t_stack *lst, t_bench *bench);
 float		disorder_metric(t_stack *lst);
 t_bench		*initialise_bench(void);
 t_isflag	*initialise_flag_bench(void);

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/15 15:09:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/17 10:36:30 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -209,91 +209,3 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 	}
 	ft_lstclear(lst_b);
 }
-
-/* 
-t_bench	*initialise_bench(void)
-	{
-		t_bench	*bench;
-
-		bench = malloc(sizeof(t_bench));
-		bench -> disorder = 0.0;
-		bench -> strategy = '\0';
-		bench -> total = 0;
-		bench -> sa = 0;
-		bench -> sb = 0;
-		bench -> ss = 0;
-		bench -> pa = 0;
-		bench -> pb = 0;
-		bench -> ra = 0;
-		bench -> rb = 0;
-		bench -> rr = 0;
-		bench -> rra = 0;
-		bench -> rrb = 0;
-		bench -> rrr = 0;
-		return (bench);
-	}
-
-static void	ft_print_list(t_stack *stack, int size)
-{
-	int			counter;
-	t_node_list	*lst_tmp;
-
-	counter = 0;
-	lst_tmp = stack->head;
-	while (counter < size)
-	{
-		printf(
-			"Node %d\n"
-			"  addr       : %p\n"
-			"  content    : %d\n"
-			"  prev       : %p\n"
-			"  next       : %p\n"
-			"  index      : %d\n\n",
-			counter,
-			(void *)lst_tmp,
-			lst_tmp->content,
-			(void *)lst_tmp->prev,
-			(void *)lst_tmp->next,
-			lst_tmp->index
-			);
-		lst_tmp = lst_tmp->next;
-		counter++;
-	}
-}
-	
-int	main(void)
-{
-	t_stack	*lst_a;
-	t_bench	*bench;
-
-	bench = initialise_bench();
-	lst_a = ft_newstack();
-	
-	// STACK_A
-	ft_lstadd_back(lst_a, ft_lstnew(12));
-	ft_lstadd_back(lst_a, ft_lstnew(15));
-	ft_lstadd_back(lst_a, ft_lstnew(1));
-	ft_lstadd_back(lst_a, ft_lstnew(13));
-	ft_lstadd_back(lst_a, ft_lstnew(16));
-	ft_lstadd_back(lst_a, ft_lstnew(18));
-	ft_lstadd_back(lst_a, ft_lstnew(2));
-	ft_lstadd_back(lst_a, ft_lstnew(9));
-	// STACK_B
-	
-	printf("---------------STACK A-----------\n");
-	ft_print_list(lst_a, lst_a -> size);
-
-	ft_bucket(lst_a, bench);
-
-	printf("---------------sorted B--------------- \n");
-	ft_print_list(lst_b, lst_b -> size);
-	printf("---------------%d lista tamaño B-----------\n", lst_b-> size);
-	printf("---------------%d lista tamaño A-----------\n", lst_a-> size);
-
-	printf("---------------resultado A-----------\n");
-	ft_print_list(lst_a, lst_a -> size);
-
-	ft_lstclear(lst_a);
-	return (0);
-}
- */ 
