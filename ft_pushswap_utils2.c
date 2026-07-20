@@ -6,13 +6,13 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 07:49:31 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 13:00:27 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	args_count(int *i, int argc)
+int	ft_args_count(int *i, int argc)
 {
 	int	counter;
 
@@ -24,7 +24,7 @@ int	args_count(int *i, int argc)
 	return (counter);
 }
 
-void	free_split(char **split)
+void	ft_free_split(char **split)
 {
 	int	i;
 
@@ -121,7 +121,7 @@ int	ft_max_number(t_stack *lst_a)
 	8. Move 'temp_list' forward to the next node in the circular list.
 	9. Return the minimum integer value found in the stack.
 */
-
+/* 
 t_node_list	*ft_min_index(t_stack *lst)
 {
 	t_node_list	*tmp;
@@ -139,4 +139,4 @@ t_node_list	*ft_min_index(t_stack *lst)
 		nodes++;
 	}
 	return (min_node);
-}
+} */

@@ -6,13 +6,13 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:52:16 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 07:51:18 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:06:31 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-static void	shortlist_under_three(t_stack *lst, t_bench *bench)
+static void	ft_shortlist_under_three(t_stack *lst, t_bench *bench)
 {
 	int	counter;
 
@@ -40,7 +40,7 @@ static void	shortlist_under_three(t_stack *lst, t_bench *bench)
 	ft_clearstack(lst);
 }
 
-static void	shortlist_under_five(t_stack *lst, t_bench *bench)
+static void	ft_shortlist_under_five(t_stack *lst, t_bench *bench)
 {
 	t_stack		*lst_b;
 	int			min_index;
@@ -57,7 +57,7 @@ static void	shortlist_under_five(t_stack *lst, t_bench *bench)
 		else
 			ft_ra(lst, bench);
 	}
-	shortlist_under_three(lst, bench);
+	ft_shortlist_under_three(lst, bench);
 	if (lst_b -> head -> index < lst_b -> head -> next -> index)
 		ft_sb(lst_b, bench);
 	while (lst_b -> size)
@@ -68,8 +68,8 @@ static void	shortlist_under_five(t_stack *lst, t_bench *bench)
 void	ft_shortlist_sort(t_stack *lst, t_bench *bench)
 {
 	if (lst -> size <= 3)
-		shortlist_under_three(lst, bench);
+		ft_shortlist_under_three(lst, bench);
 	if (lst -> size == 4 || lst -> size == 5)
-		shortlist_under_five(lst, bench);
+		ft_shortlist_under_five(lst, bench);
 	ft_clearstack(lst);
 }

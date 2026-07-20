@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 08:47:23 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:46:08 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
-# include <stdio.h>
 # include "./libft/libft.h"
 
 typedef struct s_alist
@@ -83,17 +82,17 @@ void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);
 int			ft_isrepeat(char **args);
-t_stack		*input_conversion(char **args, t_bench *bench);
+t_stack		*ft_input_conversion(char **args, t_bench *bench);
 long int	ft_atol(const char *nptr);
-char		**new_args(int argc, char **argv, int *i);
+char		**ft_new_args(int argc, char **argv, int *i);
 t_stack		*ft_valid_and_convert(char **args,
 				t_bench *bench, t_isflag *flag_bench);
 void		ft_flag_search_parsing(char **args,
 				t_isflag *flag_bench, t_bench *bench);
-void		separate_flags(char **argv, t_isflag *flag_bench, int *i);
-char		print_bench(t_bench *bench);
-void		free_split(char **split);
-int			args_count(int *i, int argc);
+void		ft_separate_flags(char **argv, t_isflag *flag_bench, int *i);
+char		ft_print_bench(t_bench *bench);
+void		ft_free_split(char **split);
+int			ft_args_count(int *i, int argc);
 
 /* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
@@ -101,8 +100,8 @@ void		ft_bucket(t_stack *lst_a, t_bench *bench);
 void		ft_radix(t_stack *lst_a, t_bench *bench);
 void		ft_adaptive_algo(t_stack *lst, t_bench *bench);
 void		ft_shortlist_sort(t_stack *lst, t_bench *bench);
-float		disorder_metric(t_stack *lst);
-t_bench		*initialise_bench(void);
-t_isflag	*initialise_flag_bench(void);
+float		ft_disorder_metric(t_stack *lst);
+t_bench		*ft_initialise_bench(void);
+t_isflag	*ft_initialise_flag_bench(void);
 
 #endif

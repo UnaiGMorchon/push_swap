@@ -6,13 +6,11 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 08:00:16 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:59:31 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /* take first element atop b and put it atop a. nothing done if b empty */
 /*

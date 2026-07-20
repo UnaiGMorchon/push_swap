@@ -6,12 +6,12 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 07:50:26 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:45:54 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-#include <stdio.h>
+
 /*
 	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
 	2. Assign the current head to the temporary variable (initial guard value).

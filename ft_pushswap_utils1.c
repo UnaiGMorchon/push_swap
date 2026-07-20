@@ -6,11 +6,10 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 07:48:04 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:59:46 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "pushswaplib.h"
 
 /*

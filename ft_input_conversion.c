@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 09:02:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 13:08:25 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_isrepeat(char **args)
 	int			i;
 	int			j;
 	long int	result;
-	long int	temp;
+	long int	tmp;
 
 	i = 0;
 	while (args[i])
@@ -54,8 +54,8 @@ int	ft_isrepeat(char **args)
 		result = ft_atol(args[i]);
 		while (j < i)
 		{
-			temp = ft_atol(args[j]);
-			if (result == temp)
+			tmp = ft_atol(args[j]);
+			if (result == tmp)
 				return (0);
 			j++;
 		}
@@ -64,7 +64,7 @@ int	ft_isrepeat(char **args)
 	return (1);
 }
 
-t_stack	*input_conversion(char **args, t_bench *bench)
+t_stack	*ft_input_conversion(char **args, t_bench *bench)
 {
 	int			i;
 	t_stack		*stack_a;
@@ -78,7 +78,7 @@ t_stack	*input_conversion(char **args, t_bench *bench)
 		ft_stackadd_back(stack_a, ft_newnode(ft_atol(args[i])));
 		i++;
 	}
-	bench -> disorder = disorder_metric(stack_a);
+	bench -> disorder = ft_disorder_metric(stack_a);
 	return (stack_a);
 }
 
@@ -88,13 +88,14 @@ t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
 	{
 		free(bench);
 		free(flag_bench);
-		free_split(args);
+		ft_free_split(args);
 		exit(write(2, "Error\n", 6));
 	}
-	return (input_conversion(args, bench));
+	return (ft_input_conversion(args, bench));
 }
 
-void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench,
+			t_bench *bench)
 {
 	t_stack	*converted_stack;
 
@@ -112,6 +113,7 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
 	{
 		bench -> strategy = "Complex / O(n log n)";
+		ft_get_index(converted_stack);
 		ft_radix(converted_stack, bench);
 		ft_clearstack(converted_stack);
 	}

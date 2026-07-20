@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 09:02:23 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 12:13:04 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_is_flag(char *str)
 	return (0);
 }
 
-void	separate_flags(char **argv, t_isflag *flag_bench, int *i)
+void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i)
 {
 	if (ft_is_bench(argv[*i]) == 1)
 	{
@@ -50,21 +50,21 @@ void	separate_flags(char **argv, t_isflag *flag_bench, int *i)
 	}
 }
 
-char	**new_args(int argc, char **argv, int *i)
+char	**ft_new_args(int argc, char **argv, int *i)
 {
 	int		j;
 	int		param;
 	char	**args;
 
 	j = 0;
-	param = args_count(i, argc);
+	param = ft_args_count(i, argc);
 	if (param == 1)
 	{
 		args = ft_split(argv[*i], ' ');
 		*i += 1;
 		return (args);
 	}
-	args = (char **)malloc(sizeof(char*) * (param + 1));
+	args = malloc(sizeof(*args) * (param + 1));
 	if (args == NULL)
 		return (NULL);
 	while (argv[*i])
@@ -86,14 +86,14 @@ int	push_swap(int argc, char **argv)
 
 	i = 1;
 	args = NULL;
-	bench = initialise_bench();
-	flag_bench = initialise_flag_bench();
-	separate_flags(argv, flag_bench, &i);
-	args = new_args(argc, argv, &i);
+	bench = ft_initialise_bench();
+	flag_bench = ft_initialise_flag_bench();
+	ft_separate_flags(argv, flag_bench, &i);
+	args = ft_new_args(argc, argv, &i);
 	ft_flag_search_parsing(args, flag_bench, bench);
 	if (flag_bench -> bench || (flag_bench -> bench && bench -> disorder == 0))
-		print_bench(bench);
-	free_split(args);
+		ft_print_bench(bench);
+	ft_free_split(args);
 	free(flag_bench);
 	free(bench);
 	return (0);
