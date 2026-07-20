@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:28:34 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/09 10:32:32 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 07:58:31 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_list
  * Devuelve long inicial de 'dst' + long de 'src'.*/
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 /** String a Int -> Convierte " -42" en el entero -42.*/
-long int		ft_atoi(const char *nptr);
+long int		ft_atol(const char *nptr);
 /** Borra memoria -> Llena de ceros ('\\0') 'n' bytes de 's'. Devuelve nada.*/
 void	ft_bzero(void *s, size_t n);
 /** Reserva y limpia -> Reserva memoria con malloc y la llena de ceros.

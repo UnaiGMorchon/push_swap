@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:42:36 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 08:47:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdio.h>
+# include "./libft/libft.h"
 
-typedef struct s_list
+typedef struct s_alist
 {
 	int					content;
 	int					index;
-	struct s_list		*prev;
-	struct s_list		*next;
+	struct s_alist		*prev;
+	struct s_alist		*next;
 }					t_node_list;
 
 typedef struct s_stack
@@ -73,30 +74,24 @@ void		ft_rrr(t_stack *lst_a, t_stack *lst_b, t_bench *bench);
 int			push_swap(int argc, char **argv);
 
 /* UTILS */
-t_node_list	*ft_lstnew(int content);
+t_node_list	*ft_newnode(int content);
 t_stack		*ft_newstack(void);
-void		ft_lstadd_front(t_stack *stack, t_node_list *new_node);
-void		ft_lstadd_back(t_stack *stack, t_node_list *new_node);
-void		ft_lstclear(t_stack *lst);
+void		ft_stackadd_front(t_stack *stack, t_node_list *new_node);
+void		ft_stackadd_back(t_stack *stack, t_node_list *new_node);
+void		ft_clearstack(t_stack *lst);
 void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);
 int			ft_isrepeat(char **args);
-t_stack		*input_conversion(char **args);
-char		*ft_strdup(char *src);
-size_t		ft_strlcat(char *dst, const char *src, size_t size);
-size_t		ft_strlen(const char *s);
-char		**ft_split(char const *s, char c);
-int			ft_isdigit(int c);
-char		*ft_strjoin(char const *s1, char const *s2);
+t_stack		*input_conversion(char **args, t_bench *bench);
 long int	ft_atol(const char *nptr);
 char		**new_args(int argc, char **argv, int *i);
-t_stack		*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench);
-void		ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
+t_stack		*ft_valid_and_convert(char **args,
+				t_bench *bench, t_isflag *flag_bench);
+void		ft_flag_search_parsing(char **args,
+				t_isflag *flag_bench, t_bench *bench);
 void		separate_flags(char **argv, t_isflag *flag_bench, int *i);
-int			ft_printf(char const *string, ...);
-char		print_bench(t_bench *bench/* , t_isflag *flag_bench */);
+char		print_bench(t_bench *bench);
 void		free_split(char **split);
 int			args_count(int *i, int argc);
 

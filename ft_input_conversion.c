@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 11:05:07 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 09:02:58 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_isrepeat(char **args)
 	return (1);
 }
 
-t_stack	*input_conversion(char **args)
+t_stack	*input_conversion(char **args, t_bench *bench)
 {
 	int			i;
 	t_stack		*stack_a;
@@ -75,10 +75,10 @@ t_stack	*input_conversion(char **args)
 		return (NULL);
 	while (args[i])
 	{
-		ft_lstadd_back(stack_a, ft_lstnew(ft_atol(args[i])));
+		ft_stackadd_back(stack_a, ft_newnode(ft_atol(args[i])));
 		i++;
 	}
-	//free_split(args);
+	bench -> disorder = disorder_metric(stack_a);
 	return (stack_a);
 }
 
@@ -91,7 +91,7 @@ t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
 		free_split(args);
 		exit(write(2, "Error\n", 6));
 	}
-	return (input_conversion(args));
+	return (input_conversion(args, bench));
 }
 
 void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
@@ -112,11 +112,11 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench, t_bench *bench)
 	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
 	{
 		bench -> strategy = "Complex / O(n log n)";
-		ft_get_index(converted_stack);
 		ft_radix(converted_stack, bench);
-		ft_lstclear(converted_stack);
+		ft_clearstack(converted_stack);
 	}
-	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0 || !flag_bench -> flag)
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0
+		|| !flag_bench -> flag)
 	{
 		ft_adaptive_algo(converted_stack, bench);
 	}

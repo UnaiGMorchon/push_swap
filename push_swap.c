@@ -6,18 +6,11 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:38:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 09:02:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-
-/*
-convertirlo a string separados por espacios, concatenar. (contar los que tenemos?)
-trocear hacerle el split?. trocerar
-validar que sea números, convertirlos a números isdigit? validar
-sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
-*/
 
 int	ft_is_bench(char *str)
 {
@@ -98,8 +91,8 @@ int	push_swap(int argc, char **argv)
 	separate_flags(argv, flag_bench, &i);
 	args = new_args(argc, argv, &i);
 	ft_flag_search_parsing(args, flag_bench, bench);
-	if (flag_bench -> bench || bench -> disorder == 0)
-		print_bench(bench/* , flag_bench */);
+	if (flag_bench -> bench || (flag_bench -> bench && bench -> disorder == 0))
+		print_bench(bench);
 	free_split(args);
 	free(flag_bench);
 	free(bench);

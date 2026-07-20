@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 11:22:41 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 07:49:54 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	ft_radix(t_stack *lst_a, t_bench *bench)
 			ft_pa(lst_a, lst_b, bench);
 		i++;
 	}
-	ft_lstclear(lst_b);
+	ft_clearstack(lst_b);
 }

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/17 10:37:55 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/20 07:49:31 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,20 +122,21 @@ int	ft_max_number(t_stack *lst_a)
 	9. Return the minimum integer value found in the stack.
 */
 
-int	ft_min_number(t_stack *lst_a)
+t_node_list	*ft_min_index(t_stack *lst)
 {
-	int			temp;
-	t_node_list	*temp_list;
+	t_node_list	*tmp;
+	t_node_list	*min_node;
+	int			nodes;
 
-	temp_list = lst_a -> head;
-	temp = lst_a -> head -> content;
-	while (temp_list -> next != NULL)
+	tmp = lst -> head;
+	min_node = lst ->head;
+	nodes = 0;
+	while (nodes < lst -> size)
 	{
-		if (temp > temp_list -> content)
-		{
-			temp = temp_list -> content;
-		}
-		temp_list = temp_list -> next;
+		if (tmp -> index < min_node -> index)
+			min_node = tmp;
+		tmp = tmp -> next;
+		nodes++;
 	}
-	return (temp);
+	return (min_node);
 }
