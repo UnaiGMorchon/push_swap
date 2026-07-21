@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/21 12:36:42 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 13:16:03 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	ft_adaptive_algo(t_stack *lst, t_bench *bench)
 	else if (bench -> disorder >= 0.5)
 	{
 		bench -> strategy = "Adaptive / O(n log n)";
+		ft_get_index(lst);
 		ft_radix(lst, bench);
 	}
 }
