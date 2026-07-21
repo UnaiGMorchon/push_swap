@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:13:04 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 14:01:10 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	**ft_new_args(int argc, char **argv, int *i)
 	int		j;
 	int		param;
 	char	**args;
+	char	**sub;
+	int		k;
 
 	j = 0;
 	param = ft_args_count(i, argc);
@@ -69,9 +71,24 @@ char	**ft_new_args(int argc, char **argv, int *i)
 		return (NULL);
 	while (argv[*i])
 	{
-		args[j] = ft_strdup(argv[*i]);
-		*i += 1;
-		j++;
+		if (ft_strchr(argv[*i], ' '))
+		{
+			sub = ft_split(argv[*i], ' ');
+			k = 0;
+			while (sub[k] != NULL)
+			{
+				args[j] = ft_strdup(sub[k]);
+				k += 1;
+				j += 1;
+			}
+			*i += 1;
+			ft_free_split(sub);
+		}
+		else
+		{
+			args[j] = ft_strdup(argv[*i]);
+			*i += 1;
+		}
 	}
 	args[j] = NULL;
 	return (args);
