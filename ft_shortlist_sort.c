@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:52:16 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:06:31 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:35:57 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static void	ft_shortlist_under_three(t_stack *lst, t_bench *bench)
 			counter++;
 		}
 	}
-	ft_clearstack(lst);
 }
 
 static void	ft_shortlist_under_five(t_stack *lst, t_bench *bench)

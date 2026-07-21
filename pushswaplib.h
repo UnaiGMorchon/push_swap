@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:46:08 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:39:21 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void		ft_get_index(t_stack *lst_a);
 double		ft_sqroot(int x);
 long int	ft_is_validint(char **args);
 int			ft_isrepeat(char **args);
-t_stack		*ft_input_conversion(char **args, t_bench *bench);
+t_stack		*ft_input_conversion(char **args, t_bench *bench,
+				t_isflag *flag_bench);
 long int	ft_atol(const char *nptr);
 char		**ft_new_args(int argc, char **argv, int *i);
 t_stack		*ft_valid_and_convert(char **args,

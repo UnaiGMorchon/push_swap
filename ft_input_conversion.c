@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 13:08:25 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:36:49 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_isrepeat(char **args)
 	return (1);
 }
 
-t_stack	*ft_input_conversion(char **args, t_bench *bench)
+t_stack	*ft_input_conversion(char **args, t_bench *bench, t_isflag *flag_bench)
 {
 	int			i;
 	t_stack		*stack_a;
@@ -79,6 +79,17 @@ t_stack	*ft_input_conversion(char **args, t_bench *bench)
 		i++;
 	}
 	bench -> disorder = ft_disorder_metric(stack_a);
+	(void)flag_bench;
+	if (bench -> disorder == 0)
+	{
+		if (flag_bench -> bench)
+			ft_print_bench(bench);
+		free(bench);
+		free(flag_bench);
+		ft_clearstack(stack_a);
+		ft_free_split(args);
+		exit(0);
+	}
 	return (stack_a);
 }
 
@@ -91,7 +102,7 @@ t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
 		ft_free_split(args);
 		exit(write(2, "Error\n", 6));
 	}
-	return (ft_input_conversion(args, bench));
+	return (ft_input_conversion(args, bench, flag_bench));
 }
 
 void	ft_flag_search_parsing(char **args, t_isflag *flag_bench,

@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:18:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 12:36:42 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,24 +52,24 @@ float	ft_disorder_metric(t_stack *lst)
 	int			i;
 	int			j;
 
-	mistakes = 0;
-	total_pairs = 0;
+	mistakes = 0.00f;
+	total_pairs = 0.00f;
 	i = 0;
 	while (i < lst -> size - 1)
 	{
-		tmp = lst -> head;
+		tmp = lst -> head -> next;
 		j = i + 1;
-		while (j < lst -> size - 1)
+		while (j++ < lst -> size)
 		{
-			total_pairs++;
-			if (tmp -> content > tmp -> next -> content)
-				mistakes++;
+			total_pairs += 1;
+			if (lst -> head -> content > tmp -> content)
+				mistakes += 1;
 			tmp = tmp -> next;
-			j++;
 		}
-		tmp = tmp -> next;
+		lst -> head = lst -> head -> next;
 		i++;
 	}
+	lst -> head = lst -> head -> next;
 	return (mistakes / total_pairs);
 }
 

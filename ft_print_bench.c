@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 12:18:29 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/20 12:58:55 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 09:01:23 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static char	ft_bench_help(t_bench *bench)
 	ft_putnbr_fd(bench -> rrb, 2);
 	ft_putstr_fd(" rrr: ", 2);
 	ft_putnbr_fd(bench -> rrr, 2);
+	write(2, "\n", 1);
 	return (0);
 }
 
@@ -50,11 +51,11 @@ char	ft_print_bench(t_bench *bench)
 	dec_part = total % 100;
 	ft_putstr_fd("[bench] disorder: ", 2);
 	ft_putnbr_fd(int_part, 2);
-	write(1, ".", 1);
+	write(2, ".", 1);
 	if (dec_part < 10)
 		ft_putchar_fd('0', 2);
 	ft_putnbr_fd(dec_part, 2);
-	write(1, "%", 1);
+	write(2, "%", 1);
 	write(2, "\n", 1);
 	ft_putstr_fd("[bench] strategy: ", 2);
 	ft_putstr_fd(bench -> strategy, 2);

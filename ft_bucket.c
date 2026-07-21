@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:43:35 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 07:54:00 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/21 09:43:04 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,4 +208,5 @@ void	ft_bucket(t_stack *lst_a, t_bench *bench)
 		ft_pa(lst_a, lst_b, bench);
 	}
 	ft_clearstack(lst_b);
+	ft_clearstack(lst_a);
 }
