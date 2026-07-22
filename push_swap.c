@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/21 14:45:49 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:16:01 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ char	**ft_new_args(int argc, char **argv, int *i)
 
 	j = 0;
 	param = ft_args_count(i, argc);
+	if (param == 0)
+		return (NULL);
 	if (param == 1)
 	{
 		args = ft_split(argv[*i], ' ');
@@ -90,6 +92,12 @@ int	push_swap(int argc, char **argv)
 	flag_bench = ft_initialise_flag_bench();
 	ft_separate_flags(argv, flag_bench, &i);
 	args = ft_new_args(argc, argv, &i);
+	if (args == NULL)
+	{
+		free(flag_bench);
+		free(bench);
+		return (-1);
+	}
 	ft_flag_search_parsing(args, flag_bench, bench);
 	if (flag_bench -> bench || (flag_bench -> bench && bench -> disorder == 0))
 		ft_print_bench(bench);
