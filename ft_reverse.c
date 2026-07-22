@@ -6,19 +6,19 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/11 15:54:15 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:45:54 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:49:00 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
-	2. Assign the current head to the temporary variable (initial guard value).
-	3. Security check: if the stack pointer does not exist, exit the function.
-	4. Locate the node right before the current tail and save it as the new tail.
-	5. Shift the stack's head pointer backward to point to the current tail node.
-	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+	1. Declarar un puntero 'tmp_newlast' para guardar el nodo que se convertirá en la nueva cola.
+	2. Asignar la cabeza actual a la variable temporal (valor inicial de guardia).
+	3. Comprobación de seguridad: si el puntero de la pila no existe, salir de la función.
+	4. Localizar el nodo justo anterior a la cola actual y guardarlo como la nueva cola.
+	5. Desplazar el puntero cabeza de la pila hacia atrás para apuntar al nodo cola actual.
+	6. Actualizar el puntero cola de la pila para que apunte al nodo 'tmp_newlast' guardado.
 */
 
 void	ft_rra(t_stack *lst_a, t_bench *bench)
@@ -37,12 +37,12 @@ void	ft_rra(t_stack *lst_a, t_bench *bench)
 }
 
 /*
-	1. Declare a pointer 'tmp_newlast' to save the node that will become new tail
-	2. Assign the current head to the temporary variable (initial guard value).
-	3. Security check: if the stack pointer does not exist, exit the function.
-	4. Locate the node right before the current tail and save it as the new tail.
-	5. Shift the stack's head pointer backward to point to the current tail node.
-	6. Update the stack's tail pointer to point to the saved 'tmp_newlast' node.
+	1. Declarar un puntero 'tmp_newlast' para guardar el nodo que se convertirá en la nueva cola.
+	2. Asignar la cabeza actual a la variable temporal (valor inicial de guardia).
+	3. Comprobación de seguridad: si el puntero de la pila no existe, salir de la función.
+	4. Localizar el nodo justo anterior a la cola actual y guardarlo como la nueva cola.
+	5. Desplazar el puntero cabeza de la pila hacia atrás para apuntar al nodo cola actual.
+	6. Actualizar el puntero cola de la pila para que apunte al nodo 'tmp_newlast' guardado.
 */
 
 void	ft_rrb(t_stack *lst_b, t_bench *bench)
@@ -61,9 +61,9 @@ void	ft_rrb(t_stack *lst_b, t_bench *bench)
 }
 
 /*
-	1. Security check: if either stack A or stack B does not exist, stop.
-	2. Call ft_rra to perform a reverse rotate operation on stack A.
-	3. Call ft_rrb to perform a reverse rotate operation on stack B.
+	1. Comprobación de seguridad: si la pila A o la pila B no existen, detener la ejecución.
+	2. Llamar a ft_rra para realizar una operación de rotación inversa en la pila A.
+	3. Llamar a ft_rrb para realizar una operación de rotación inversa en la pila B.
 */
 
 void	ft_rrr(t_stack *lst_a, t_stack *lst_b, t_bench *bench)

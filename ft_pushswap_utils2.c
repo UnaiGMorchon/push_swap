@@ -6,18 +6,18 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 13:30:26 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:47:36 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare an integer variable 'counter' to accumulate the remaining argument count.
-	2. Initialize 'counter' to 0 before starting the loop.
-	3. Loop while 'counter' is less than the total arguments 'argc' minus the current offset '*i'.
-	4. Increment 'counter' by 1 in each iteration to count remaining elements.
-	5. Return the total count of remaining arguments to the caller.
+	1. Declarar una variable entera 'counter' para acumular el conteo de argumentos restantes.
+	2. Inicializar 'counter' en 0 antes de iniciar el bucle.
+	3. Iterar mientras 'counter' sea menor que el total de argumentos 'argc' menos el desplazamiento actual '*i'.
+	4. Incrementar 'counter' en 1 en cada iteración para contar los elementos restantes.
+	5. Devolver el conteo total de argumentos restantes a quien llamó a la función.
 */
 
 int	ft_args_count(int *i, int argc)
@@ -32,12 +32,12 @@ int	ft_args_count(int *i, int argc)
 	return (counter);
 }
 /*
-	1. Declare an integer variable 'i' to track the current index in the string array.
-	2. Initialize index 'i' to 0 to start traversing from the first string.
-	3. Loop through the null-terminated array of strings until reaching NULL.
-	4. Free dynamically allocated memory for the individual string at index 'i'.
-	5. Increment 'i' to advance to the next string in the array.
-	6. Free the main pointer array after all inner string allocations are cleared.
+	1. Declarar una variable entera 'i' para rastrear el índice actual en el array de cadenas.
+	2. Inicializar el índice 'i' en 0 para comenzar a recorrer desde la primera cadena.
+	3. Recorrer el array de cadenas terminado en NULL hasta llegar a NULL.
+	4. Liberar la memoria asignada dinámicamente para la cadena individual en el índice 'i'.
+	5. Incrementar 'i' para avanzar a la siguiente cadena en el array.
+	6. Liberar el array principal de punteros después de limpiar todas las asignaciones internas.
 */
 
 void	ft_free_split(char **split)
@@ -54,20 +54,20 @@ void	ft_free_split(char **split)
 }
 
 /*
-	1. Declare a double variable 'y' to store the square root approximation.
-	2. Declare an integer 'p' to find the integer part of the square root.
-	3. Declare an integer 'square' to hold the squared value of p.
-	4. Declare an integer 'c' to count the Newton-Raphson iteration cycles.
-	5. Initialize loop counters and calculation variables to 0.
-	6.Loop to find the closest lower integer whose square is less than or equal x
-	7. Increment 'p' to test the next integer value.
-	8. Calculate the square of the next integer to check against 'x'.
-	9. Cast the found integer 'p' into a double type and assign it to 'y'.
-	10. Run a loop exactly 10 times to refine the approximation.
-	11. Apply the Babylonian/Newton-Raphson formula to find a closer root.
-	12.If the square of the approximation exactly matches x,return it immediately
-	13. Increment the iteration cycle counter 'c' by 1.
-	14. Return the calculated square root approximation value.
+	1. Declarar una variable double 'y' para almacenar la aproximación de la raíz cuadrada.
+	2. Declarar un entero 'p' para encontrar la parte entera de la raíz cuadrada.
+	3. Declarar un entero 'square' para contener el valor al cuadrado de p.
+	4. Declarar un entero 'c' para contar los ciclos de iteración de Newton-Raphson.
+	5. Inicializar los contadores de bucle y las variables de cálculo en 0.
+	6. Bucle para encontrar el entero inferior más cercano cuyo cuadrado sea menor o igual a x.
+	7. Incrementar 'p' para probar el siguiente valor entero.
+	8. Calcular el cuadrado del siguiente entero para compararlo con 'x'.
+	9. Convertir el entero 'p' encontrado a tipo double y asignarlo a 'y'.
+	10. Ejecutar un bucle exactamente 10 veces para refinar la aproximación.
+	11. Aplicar la fórmula babilónica / Newton-Raphson para encontrar una raíz más cercana.
+	12. Si el cuadrado de la aproximación coincide exactamente con x, devolverlo inmediatamente.
+	13. Incrementar el contador de ciclos de iteración 'c' en 1.
+	14. Devolver el valor de aproximación de la raíz cuadrada calculado.
 */
 
 double	ft_sqroot(int x)
@@ -97,15 +97,15 @@ double	ft_sqroot(int x)
 }
 
 /*
-	1. Declare 'temp' to store the maximum integer content found.
-	2. Declare a pointer 'temp_list' to iterate through stack A nodes.
-	3. Set 'temp_list' to the head node of stack A to begin processing.
-	4. Initialize 'temp' with the content of the first node.
-	5.Loop through the stack nodes using stack size to avoid infinite circ loops.
-	6. If the current node content is greater than the saved 'temp', update it.
-	7. Store the higher content value into the 'temp' variable.
-	8. Move 'temp_list' forward to the next node in the circular list.
-	9. Return the maximum integer value found in the stack.
+	1. Declarar 'temp' para almacenar el contenido entero máximo encontrado.
+	2. Declarar un puntero 'temp_list' para iterar a través de los nodos de la pila A.
+	3. Establecer 'temp_list' en el nodo cabeza de la pila A para comenzar el procesamiento.
+	4. Inicializar 'temp' con el contenido del primer nodo.
+	5. Recorrer los nodos de la pila usando el tamaño de la pila para evitar bucles circulares infinitos.
+	6. Si el contenido del nodo actual es mayor que el 'temp' guardado, actualizarlo.
+	7. Almacenar el valor de contenido más alto en la variable 'temp'.
+	8. Mover 'temp_list' hacia adelante al siguiente nodo en la lista circular.
+	9. Devolver el valor entero máximo encontrado en la pila.
 */
 /* 
 int	ft_max_number(t_stack *lst_a)
@@ -127,15 +127,15 @@ int	ft_max_number(t_stack *lst_a)
 } */
 
 /*
-	1. Declare 'temp' to store the minimum integer content found.
-	2. Declare a pointer 'temp_list' to iterate through stack A nodes.
-	3. Set 'temp_list' to the head node of stack A to begin processing.
-	4. Initialize 'temp' with the content of the first node.
-	5.Loop through the stack nodes using stack size to avoid infinite circ loops.
-	6. If the current node content is lower than the saved 'temp', update it.
-	7. Store the lower content value into the 'temp' variable.
-	8. Move 'temp_list' forward to the next node in the circular list.
-	9. Return the minimum integer value found in the stack.
+	1. Declarar 'temp' para almacenar el contenido entero mínimo encontrado.
+	2. Declarar un puntero 'temp_list' para iterar a través de los nodos de la pila A.
+	3. Establecer 'temp_list' en el nodo cabeza de la pila A para comenzar el procesamiento.
+	4. Inicializar 'temp' con el contenido del primer nodo.
+	5. Recorrer los nodos de la pila usando el tamaño de la pila para evitar bucles circulares infinitos.
+	6. Si el contenido del nodo actual es menor que el 'temp' guardado, actualizarlo.
+	7. Almacenar el valor de contenido más bajo en la variable 'temp'.
+	8. Mover 'temp_list' hacia adelante al siguiente nodo en la lista circular.
+	9. Devolver el valor entero mínimo encontrado en la pila.
 */
 /* 
 t_node_list	*ft_min_index(t_stack *lst)

@@ -6,20 +6,20 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 12:18:29 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/22 13:29:30 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:43:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Print individual swap operation counts (sa, sb, ss) to standard error (fd 2).
-	2. Print push operation counts (pa, pb) to standard error.
-	3. Output a newline to format the operation breakdown neatly.
-	4. Print single rotate operation counts (ra, rb, rr) to standard error.
-	5. Print reverse rotate operation counts (rra, rrb, rrr) to standard error.
-	6. Write a final newline character to end the metrics output block.
-	7. Return 0 to complete function execution.
+	1. Imprimir los conteos de operaciones individuales de intercambio (sa, sb, ss) en la salida de error estándar (fd 2).
+	2. Imprimir los conteos de operaciones de empuje (pa, pb) en la salida de error estándar.
+	3. Imprimir un salto de línea para dar un formato limpio al desglose de operaciones.
+	4. Imprimir los conteos de operaciones individuales de rotación (ra, rb, rr) en la salida de error estándar.
+	5. Imprimir los conteos de operaciones de rotación inversa (rra, rrb, rrr) en la salida de error estándar.
+	6. Escribir un carácter de salto de línea final para terminar el bloque de salida de métricas.
+	7. Devolver 0 para completar la ejecución de la función.
 */
 
 static char	ft_bench_help(t_bench *bench)
@@ -50,18 +50,18 @@ static char	ft_bench_help(t_bench *bench)
 	return (0);
 }
 /*
-	1. Declare integer variables for the integer part, decimal part, and total scaled disorder.
-	2. Convert the disorder float metric into a scaled integer representation (multiplied by 10000).
-	3. Calculate the integer component of the disorder percentage.
-	4. Calculate the two-decimal fractional component of the disorder percentage.
-	5. Output the disorder percentage label and formatted integer part to standard error.
-	6. Print the decimal point separator.
-	7. Append a leading zero if the decimal part is less than 10 for accurate formatting.
-	8. Print the decimal part along with the percent sign and newline.
-	9. Print the selected algorithm strategy label stored in the bench structure.
-	10. Output the total count of executed push_swap instructions.
-	11. Call helper function 'ft_bench_help' to print detailed individual operation counts.
-	12. Return 0 to indicate successful output completion.
+	1. Declarar variables enteras para la parte entera, la parte decimal y el desorden total escalado.
+	2. Convertir la métrica flotante de desorden en una representación entera escalada (multiplicada por 10000).
+	3. Calcular el componente entero del porcentaje de desorden.
+	4. Calcular el componente fraccionario de dos decimales del porcentaje de desorden.
+	5. Imprimir la etiqueta del porcentaje de desorden y la parte entera formateada en la salida de error estándar.
+	6. Imprimir el separador de punto decimal.
+	7. Añadir un cero a la izquierda si la parte decimal es menor a 10 para garantizar un formato preciso.
+	8. Imprimir la parte decimal junto con el signo de porcentaje y un salto de línea.
+	9. Imprimir la etiqueta de la estrategia del algoritmo seleccionada almacenada en la estructura bench.
+	10. Imprimir el conteo total de instrucciones de push_swap ejecutadas.
+	11. Llamar a la función auxiliar 'ft_bench_help' para imprimir los conteos detallados de cada operación individual.
+	12. Devolver 0 para indicar la finalización con éxito de la salida.
 */
 
 char	ft_print_bench(t_bench *bench)

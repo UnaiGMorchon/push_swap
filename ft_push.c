@@ -6,23 +6,22 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:59:31 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:44:20 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-/* take first element atop b and put it atop a. nothing done if b empty */
 /*
-	1. Declare a pointer variable 'node_to_move' to store the node from B.
-	2. Security check: if pointers are NULL or stack B is empty, stop.
-	3. Save the current head of stack B into 'node_to_move'.
-	4. Move stack B's head pointer to the next node in the list.
-	5. If B had only 1 node, set head and tail to NULL (stack B becomes empty).
-	6. If B had more nodes, reconnect head's prev and tail's next to keep it circ
-	7. Decrement the total size counter of stack B by 1.
-	8. Isolate the moved node by setting its next and prev pointers to NULL.
-	9. Use ft_stackadd_front to insert the isolated node at the top of stack A.
+	1. Declarar una variable puntero 'node_to_move' para almacenar el nodo proveniente de la pila B.
+	2. Comprobación de seguridad: si los punteros son NULL o la pila B está vacía, detener la ejecución.
+	3. Guardar la cabeza actual de la pila B en 'node_to_move'.
+	4. Mover el puntero cabeza de la pila B al siguiente nodo de la lista.
+	5. Si la pila B solo tenía 1 nodo, establecer cabeza y cola a NULL (la pila B queda vacía).
+	6. Si la pila B tenía más nodos, reconectar prev de la cabeza y next de la cola para mantenerla circular.
+	7. Decrementar en 1 el contador del tamaño total de la pila B.
+	8. Aislar el nodo movido estableciendo sus punteros next y prev a NULL.
+	9. Usar ft_stackadd_front para insertar el nodo aislado en la parte superior de la pila A.
 */
 
 void	ft_pa(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
@@ -52,7 +51,17 @@ void	ft_pa(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 	write(1, "pa\n", 3);
 }
 
-/* take first element atop a and put it atop b. nothing done if a empty */
+/*
+	1. Declarar una variable puntero 'tmp' para almacenar el nodo extraído de la pila A.
+	2. Comprobación de seguridad: si los punteros son NULL o la pila A está vacía, detener la ejecución.
+	3. Guardar la cabeza actual de la pila A en 'tmp'.
+	4. Mover el puntero cabeza de la pila A al siguiente nodo de la lista.
+	5. Si la pila A solo tenía 1 nodo, establecer cabeza y cola a NULL (la pila A queda vacía).
+	6. Si la pila A tenía más nodos, reconectar prev de la cabeza y next de la cola para mantenerla circular.
+	7. Decrementar en 1 el contador del tamaño total de la pila A.
+	8. Aislar el nodo movido estableciendo sus punteros next y prev a NULL.
+	9. Usar ft_stackadd_front para insertar el nodo aislado en la parte superior de la pila B.
+*/
 void	ft_pb(t_stack *lst_b, t_stack *lst_a, t_bench *bench)
 {
 	t_node_list	*tmp;

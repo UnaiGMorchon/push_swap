@@ -6,19 +6,19 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:19:02 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 13:31:03 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:48:14 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare an integer variable 'bits' to count the maximum bit length needed.
-	2. Initialize 'bits' counter to 0 before processing the size.
-	3. Loop while 'size' is greater than 0 to calculate binary bit depth.
-	4. Divide 'size' by 2 in each iteration to shift down bit by bit.
-	5. Increment 'bits' counter to keep track of total binary digits required.
-	6. Return the total number of bits required to represent the largest index value.
+	1. Declarar una variable entera 'bits' para contar la longitud máxima de bits necesaria.
+	2. Inicializar el contador 'bits' en 0 antes de procesar el tamaño.
+	3. Iterar mientras 'size' sea mayor que 0 para calcular la profundidad de bits binarios.
+	4. Dividir 'size' entre 2 en cada iteración para desplazar bit a bit.
+	5. Incrementar el contador 'bits' para realizar el seguimiento del total de dígitos binarios requeridos.
+	6. Devolver el número total de bits necesarios para representar el valor de índice más grande.
 */
 
 static int	ft_get_max_bits(int size)
@@ -34,19 +34,19 @@ static int	ft_get_max_bits(int size)
 	return (bits);
 }
 /*
-	1. Declare pointer 'lst_b' for auxiliary stack, counter 'i', 'max_bits', and 'size'.
-	2. Initialize empty stack 'lst_b' to hold elements during binary sorting passes.
-	3. Reset current bit position counter 'i' to 0.
-	4. Determine max bits needed based on highest index (stack size minus one).
-	5. Loop through each bit position from 0 up to 'max_bits' - 1.
-	6. Store current size of 'lst_a' to iterate through all elements in current pass.
-	7. Loop through all elements currently in stack A.
-	8. Check if the i-th bit of the current head node's index is equal to 1.
-	9. If bit is 1, rotate stack A with 'ft_ra' to keep element in stack A.
-	10. If bit is 0, push top element from stack A to stack B using 'ft_pb'.
-	11. Push all elements from stack B back to stack A using 'ft_pa' to finish pass.
-	12. Increment bit index 'i' to evaluate the next binary significance level.
-	13. Free all memory associated with auxiliary stack B after sorting completes.
+	1. Declarar el puntero 'lst_b' para la pila auxiliar, el contador 'i', 'max_bits' y 'size'.
+	2. Inicializar la pila vacía 'lst_b' para albergar elementos durante las pasadas de ordenación binaria.
+	3. Reiniciar el contador de posición de bit actual 'i' a 0.
+	4. Determinar los bits máximos necesarios según el índice más alto (tamaño de la pila menos uno).
+	5. Recorrer cada posición de bit desde 0 hasta 'max_bits' - 1.
+	6. Guardar el tamaño actual de 'lst_a' para iterar a través de todos los elementos en la pasada actual.
+	7. Recorrer todos los elementos actualmente en la pila A.
+	8. Comprobar si el i-ésimo bit del índice del nodo cabeza actual es igual a 1.
+	9. Si el bit es 1, rotar la pila A con 'ft_ra' para mantener el elemento en la pila A.
+	10. Si el bit es 0, empujar el elemento superior de la pila A a la pila B usando 'ft_pb'.
+	11. Empujar todos los elementos de la pila B de vuelta a la pila A usando 'ft_pa' para finalizar la pasada.
+	12. Incrementar el índice de bit 'i' para evaluar el siguiente nivel de significación binaria.
+	13. Liberar toda la memoria asociada con la pila auxiliar B una vez finalizada la ordenación.
 */
 
 void	ft_radix(t_stack *lst_a, t_bench *bench)

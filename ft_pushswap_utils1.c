@@ -6,21 +6,21 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 12:20:17 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/20 12:59:46 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:45:54 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare a pointer variable 'new_node' of type t_node_list.
-	2. Allocate memory for one node structure using malloc.
-	3. Security check: if malloc fails and returns NULL, exit returning NULL.
-	4. Initialize the next pointer of the new node to NULL.
-	5. Initialize the prev pointer of the new node to NULL.
-	6. Set the default index value of the node to 0.
-	7. Assign the integer 'content' passed as argument to the node's content.
-	8. Return the successfully created and initialized new node.
+	1. Declarar una variable puntero 'new_node' de tipo t_node_list.
+	2. Asignar memoria para la estructura de un nodo usando malloc.
+	3. Comprobación de seguridad: si malloc falla y devuelve NULL, salir devolviendo NULL.
+	4. Inicializar el puntero next del nuevo nodo a NULL.
+	5. Inicializar el puntero prev del nuevo nodo a NULL.
+	6. Establecer el valor de índice por defecto del nodo en 0.
+	7. Asignar el entero 'content' pasado como argumento al contenido del nodo.
+	8. Devolver el nuevo nodo creado e inicializado correctamente.
 */
 
 t_node_list	*ft_newnode(int content)
@@ -38,13 +38,13 @@ t_node_list	*ft_newnode(int content)
 }
 
 /*
-	1. Declare a pointer variable 'stack' of type t_stack.
-	2. Allocate memory for the stack control structure using malloc.
-	3. Security check: if malloc fails and returns NULL, exit returning NULL.
-	4. Initialize the head pointer of the stack to NULL (starts empty).
-	5. Initialize the tail pointer of the stack to NULL (starts empty).
-	6. Set the initial size counter of the stack to 0.
-	7. Return the successfully created and initialized stack structure.
+	1. Declarar una variable puntero 'stack' de tipo t_stack.
+	2. Asignar memoria para la estructura de control de la pila usando malloc.
+	3. Comprobación de seguridad: si malloc falla y devuelve NULL, salir devolviendo NULL.
+	4. Inicializar el puntero cabeza (head) de la pila a NULL (comienza vacía).
+	5. Inicializar el puntero cola (tail) de la pila a NULL (comienza vacía).
+	6. Establecer el contador de tamaño inicial de la pila en 0.
+	7. Devolver la estructura de la pila creada e inicializada correctamente.
 */
 
 t_stack	*ft_newstack(void)
@@ -61,17 +61,17 @@ t_stack	*ft_newstack(void)
 }
 
 /*
-	1. Security check: if stack or new_node pointers are NULL, stop.
-	2. If stack tail is NULL, the list is completely empty.
-	3. Set both head and tail pointers of the stack to the new_node.
-	4. Point new_node's next and prev to itself to form the first circular loop.
-	5. If the list is not empty, execute the else block for existing elements.
-	6. Connect new_node's next to the current head of the stack.
-	7. Connect new_node's prev to the tail of the stack for circularity.
-	8. Update the old head's prev to point back to the new_node.
-	9. Update the tail's next to point forward to the new_node.
-	10. Update the stack's head pointer to make new_node the new first element.
-	11. Increment the total size counter of the stack by 1.
+	1. Comprobación de seguridad: si los punteros de stack o new_node son NULL, detener.
+	2. Si la cola (tail) de la pila es NULL, la lista está completamente vacía.
+	3. Establecer tanto la cabeza como la cola de la pila al nuevo nodo.
+	4. Apuntar next y prev de new_node a sí mismo para formar el primer bucle circular.
+	5. Si la lista no está vacía, ejecutar el bloque else para elementos existentes.
+	6. Conectar next de new_node a la cabeza actual de la pila.
+	7. Conectar prev de new_node a la cola de la pila para mantener la circularidad.
+	8. Actualizar el prev de la cabeza antigua para que apunte de vuelta a new_node.
+	9. Actualizar el next de la cola para que apunte hacia adelante a new_node.
+	10. Actualizar el puntero cabeza de la pila para hacer de new_node el nuevo primer elemento.
+	11. Incrementar en 1 el contador del tamaño total de la pila.
 */
 
 void	ft_stackadd_front(t_stack *stack, t_node_list *new_node)
@@ -96,19 +96,19 @@ void	ft_stackadd_front(t_stack *stack, t_node_list *new_node)
 	stack -> size += 1;
 }
 /*
-	1. Security check: if stack or new_node pointers are NULL, stop.
-	2. If stack head is NULL, the list is completely empty.
-	3. Set both head and tail pointers of the stack to the new_node.
-	4. Point new_node's next and prev to itself to form the first circular loop.
-	5. If the list is not empty, execute the else block for existing elements.
-	6. Connect new_node's prev to the current tail of the stack.
-	7. Connect new_node's next to the current head of the stack.
-	8. Update the old tail's next to point forward to the new_node.
-	9. Update the head's prev to point back to the new_node.
-	10. Update the stack's tail pointer to make new_node the new last element.
-	11. Enforce circularity by linking head's prev to the updated tail.
-	12. Enforce circularity by linking tail's next to the updated head.
-	13. Increment the total size counter of the stack by 1.
+	1. Comprobación de seguridad: si los punteros de stack o new_node son NULL, detener.
+	2. Si la cabeza (head) de la pila es NULL, la lista está completamente vacía.
+	3. Establecer tanto la cabeza como la cola de la pila al nuevo nodo.
+	4. Apuntar next y prev de new_node a sí mismo para formar el primer bucle circular.
+	5. Si la lista no está vacía, ejecutar el bloque else para elementos existentes.
+	6. Conectar prev de new_node a la cola actual de la pila.
+	7. Conectar next de new_node a la cabeza actual de la pila.
+		8. Actualizar el next de la cola antigua para que apunte hacia adelante a new_node.
+	9. Actualizar el prev de la cabeza para que apunte de vuelta a new_node.
+	10. Actualizar el puntero cola de la pila para hacer de new_node el nuevo último elemento.
+	11. Reforzar la circularidad vinculando prev de la cabeza a la cola actualizada.
+	12. Reforzar la circularidad vinculando next de la cola a la cabeza actualizada.
+	13. Incrementar en 1 el contador del tamaño total de la pila.
 */
 
 void	ft_stackadd_back(t_stack *stack, t_node_list *new_node)
@@ -135,20 +135,20 @@ void	ft_stackadd_back(t_stack *stack, t_node_list *new_node)
 	stack -> size += 1;
 }
 /*
-	1. Declare 'buffer' to save the next node pointer before freeing current one
-	2. Declare 'tmp' to iterate through the stack nodes.
-	3. Initialize 'buffer' to NULL as a defensive programming mechanism.
-	4. Security check: if the stack pointer does not exist, exit the function.
-	5. Point 'tmp' to the first node (head) of the stack to begin the loop.
-	6. Loop through the stack until all nodes are processed based on stack size.
-	7. Save the next node's address into 'buffer' to prevent memory loss.
-	8. Free the memory allocated for the current node pointed by 'tmp'.
-	9. Move 'tmp' to the next node saved in the buffer.
-	10.Decrement the stack size counter for every node that is successfully freed
-	11. Once the loop ends, set the stack's head pointer to NULL.
-	12. Set the stack's tail pointer to NULL.
-	13. Ensure the stack size counter is explicitly set to 0.
-	14. Free the memory allocated for the main stack control structure.
+	1. Declarar 'buffer' para guardar el puntero del siguiente nodo antes de liberar el actual.
+	2. Declarar 'tmp' para iterar a través de los nodos de la pila.
+	3. Inicializar 'buffer' en NULL como mecanismo de programación defensiva.
+	4. Comprobación de seguridad: si el puntero de la pila no existe, salir de la función.
+	5. Apuntar 'tmp' al primer nodo (cabeza) de la pila para comenzar el bucle.
+	6. Recorrer la pila hasta que todos los nodos sean procesados según el tamaño de la pila.
+	7. Guardar la dirección del siguiente nodo en 'buffer' para evitar pérdidas de memoria.
+	8. Liberar la memoria asignada para el nodo actual apuntado por 'tmp'.
+	9. Mover 'tmp' al siguiente nodo guardado en el buffer.
+	10. Decrementar el contador de tamaño de la pila por cada nodo liberado con éxito.
+	11. Una vez finalizado el bucle, establecer el puntero cabeza de la pila a NULL.
+	12. Establecer el puntero cola de la pila a NULL.
+	13. Asegurar que el contador de tamaño de la pila se establezca explícitamente en 0.
+	14. Liberar la memoria asignada para la estructura de control principal de la pila.
 */
 
 void	ft_clearstack(t_stack *lst)

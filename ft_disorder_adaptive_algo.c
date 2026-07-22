@@ -6,20 +6,20 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 13:35:00 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:41:19 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare a pointer 'bench' to hold the structure for tracking metrics/operations.
-	2. Allocate memory dynamically for the 't_bench' structure using malloc.
-	3. Initialize the disorder metric float field to 0.0.
-	4. Set the initial strategy name pointer to NULL.
-	5. Set the total operations counter to 0.
-	6. Reset all individual operation counters (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr) to 0.
-	7. Return the pointer to the newly allocated and initialized bench structure.
+	1. Declarar un puntero 'bench' para contener la estructura de seguimiento de métricas/operaciones.
+	2. Asignar memoria dinámicamente para la estructura 't_bench' usando malloc.
+	3. Inicializar el campo flotante de la métrica de desorden en 0.0.
+	4. Establecer el puntero inicial del nombre de la estrategia en NULL.
+	5. Establecer el contador total de operaciones en 0.
+	6. Reiniciar todos los contadores de operaciones individuales (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr) a 0.
+	7. Devolver el puntero a la estructura bench recién asignada e inicializada.
 */
 
 t_bench	*ft_initialise_bench(void)
@@ -45,11 +45,11 @@ t_bench	*ft_initialise_bench(void)
 }
 
 /*
-	1. Declare a pointer 'flag_bench' to hold the wrapper structure for flags and metrics.
-	2. Allocate memory dynamically for the 't_isflag' structure using malloc.
-	3. Initialize the 'flag' pointer field to NULL.
-	4. Initialize the 'bench' pointer field to NULL.
-	5. Return the pointer to the newly allocated flag/bench structure.
+	1. Declarar un puntero 'flag_bench' para contener la estructura contenedora de banderas y métricas.
+	2. Asignar memoria dinámicamente para la estructura 't_isflag' usando malloc.
+	3. Inicializar el campo del puntero 'flag' en NULL.
+	4. Inicializar el campo del puntero 'bench' en NULL.
+	5. Devolver el puntero a la estructura flag/bench recién asignada.
 */
 
 t_isflag	*ft_initialise_flag_bench(void)
@@ -62,20 +62,20 @@ t_isflag	*ft_initialise_flag_bench(void)
 	return (flag_bench);
 }
 /*
-	1. Declare a temporary pointer 'tmp' to traverse nodes ahead of the current head.
-	2. Declare 'mistakes' as a float to count pair inversions (out-of-order elements).
-	3. Declare 'total_pairs' as a float to count total unique pairs compared.
-	4. Declare loop counters 'i' and 'j' for nested iteration over the stack.
-	5. Initialize mistake and total pair counters to 0.00f.
-	6. Run an outer loop 'i' to evaluate each element as the primary element for comparison.
-	7. Set 'tmp' to point to the node immediately following the current head node.
-	8. Run an inner loop 'j' to compare the head node against all remaining nodes after it.
-	9. Increment the 'total_pairs' count for every pair evaluated.
-	10. Check if current head value is greater than 'tmp' value; if true, increment 'mistakes'.
-	11. Move 'tmp' to the next node in the list for the inner comparison loop.
-	12. Shift 'head' to the next node to advance the primary comparison point.
-	13. Restore/advance the head reference after finishing the loops to keep list state.
-	14. Return the disorder ratio by dividing total mistakes by total pair comparisons.
+	1. Declarar un puntero temporal 'tmp' para recorrer los nodos por delante de la cabeza actual.
+	2. Declarar 'mistakes' como un número flotante para contar las inversiones de parejas (elementos desordenados).
+	3. Declarar 'total_pairs' como un número flotante para contar el total de parejas únicas comparadas.
+	4. Declarar los contadores de bucle 'i' y 'j' para la iteración anidada sobre la pila.
+	5. Inicializar los contadores de errores y total de parejas a 0.00f.
+	6. Ejecutar un bucle externo 'i' para evaluar cada elemento como el elemento principal de comparación.
+	7. Establecer 'tmp' para que apunte al nodo inmediatamente posterior al nodo cabeza actual.
+	8. Ejecutar un bucle interno 'j' para comparar el nodo cabeza con todos los nodos restantes después de él.
+	9. Incrementar la cuenta de 'total_pairs' por cada pareja evaluada.
+	10. Comprobar si el valor de la cabeza actual es mayor que el valor de 'tmp'; si es así, incrementar 'mistakes'.
+	11. Mover 'tmp' al siguiente nodo de la lista para el bucle de comparación interno.
+	12. Desplazar 'head' al siguiente nodo para avanzar el punto de comparación principal.
+	13. Restaurar/avanzar la referencia de la cabeza tras finalizar los bucles para mantener el estado de la lista.
+	14. Devolver el coeficiente de desorden dividiendo los errores totales entre las comparaciones totales de parejas.
 */
 
 float	ft_disorder_metric(t_stack *lst)
@@ -108,14 +108,14 @@ float	ft_disorder_metric(t_stack *lst)
 }
 
 /*
-	1. Check if the stack size is 5 or smaller.
-	2. Set strategy string to "Adaptive / O(n2)", index elements, and call 'ft_shortlist_sort'.
-	3. Else, check if the calculated disorder metric is low (less than 0.2).
-	4. Set strategy string to "Adaptive / O(n2)" and call 'ft_bubble_sort' for nearly sorted data.
-	5. Else, check if disorder is moderate (between 0.2 inclusive and 0.5 exclusive).
-	6. Set strategy string to "Adaptive / O(n√n)" and call 'ft_bucket' algorithm.
-	7. Else, if disorder is high (greater than or equal to 0.5).
-	8. Set strategy string to "Adaptive / O(n log n)", index elements, and call 'ft_radix'.
+	1. Comprobar si el tamaño de la pila es igual o menor a 5.
+	2. Establecer la cadena de estrategia en "Adaptive / O(n2)", indexar elementos y llamar a 'ft_shortlist_sort'.
+	3. En caso contrario, comprobar si la métrica de desorden calculada es baja (menor a 0.2).
+	4. Establecer la cadena de estrategia en "Adaptive / O(n2)" y llamar a 'ft_bubble_sort' para datos casi ordenados.
+	5. En caso contrario, comprobar si el desorden es moderado (entre 0.2 inclusive y 0.5 exclusivo).
+	6. Establecer la cadena de estrategia en "Adaptive / O(n√n)" y llamar al algoritmo 'ft_bucket'.
+	7. En caso contrario, si el desorden es alto (mayor o igual a 0.5).
+	8. Establecer la cadena de estrategia en "Adaptive / O(n log n)", indexar elementos y llamar a 'ft_radix'.
 */
 
 void	ft_adaptive_algo(t_stack *lst, t_bench *bench)

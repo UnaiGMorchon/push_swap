@@ -6,22 +6,22 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 12:52:16 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 13:32:11 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:50:25 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Declare an integer variable 'counter' to keep track of iterations for size 3 lists.
-	2. Initialize 'counter' to 0 before starting sorting logic.
-	3. If the stack size is exactly 2, compare the top two elements.
-	4. If the first element's index is greater than the second, swap them using 'ft_sa'.
-	5. If the stack size is 3, start an evaluation loop to fix stack order.
-	6. Swap top elements with 'ft_sa' if current head is larger than the next element.
-	7. Exit function early if elements are already in perfect ascending order.
-	8. Otherwise, reverse rotate stack with 'ft_rra' to shift elements into position.
-	9. Increment 'counter' to prevent infinite execution passes.
+	1. Declarar una variable entera 'counter' para hacer el seguimiento de las iteraciones en listas de tamaño 3.
+	2. Inicializar 'counter' en 0 antes de comenzar la lógica de ordenación.
+	3. Si el tamaño de la pila es exactamente 2, comparar los dos elementos superiores.
+	4. Si el índice del primer elemento es mayor que el del segundo, intercambiarlos usando 'ft_sa'.
+	5. Si el tamaño de la pila es 3, iniciar un bucle de evaluación para corregir el orden de la pila.
+	6. Intercambiar los elementos superiores con 'ft_sa' si la cabeza actual es mayor que el siguiente elemento.
+	7. Salir de la función anticipadamente si los elementos ya están en perfecto orden ascendente.
+	8. En caso contrario, aplicar una rotación inversa a la pila con 'ft_rra' para desplazar los elementos a su posición.
+	9. Incrementar 'counter' para evitar pasadas de ejecución infinitas.
 */
 
 static void	ft_shortlist_under_three(t_stack *lst, t_bench *bench)
@@ -51,16 +51,16 @@ static void	ft_shortlist_under_three(t_stack *lst, t_bench *bench)
 	}
 }
 /*
-	1. Declare pointer 'lst_b' for auxiliary stack and integer 'min_index' to track targets.
-	2. Allocate and initialize an empty stack 'lst_b'.
-	3. Initialize target 'min_index' to 0 to search for smallest elements sequentially.
-	4. Loop while primary stack size is greater than 3 elements.
-	5. If the current head node matches 'min_index', push it to stack B using 'ft_pb' and increment target.
-	6. Otherwise, rotate stack A with 'ft_ra' to scan the next element.
-	7. Sort remaining 3 elements in stack A using 'ft_shortlist_under_three'.
-	8. Ensure stack B is in descending order by calling 'ft_sb' if needed.
-	9. Push all elements back from stack B to stack A using 'ft_pa'.
-	10. Free memory allocated for auxiliary stack B.
+	1. Declarar el puntero 'lst_b' para la pila auxiliar y el entero 'min_index' para rastrear los objetivos.
+	2. Asignar e inicializar una pila vacía 'lst_b'.
+	3. Inicializar el objetivo 'min_index' en 0 para buscar secuencialmente los elementos más pequeños.
+	4. Iterar mientras el tamaño de la pila principal sea mayor que 3 elementos.
+	5. Si el nodo cabeza actual coincide con 'min_index', empujarlo a la pila B usando 'ft_pb' e incrementar el objetivo.
+	6. En caso contrario, rotar la pila A con 'ft_ra' para escanear el siguiente elemento.
+	7. Ordenar los 3 elementos restantes en la pila A usando 'ft_shortlist_under_three'.
+	8. Asegurar que la pila B quede en orden descendente llamando a 'ft_sb' si es necesario.
+	9. Empujar todos los elementos de vuelta de la pila B a la pila A usando 'ft_pa'.
+	10. Liberar la memoria asignada para la pila auxiliar B.
 */
 
 static void	ft_shortlist_under_five(t_stack *lst, t_bench *bench)
@@ -88,9 +88,9 @@ static void	ft_shortlist_under_five(t_stack *lst, t_bench *bench)
 	ft_clearstack(lst_b);
 }
 /*
-	1. Check if stack size is 3 or smaller, and delegate to 'ft_shortlist_under_three'.
-	2. Check if stack size is 4 or 5, and delegate to 'ft_shortlist_under_five'.
-	3. Free memory associated with the main stack structure after sorting completes.
+	1. Comprobar si el tamaño de la pila es 3 o menor, y delegar en 'ft_shortlist_under_three'.
+	2. Comprobar si el tamaño de la pila es 4 o 5, y delegar en 'ft_shortlist_under_five'.
+	3. Liberar la memoria asociada con la estructura de la pila principal una vez finalizada la ordenación.
 */
 
 void	ft_shortlist_sort(t_stack *lst, t_bench *bench)

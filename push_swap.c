@@ -6,16 +6,16 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 13:33:42 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:52:39 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
 /*
-	1. Check if the input string 'str' starts with the flag "--bench" using 'ft_strncmp'.
-	2. Return 1 if the benchmark flag is detected.
-	3. Return 0 if the string does not match the benchmark flag.
+	1. Comprobar si la cadena de entrada 'str' empieza con el flag "--bench" usando 'ft_strncmp'.
+	2. Devolver 1 si se detecta el flag de benchmark.
+	3. Devolver 0 si la cadena no coincide con el flag de benchmark.
 */
 
 int	ft_is_bench(char *str)
@@ -25,12 +25,12 @@ int	ft_is_bench(char *str)
 	return (0);
 }
 /*
-	1. Check if the input string matches the "--simple" algorithm strategy flag.
-	2. Check if the input string matches the "--medium" algorithm strategy flag.
-	3. Check if the input string matches the "--complex" algorithm strategy flag.
-	4. Check if the input string matches the "--adaptive" algorithm strategy flag.
-	5. Return 1 if any valid strategy flag is matched.
-	6. Return 0 if the input string does not match any known algorithm flag.
+	1. Comprobar si la cadena de entrada coincide con el flag de estrategia de algoritmo "--simple".
+	2. Comprobar si la cadena de entrada coincide con el flag de estrategia de algoritmo "--medium".
+	3. Comprobar si la cadena de entrada coincide con el flag de estrategia de algoritmo "--complex".
+	4. Comprobar si la cadena de entrada coincide con el flag de estrategia de algoritmo "--adaptive".
+	5. Devolver 1 si coincide con cualquier flag de estrategia válido.
+	6. Devolver 0 si la cadena de entrada no coincide con ningún flag de algoritmo conocido.
 */
 
 int	ft_is_flag(char *str)
@@ -46,11 +46,11 @@ int	ft_is_flag(char *str)
 	return (0);
 }
 /*
-	1. Check if current argument at index '*i' is the benchmark flag using 'ft_is_bench'.
-	2. Store benchmark flag pointer in 'flag_bench' and advance argument index counter '*i'.
-	3. Check if the current argument at index '*i' is a valid strategy flag using 'ft_is_flag'.
-	4. Store strategy flag pointer in 'flag_bench' and advance argument index counter '*i'.
-	5. Fallback: if no strategy flag is explicitly given, default strategy flag to "--adaptive".
+	1. Comprobar si el argumento actual en el índice '*i' es el flag de benchmark usando 'ft_is_bench'.
+	2. Almacenar el puntero del flag de benchmark en 'flag_bench' y avanzar el contador de índice de argumentos '*i'.
+	3. Comprobar si el argumento actual en el índice '*i' es un flag de estrategia válido usando 'ft_is_flag'.
+	4. Almacenar el puntero del flag de estrategia en 'flag_bench' y avanzar el contador de índice de argumentos '*i'.
+	5. Alternativa: si no se proporciona explícitamente un flag de estrategia, establecer por defecto el flag "--adaptive".
 */
 
 void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i)
@@ -71,17 +71,17 @@ void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i)
 	}
 }
 /*
-	1. Declare index 'j', remaining parameter count 'param', and string array pointer 'args'.
-	2. Initialize array index counter 'j' to 0.
-	3. Calculate total remaining number of arguments starting from offset index '*i'.
-	4. Return NULL if no arguments remain to be processed.
-	5. Handle single formatted string argument case by splitting words by spaces using 'ft_split'.
-	6. Allocate memory for array of string pointers based on 'param' count plus NULL terminator.
-	7. Return NULL if dynamic memory allocation fails.
-	8. Loop through remaining command-line arguments in 'argv' array.
-	9. Duplicate each argument string into 'args' array and advance argument index '*i'.
-	10. Set final array element to NULL to create a properly terminated array.
-	11. Return pointer to newly assembled arguments array.
+	1. Declarar el índice 'j', el recuento de parámetros restantes 'param', y el puntero al array de cadenas 'args'.
+	2. Inicializar el contador de índice del array 'j' en 0.
+	3. Calcular el número total de argumentos restantes a partir del índice de desplazamiento '*i'.
+	4. Devolver NULL si no quedan argumentos por procesar.
+	5. Manejar el caso de un único argumento con formato de cadena dividiendo las palabras por espacios usando 'ft_split'.
+	6. Asignar memoria para el array de punteros de cadenas según el recuento 'param' más el terminador NULL.
+	7. Devolver NULL si la asignación dinámica de memoria falla.
+	8. Recorrer los argumentos restantes de la línea de comandos en el array 'argv'.
+	9. Duplicar cada cadena de argumento dentro del array 'args' y avanzar el índice de argumentos '*i'.
+	10. Establecer el último elemento del array como NULL para crear un array correctamente terminado.
+	11. Devolver el puntero al array de argumentos recién ensamblado.
 */
 
 char	**ft_new_args(int argc, char **argv, int *i)
@@ -113,16 +113,16 @@ char	**ft_new_args(int argc, char **argv, int *i)
 	return (args);
 }
 /*
-	1. Declare argument array 'args', tracking structures 'bench' and 'flag_bench', and index 'i'.
-	2. Initialize argument offset index 'i' to 1 (skipping executable name).
-	3. Allocate and initialize metric structure 'bench' and flag wrapper 'flag_bench'.
-	4. Extract benchmark and algorithm strategy flags from 'argv' inputs.
-	5. Format and process raw numerical arguments into array 'args'.
-	6. Clean up memory allocations and return -1 if argument processing failed.
-	7. Parse flags and trigger the corresponding sorting execution flow.
-	8. Print benchmark output metrics if benchmark flag was specified.
-	9. Free allocated string array 'args', flag wrapper 'flag_bench', and benchmark memory 'bench'.
-	10. Return 0 indicating successful execution completion.
+	1. Declarar el array de argumentos 'args', las estructuras de seguimiento 'bench' y 'flag_bench', y el índice 'i'.
+	2. Inicializar el índice de desplazamiento de argumentos 'i' en 1 (saltando el nombre del ejecutable).
+	3. Asignar e inicializar la estructura de métricas 'bench' y el contenedor de flags 'flag_bench'.
+	4. Extraer los flags de benchmark y de estrategia de algoritmo a partir de las entradas en 'argv'.
+	5. Formatear y procesar los argumentos numéricos brutos dentro del array 'args'.
+	6. Limpiar las asignaciones de memoria y devolver -1 si el procesamiento de argumentos falló.
+	7. Analizar los flags y activar el flujo de ejecución de ordenación correspondiente.
+	8. Imprimir las métricas de salida del benchmark si se especificó el flag de benchmark.
+	9. Liberar el array de cadenas asignado 'args', el contenedor de flags 'flag_bench' y la memoria de 'bench'.
+	10. Devolver 0 indicando la finalización exitosa de la ejecución.
 */
 
 int	push_swap(int argc, char **argv)
