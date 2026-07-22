@@ -6,11 +6,19 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/22 09:20:18 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/22 13:30:26 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
+
+/*
+	1. Declare an integer variable 'counter' to accumulate the remaining argument count.
+	2. Initialize 'counter' to 0 before starting the loop.
+	3. Loop while 'counter' is less than the total arguments 'argc' minus the current offset '*i'.
+	4. Increment 'counter' by 1 in each iteration to count remaining elements.
+	5. Return the total count of remaining arguments to the caller.
+*/
 
 int	ft_args_count(int *i, int argc)
 {
@@ -23,6 +31,14 @@ int	ft_args_count(int *i, int argc)
 	}
 	return (counter);
 }
+/*
+	1. Declare an integer variable 'i' to track the current index in the string array.
+	2. Initialize index 'i' to 0 to start traversing from the first string.
+	3. Loop through the null-terminated array of strings until reaching NULL.
+	4. Free dynamically allocated memory for the individual string at index 'i'.
+	5. Increment 'i' to advance to the next string in the array.
+	6. Free the main pointer array after all inner string allocations are cleared.
+*/
 
 void	ft_free_split(char **split)
 {
