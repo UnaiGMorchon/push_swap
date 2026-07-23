@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 15:29:44 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/09 13:45:37 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/04/30 12:56:59 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 15:03:27 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
+//#include <stdio.h>
 long int	ft_atol(const char *nptr)
 {
 	int			i;
@@ -39,3 +38,19 @@ long int	ft_atol(const char *nptr)
 	}
 	return (num * sign);
 }
+
+/*int	main(void)
+{
+	char	str[] = "	387a4i";
+	char	str2[] = "45:3";
+	char	str3[] = "+-76!f";
+	char	str4[] = "--54";
+	char	str5[] = "-21474836448";
+
+	printf("Print this bullshit: %d\n", ft_atoi(str));
+	printf("Print this bullshit: %d\n", ft_atoi(str2));
+	printf("Print this bullshit: %d\n", ft_atoi(str3));
+	printf("Print this bullshit: %d\n", ft_atoi(str4));
+	printf("Print this bullshit: %d\n", ft_atoi(str5));
+	return (0);
+}*/

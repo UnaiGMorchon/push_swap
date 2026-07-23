@@ -3,76 +3,72 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/14 09:39:22 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/03 09:54:50 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/05/14 11:53:40 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 13:54:31 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
+
+/*static void	del(void *content)
+{
+	free(content);
+}
+
+static void	*function(void *content)
+{
+	char	*cast_cont;
+	int	i;
+
+	i = 0;
+	cast_cont = (char *)content;
+	while (cast_cont[i])
+	{
+		if (cast_cont[i] >= 97 && cast_cont[i] <= 122)
+			cast_cont[i] = cast_cont[i] - 32;
+		i++;
+	}
+	return (content);
+}*/
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list; // Puntero a la cabeza de la nueva lista que vamos a devolver
-	void	*content;  // Variable temporal para guardar el contenido transformado por 'f'
-	t_list	*new_nodo; // Variable temporal para el nodo que fabricamos en cada vuelta
+	t_list	*second_list;
+	t_list	*copied_node;
+	void	*tmp_content;
 
-// 1. Protección inicial contra punteros nulos
-	if (!lst || !del || !f)
+	second_list = NULL;
+	if (!lst || !f || !del)
 		return (NULL);
-	new_list = NULL; // Inicializamos la nueva lista como vacía
-// 2. Bucle principal: Recorremos la lista original
-	while (lst != NULL)
+	while (lst)
 	{
-	// A. Aplicamos la función 'f' al contenido del nodo actual
-		content = f(lst->content);
-	// B. Creamos un nuevo nodo utilizando el contenido transformado
-		new_nodo = ft_lstnew(content);
-	// C. GESTIÓN DE ERRORES CRÍTICA: ¿Qué pasa si ft_lstnew falla (falla malloc)?
-		if (new_nodo == NULL)
+		tmp_content = f(lst-> content);
+		copied_node = ft_lstnew(tmp_content);
+		if (copied_node == NULL)
 		{
-			// Borramos el contenido transformado que se quedó flotando en memoria
-			del(content); 
-			// Destruimos toda la nueva lista que habíamos construido hasta ahora
-			ft_lstclear(&new_list, del);
+			del(tmp_content);
+			ft_lstclear(&second_list, del);
 			return (NULL);
 		}
-		// D. Si todo fue bien, añadimos el nuevo nodo al final de nuestra nueva lista
-		ft_lstadd_back(&new_list, new_nodo);
-		// E. Avanzamos al siguiente nodo de la lista original
-		lst = lst->next;
+		ft_lstadd_back(&second_list, copied_node);
+		lst = lst -> next;
 	}
-	// 3. Devolvemos el puntero al inicio de la nueva lista duplicada y mapeada
-	return (new_list);
-}
-/* 
-#include <stdio.h>
-
-// Función de mapeo correcta: Recibe un string, lo muestra y devuelve una copia en malloc
-static void	*ft_f(void *content)
-{
-	printf("elements: %s\n", (char *)content);
-	// Devolvemos una copia exacta en memoria dinámica para que pueda ser liberada legítimamente
+	return (second_list);
 }
 
-// Función de borrado
-static void	ft_del(void *content)
+/*int	main(void)
 {
-	free(content);
-} */
+	t_list	*header;
+	t_list	*another_header;
 
-/* int	main(void)
-{
-	t_list	*lst_head;
-
-// IMPORTANTE: El contenido del primer nodo NO puede ser un literal directo 
-	// si va a pasar por funciones que puedan liberar la lista original más tarde.
-	// Para este main de prueba rápido, usaremos un strdup para el nodo inicial.
-	lst_head = ft_lstnew("hello");
-	printf("list: %s\n", (char *)lst_head->content);
-// Ejecutamos tu función ft_lstmap
-	ft_lstmap(lst_head, ft_f, ft_del);
+	header = NULL;
+	ft_lstadd_front(&header, ft_lstnew(ft_strdup("position 1")));
+	ft_lstadd_front(&header, ft_lstnew(ft_strdup("position 2")));
+	ft_lstadd_front(&header, ft_lstnew(ft_strdup("position 3")));
+	another_header = ft_lstmap(header, function, del);
+	printf("Position: %s", (char *)another_header -> content);
 	return (0);
-}
- */
+}*/

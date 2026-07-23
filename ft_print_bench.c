@@ -6,21 +6,11 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 12:18:29 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/22 13:43:39 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 10:37:16 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
-
-/*
-	1. Imprimir los conteos de operaciones individuales de intercambio (sa, sb, ss) en la salida de error estándar (fd 2).
-	2. Imprimir los conteos de operaciones de empuje (pa, pb) en la salida de error estándar.
-	3. Imprimir un salto de línea para dar un formato limpio al desglose de operaciones.
-	4. Imprimir los conteos de operaciones individuales de rotación (ra, rb, rr) en la salida de error estándar.
-	5. Imprimir los conteos de operaciones de rotación inversa (rra, rrb, rrr) en la salida de error estándar.
-	6. Escribir un carácter de salto de línea final para terminar el bloque de salida de métricas.
-	7. Devolver 0 para completar la ejecución de la función.
-*/
 
 static char	ft_bench_help(t_bench *bench)
 {
@@ -49,20 +39,6 @@ static char	ft_bench_help(t_bench *bench)
 	write(2, "\n", 1);
 	return (0);
 }
-/*
-	1. Declarar variables enteras para la parte entera, la parte decimal y el desorden total escalado.
-	2. Convertir la métrica flotante de desorden en una representación entera escalada (multiplicada por 10000).
-	3. Calcular el componente entero del porcentaje de desorden.
-	4. Calcular el componente fraccionario de dos decimales del porcentaje de desorden.
-	5. Imprimir la etiqueta del porcentaje de desorden y la parte entera formateada en la salida de error estándar.
-	6. Imprimir el separador de punto decimal.
-	7. Añadir un cero a la izquierda si la parte decimal es menor a 10 para garantizar un formato preciso.
-	8. Imprimir la parte decimal junto con el signo de porcentaje y un salto de línea.
-	9. Imprimir la etiqueta de la estrategia del algoritmo seleccionada almacenada en la estructura bench.
-	10. Imprimir el conteo total de instrucciones de push_swap ejecutadas.
-	11. Llamar a la función auxiliar 'ft_bench_help' para imprimir los conteos detallados de cada operación individual.
-	12. Devolver 0 para indicar la finalización con éxito de la salida.
-*/
 
 char	ft_print_bench(t_bench *bench)
 {

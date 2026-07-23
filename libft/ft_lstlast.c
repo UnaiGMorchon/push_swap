@@ -3,51 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 12:50:06 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/05/19 09:06:22 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/05/13 13:07:25 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 12:50:31 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 t_list	*ft_lstlast(t_list *lst)
 {
-// 1. Protección contra listas vacías
-	// Si el puntero 'lst' es NULL (la lista no tiene ningún nodo),
-	// no hay último elemento que buscar, así que devolvemos NULL inmediatamente.
 	if (!lst)
 		return (NULL);
-// 2. Bucle de navegación
-	// Queremos detenernos EXACTAMENTE en el último nodo.
-	// El último nodo se reconoce porque su puntero 'next' apunta a NULL.
-	// Por tanto, avanzamos mientras 'lst->next' NO sea NULL.
 	while (lst->next != NULL)
-	{
-		lst = lst->next; // Avanzamos al siguiente nodo de la lista
-	}
-// 3. Retorno
-	// Al salir del bucle, 'lst->next' es NULL, lo que significa que 'lst'
-	// está apuntando ahora mismo al último nodo real de la lista. Lo devolvemos.
+		lst = lst->next;
 	return (lst);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
+/*int	main(void)
 {
-	t_list	*lst_head;
 	t_list	*result;
+	t_list	*header;
 
-	lst_head = NULL;
-	
-	lst_head = ft_lstnew("position 1");
-	lst_head -> next = ft_lstnew("position 2");
-	lst_head -> next = ft_lstnew("position 3");
-	printf("The first one: %s\n", (char *)lst_head->content);
-	printf("Behind of first: %s\n", (char *)lst_head->next->content);
-	result = ft_lstlast(lst_head);
-	printf("size = %d\n", ft_lstsize(lst_head));
-	printf("result = %s\n", (char *)result->content);
+	header = ft_lstnew("position 1");
+	header -> next = ft_lstnew("position 2");
+	header -> next = ft_lstnew("position 3");
+	result = ft_lstlast(header);
+	printf("List count: %d", ft_lstsize(header));
+	printf("Last position: %s", (char *)result -> content);
+	return (0);
 }*/

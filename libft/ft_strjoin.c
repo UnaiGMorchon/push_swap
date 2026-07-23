@@ -3,57 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/02 07:56:46 by unai              #+#    #+#             */
-/*   Updated: 2026/07/06 10:41:32 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/05/05 11:51:14 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 15:20:16 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*result;
+	char	*mem;
 	int		i;
 	int		j;
 
+	i = 0;
+	j = 0;
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	result = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (result == NULL)
+	mem = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (mem == NULL)
 		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 	{
-		result[i] = s1[i];
+		mem[i] = s1[i];
 		i++;
 	}
-	j = 0;
-	while (s2[j] != '\0')
+	while (s2[j])
 	{
-		result[i] = s2[j];
+		mem[i] = s2[j];
 		i++;
 		j++;
 	}
-	result[i] = '\0';
-	return (result);
+	mem[i] = '\0';
+	return (mem);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
+/*int	main(void)
 {
-	char	string1[] = "Hello";
-	char	string2[] = "world";
-	char	*result;
+	char	str1[] = "Princess";
+	char	str2[] = "Mononoke";
 
-	result = ft_strjoin(string1, string2);
-// Debería imprimir: "Helloworld" (todo junto, ya que la función no añade espacios por sí sola)
-	printf("%s\n", result);
-
-// Recuerda que al salir de la función, si esto fuera un programa real,
-	// deberías liberar la memoria reservada:
-	// free(result);
+	printf("Concatenated strings: %s", ft_strjoin(str1, str2));
 	return (0);
 }*/

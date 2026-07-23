@@ -3,51 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 08:28:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/05/19 09:15:19 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/05/13 10:12:05 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 12:50:10 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+/*#include <stdio.h>*/
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-// 1. Protección contra punteros nulos
-	// Si el puntero doble 'lst' no existe (no apunta a una dirección válida de la variable cabeza)
-	// O si el nodo 'new' que queremos añadir es NULL, no hacemos nada y salimos.
 	if (!lst || !new)
 		return ;
-// 2. Conectar el nuevo nodo a la lista existente
-	// Hacemos que el puntero 'next' del nuevo nodo apunte hacia donde apunta actualmente '*lst'
-	// (es decir, el que hasta ahora era el primer nodo de la lista).
-	// NOTA: Si la lista estaba vacía (*lst == NULL), 'new->next' pasará a ser NULL de forma correcta.
-	new->next = *lst;
-// 3. Actualizar la cabeza de la lista
-	// Ahora que el nuevo nodo está bien enganchado a la cadena, modificamos el puntero original
-	// de la lista (*lst) para que apunte a 'new'. El nuevo nodo es oficialmente el primero.
+	new -> next = *lst;
 	*lst = new;
 }
 /*
-#include <stdio.h>
-
 int	main(void)
 {
-	t_list	*lst_head;
+	t_list *header;
 
-	lst_head = NULL; // Inicializamos la lista vacía
-// 1. Añadimos el nodo "hello". 
-	// Como lst_head era NULL, la lista pasa a ser: ["hello"] -> NULL
-	ft_lstadd_front(&lst_head, ft_lstnew("hello"));
-// 2. Añadimos el nodo "world" al frente.
-	// El 'next' de "world" apuntará a "hello".
-	// 'lst_head' se actualiza para apuntar a "world".
-	// La lista ahora es: ["world"] -> ["hello"] -> NULL
-	ft_lstadd_front(&lst_head, ft_lstnew("world"));
-// Debería imprimir: "world"
-	printf("The first one: %s\n", (char *)lst_head->content);
-// Debería imprimir: "hello"
-	printf("Behind of first: %s\n", (char *)lst_head->next->content);
+	header = NULL;
+	ft_lstadd_front(&header, ft_lstnew("position 1"));
+	ft_lstadd_front(&header, ft_lstnew("position 2"));
+	printf("First node: %s\n",(char *)header -> content);
+	printf("Second node: %s", (char *)header -> next -> content);
+	return (0);
 }
 */

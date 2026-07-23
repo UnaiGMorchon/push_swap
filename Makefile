@@ -6,7 +6,7 @@
 #   By: ugarcia- <ugarcia-@student.42urduliz.com>    +#+  +:+       +#+        #
 #                                                  +#+#+#+#+#+   +#+           #
 #   Created: 2026/06/10 12:43:36 by patperez            #+#    #+#             #
-#   Updated: 2026/07/20 12:30:57 by ugarcia-           ###   ########.fr       #
+#   Updated: 2026/07/23 08:48:40 by ugarcia-           ###   ########.fr       #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,34 +20,27 @@ SRCS = ft_push.c ft_rotate.c ft_swap.c ft_reverse.c ft_pushswap_utils1.c \
  ft_shortlist_sort.c ft_print_bench.c
 
 LIBFT_DIR = ./libft
-PRINTF_DIR = ./printf
 LIBFT = $(LIBFT_DIR)/libft.a
-PRINTF = $(PRINTF_DIR)/libftprintf.a
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(LIBFT) $(PRINTF) $(NAME)
+all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJS) $(PRINTF) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-
-$(PRINTF):
-	$(MAKE) -C $(PRINTF_DIR)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(PRINTF_DIR) clean
 	rm -f $(OBJS)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(PRINTF_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

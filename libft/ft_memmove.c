@@ -3,81 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 14:25:15 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/05/19 08:48:57 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/04/28 10:58:04 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 15:13:17 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include <stdio.h>
 #include "libft.h"
 
-// =========================================================================
-// 1. FUNCIÓN AUXILIAR: Copia los bytes evitando destruir datos solapados
-// =========================================================================
-static void	ft_fill(char *destination, const char *source, size_t n)
+static void	ft_aux_tofill(char *destin, const char *source, size_t n)
 {
-	size_t	i;
+	size_t	counter;
 
-// CASO A: El destino empieza DESPUÉS del origen (Solapamiento crítico)
-	// Si copiáramos de izquierda a derecha, escribiríamos sobre datos de 'source' que aún no hemos leído.
-	// Solución: Copiamos de derecha a izquierda (desde el final hacia el principio).
-	if (destination > source)
+	if (destin > source)
 	{
-		i = n; // Empezamos desde el tamaño total
-		while (i > 0)
+		counter = n;
+		while (counter > 0)
 		{
-			i--; // Decrementamos primero para apuntar al índice correcto (de n - 1 hasta 0)
-			destination[i] = source[i]; // Copiamos el byte
+			counter--;
+			destin[counter] = source[counter];
 		}
 	}
-// CASO B: El destino empieza ANTES del origen (o no hay solapamiento)
-	// Aquí es completamente seguro copiar de forma tradicional: de izquierda a derecha (desde el principio al final).
 	else
 	{
-		i = 0;
-		while (i < n)
+		counter = 0;
+		while (counter < n)
 		{
-			destination[i] = source[i];
-			i++;
+			destin[counter] = source[counter];
+			counter++;
 		}
 	}
 }
 
-// =========================================================================
-// 2. FUNCIÓN PRINCIPAL: ft_memmove
-// =========================================================================
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*destination;
-	char	*source;
+	char		*destin;
+	const char	*source;
 
-// 1. Conversión de tipos (Casting)
-	// Casteamos los punteros genéricos 'void *' a 'char *' para poder manipularlos byte a byte
-	destination = (char *)dest;
-	source = (char *)src;
-// 2. Casos base de optimización
-	// Si el destino y el origen son la misma dirección de memoria, o si nos piden mover 0 bytes,
-	// no hay nada que hacer. Retornamos inmediatamente 'dest'.
-	if ((destination == source) || n == 0)
-		return (dest);
-// 3. Llamada a la función de copia inteligente
-	ft_fill(destination, source, n);
-// 4. Retorno estándar de memmove
-	// Según el estándar de C, se debe devolver el puntero original al bloque de destino
+	destin = (char *)dest;
+	source = (const char *)src;
+	if (destin == source || n == 0)
+		return (destin);
+	ft_aux_tofill(destin, source, n);
 	return (dest);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
+/*int	main(void)
 {
-	char	dest[] = "Hello world";
-	char	src[] = "Hi";
+	char	str[] = "String after memmove";
+	char	dest_str[] = "First string";
 
-// Copia los 2 primeros bytes de src ("Hi") en dest.
-	ft_memmove(dest, src, 2);
-// Debería imprimir: "Illo world" (reemplaza 'H' y 'e' por 'H' e 'i')
-	printf("%s\n", dest);
+	printf("%s", dest_str);
+	ft_memmove(dest_str, str, 7);
+	printf("%s", dest_str);
 	return (0);
 }*/

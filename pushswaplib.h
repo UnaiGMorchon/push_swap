@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/21 12:39:21 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 08:54:57 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_isflag
 	char	*bench;
 }					t_isflag;
 
-/* OPERATIONS */
 void		ft_sa(t_stack *lst_a, t_bench *bench);
 void		ft_sb(t_stack *lst_b, t_bench *bench);
 void		ft_ss(t_stack*lst_a, t_stack *lst_b, t_bench *bench);
@@ -69,10 +68,8 @@ void		ft_rra(t_stack *lst_a, t_bench *bench);
 void		ft_rrb(t_stack *lst_b, t_bench *bench);
 void		ft_rrr(t_stack *lst_a, t_stack *lst_b, t_bench *bench);
 
-/* PROGRAM */
 int			push_swap(int argc, char **argv);
 
-/* UTILS */
 t_node_list	*ft_newnode(int content);
 t_stack		*ft_newstack(void);
 void		ft_stackadd_front(t_stack *stack, t_node_list *new_node);
@@ -95,7 +92,6 @@ char		ft_print_bench(t_bench *bench);
 void		ft_free_split(char **split);
 int			ft_args_count(int *i, int argc);
 
-/* ALGORITHMS */
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
 void		ft_bucket(t_stack *lst_a, t_bench *bench);
 void		ft_radix(t_stack *lst_a, t_bench *bench);

@@ -3,64 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/28 07:38:23 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/05/19 08:10:50 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/04/28 16:37:58 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/14 15:20:45 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i; // Índice para movernos por el destino 'dst'
-	size_t	j; // Índice para movernos por el origen 'src'
-	size_t	len_dest; // Almacena la longitud inicial de 'dst'
-	size_t	len_src; // Almacena la longitud de 'src'
+	size_t	counter;
+	size_t	to_conc;
+	size_t	dlen;
+	size_t	slen;
 
-	i = 0;
-	j = 0;
-// 1. Calcular las longitudes de ambas cadenas
-	len_dest = ft_strlen(dst);
-	len_src = ft_strlen(src);
-// Posicionamos 'i' al final del texto actual de 'dst' para empezar a concatenar ahí
-	i = len_dest;
-	j = 0;
-// 2. Caso especial de seguridad
-	// Si el 'size' pasado es menor o igual a la longitud actual de 'dst', significa
-	// que el búfer de destino ya está lleno (o no es válido). No se concatena nada,
-	// y por norma se retorna 'size + len_src
-	if (size <= len_dest)
-		return (size + len_src);
-// 3. Bucle de concatenación segura
-	// Copiamos caracteres de 'src' a 'dst' mientras:
-	// - No hayamos llegado al final de 'src'
-	// - Quede espacio disponible en 'dst' (dejando siempre 1 espacio libre para el '\0')
-	// El espacio máximo disponible para añadir texto es: size - len_dest - 1
-	while (src[j] != '\0' && j < size - len_dest - 1)
+	counter = 0;
+	dlen = ft_strlen(dst);
+	slen = ft_strlen(src);
+	to_conc = size - dlen - 1;
+	if (dlen >= size)
+		return (size + slen);
+	while (src[counter] && to_conc)
 	{
-		dst[i] = src[j]; // Copia el carácter de origen al final del destino
-		i++;
-		j++;
+		dst[dlen + counter] = src[counter];
+		counter++;
+		to_conc--;
 	}
-// 4. Asegurar el cierre de la cadena
-	// Ponemos el carácter nulo al final de la nueva cadena concatenada
-	dst[i] = '\0';
-// 5. Retorno estándar de strlcat
-	// Siempre devuelve la longitud teórica de la cadena que se intentó crear:
-	// la longitud inicial de 'dst' + la longitud de 'src'.
-	return (len_dest + len_src);
+	dst[dlen + counter] = '\0';
+	return (dlen + slen);
 }
-/*
-#include <stdio.h>
 
-int	main(void)
+/*int	main(void)
 {
-	char	dest1[10] = "abc"; // Longitud actual = 3, Capacidad total = 10
-	char	str1[] = "def"; // Longitud = 3
-	size_t	size1 = sizeof(dest1); // size1 = 10
+	char	src_str[] = "Source string";
+	char	dest_str[] = "Destination string";
+	size_t	result;
 
-	printf("%zu\n", ft_strlcat(dest1, str1, size1)); // Debería imprimir: 6 (3 + 3)
-	printf ("dest1 = %s\n", dest1); // Debería imprimir: "abcdef"
+	result = ft_strlcat(dest_str, src_str, 22);
+	printf("Length: %zu", result);
+	printf("\n%s", dest_str);
+	return (0);
 }*/
