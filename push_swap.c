@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 10:38:58 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:09:40 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,21 @@ int	ft_is_flag(char *str)
 	return (0);
 }
 
-void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i)
+void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i,
+			t_bench *bench)
 {
+	int	count_args;
+	int	j;
+
+	count_args = 0;
+	j = 0;
+	while (argv[j++])
+		count_args++;
 	if (ft_is_bench(argv[*i]) == 1)
 	{
 		flag_bench -> bench = argv[*i];
+		if (count_args == 2)
+			ft_free_if_null(bench, flag_bench);
 		*i += 1;
 	}
 	if (ft_is_flag(argv[*i]) == 1)
@@ -90,7 +100,7 @@ int	push_swap(int argc, char **argv)
 	args = NULL;
 	bench = ft_initialise_bench();
 	flag_bench = ft_initialise_flag_bench();
-	ft_separate_flags(argv, flag_bench, &i);
+	ft_separate_flags(argv, flag_bench, &i, bench);
 	args = ft_new_args(argc, argv, &i);
 	if (args == NULL)
 	{

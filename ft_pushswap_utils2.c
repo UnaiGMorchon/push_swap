@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 11:51:52 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 10:38:04 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:09:51 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,11 @@ double	ft_sqroot(int x)
 		c++;
 	}
 	return (y);
+}
+
+void	ft_free_if_null(t_bench *bench, t_isflag *flag_bench)
+{
+	free(flag_bench);
+	free(bench);
+	exit(0);
 }

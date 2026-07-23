@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 08:54:57 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 13:09:59 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,12 @@ t_stack		*ft_valid_and_convert(char **args,
 				t_bench *bench, t_isflag *flag_bench);
 void		ft_flag_search_parsing(char **args,
 				t_isflag *flag_bench, t_bench *bench);
-void		ft_separate_flags(char **argv, t_isflag *flag_bench, int *i);
+void		ft_separate_flags(char **argv, t_isflag *flag_bench,
+				int *i, t_bench *bench);
 char		ft_print_bench(t_bench *bench);
 void		ft_free_split(char **split);
 int			ft_args_count(int *i, int argc);
+void		ft_free_if_null(t_bench *bench, t_isflag *flag_bench);
 
 void		ft_bubble_sort(t_stack *lst, t_bench *bench);
 void		ft_bucket(t_stack *lst_a, t_bench *bench);
