@@ -3,53 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input_conversion.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patperez <patperez@student.42urduliz.      +#+  +:+       +#+        */
+/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/07 09:12:29 by patperez         ###   ########.fr       */
+/*   Updated: 2026/07/23 10:37:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-int	ft_is_validint(char **argv)
+long int	ft_is_validint(char **args)
 {
-	int	i;
+	int			i;
+	int			j;
+	long int	result;
 
-	i = 0;
-	printf("INPUT %s\n", *argv);
-	if (*argv[i] == '-')
-		i++;
-	while (*argv[i])
+	j = -1;
+	while (args[++j])
 	{
-		if (!ft_isdigit(*argv[i]))
+		i = 0;
+		if (args[j][0] == '-')
+			i++;
+		while (args[j][i])
 		{
-			printf("ERROR: NOT A DIGIT\n");
-			return (0); // return error message?
+			if (!ft_isdigit(args[j][i++]))
+			{
+				return (0);
+			}
 		}
-		i++;
-	}
-	if (ft_atoi(*argv) > -2147483648 && ft_atoi(*argv) > 2147483647)
-	{
-		printf("ERROR: OVERFLOW\n");
-		return (0); // return error message?
+		result = ft_atol(args[j]);
+		if (result > 2147483647 || result < -2147483648)
+		{
+			return (0);
+		}
 	}
 	return (1);
 }
 
-/*int	ft_isrepeat(char **argv)
+int	ft_isrepeat(char **args)
 {
-	int	i;
-	int	j;
+	int			i;
+	int			j;
+	long int	result;
+	long int	tmp;
 
 	i = 0;
-	j = i + 1;
-	while (argv[i] != '\0')
+	while (args[i])
 	{
-		while (argv[i] != argv[j])
+		j = 0;
+		result = ft_atol(args[i]);
+		while (j < i)
 		{
-			if (argv[i] == argv[j])
-				return (0); // return error message?
+			tmp = ft_atol(args[j]);
+			if (result == tmp)
+				return (0);
 			j++;
 		}
 		i++;
@@ -57,15 +64,82 @@ int	ft_is_validint(char **argv)
 	return (1);
 }
 
-void	input_conversion(int input)
+t_stack	*ft_input_conversion(char **args, t_bench *bench, t_isflag *flag_bench)
 {
-	int	i;
-	t_node_list	*lst_a;
+	int			i;
+	t_stack		*stack_a;
 
 	i = 0;
-	while (input)
+	stack_a = ft_newstack();
+	while (args[i])
 	{
-		ft_lstadd_front(lst_a, input[i]);
+		ft_stackadd_back(stack_a, ft_newnode(ft_atol(args[i])));
 		i++;
 	}
-}*/
+	if (stack_a -> size == 1)
+		return (ft_clearstack(stack_a), NULL);
+	bench -> disorder = ft_disorder_metric(stack_a);
+	if (bench -> disorder == 0)
+	{
+		if (flag_bench -> bench)
+			ft_print_bench(bench);
+		free(bench);
+		free(flag_bench);
+		ft_clearstack(stack_a);
+		ft_free_split(args);
+		exit(0);
+	}
+	return (stack_a);
+}
+
+t_stack	*ft_valid_and_convert(char **args, t_bench *bench, t_isflag *flag_bench)
+{
+	t_stack	*to_convert;
+
+	if (ft_is_validint(args) == 0 || ft_isrepeat(args) == 0)
+	{
+		free(bench);
+		free(flag_bench);
+		ft_free_split(args);
+		exit(write(2, "Error\n", 6));
+	}
+	to_convert = ft_input_conversion(args, bench, flag_bench);
+	if (to_convert == NULL)
+	{
+		free(bench);
+		free(flag_bench);
+		ft_free_split(args);
+		exit(0);
+	}
+	return (to_convert);
+}
+
+void	ft_flag_search_parsing(char **args, t_isflag *flag_bench,
+			t_bench *bench)
+{
+	t_stack	*converted_stack;
+
+	converted_stack = ft_valid_and_convert(args, bench, flag_bench);
+	if (ft_strncmp(flag_bench -> flag, "--simple", 8) == 0)
+	{
+		bench -> strategy = "Simple / O(n2)";
+		ft_bubble_sort(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--medium", 8) == 0)
+	{
+		bench -> strategy = "Medium / O(n√n)";
+		ft_bucket(converted_stack, bench);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--complex", 9) == 0)
+	{
+		bench -> strategy = "Complex / O(n log n)";
+		ft_get_index(converted_stack);
+		ft_radix(converted_stack, bench);
+		ft_clearstack(converted_stack);
+	}
+	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0
+		|| !flag_bench -> flag)
+	{
+		ft_adaptive_algo(converted_stack, bench);
+	}
+}

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
+/*   By: patperez <patperez@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/03 09:09:17 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/03 09:10:06 by ugarcia-         ###   ########.fr       */
+/*   Created: 2026/04/27 15:40:56 by patperez          #+#    #+#             */
+/*   Updated: 2026/05/12 16:26:43 by patperez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswaplib.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_isprint(int c)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }
+
+/*int	main(void)
+{
+	ft_isprint(23);
+	return (0);
+}*/

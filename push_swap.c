@@ -6,31 +6,103 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/09 09:36:16 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/23 10:38:58 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswaplib.h"
 
-/*
-convertirlo a string separados por espacios, concatenar. (contar los que tenemos?)
-trocear hacerle el split?. trocerar
-validar que sea números, convertirlos a números isdigit? validar
-sin duplicados, sin negativos, no se salgan de los limites, atoi? convertir
-*/
-
-int	main(int argc, char **argv)
+int	ft_is_bench(char *str)
 {
-	int	arg_i;
+	if (ft_strncmp(str, "--bench", 7) == 0)
+		return (1);
+	return (0);
+}
 
-	arg_i = 1;
-	if (argc < 2)
-		return (0);
-	while (arg_i <= argc)
+int	ft_is_flag(char *str)
+{
+	if (ft_strncmp(str, "--simple", 8) == 0)
+		return (1);
+	if (ft_strncmp(str, "--medium", 8) == 0)
+		return (1);
+	if (ft_strncmp(str, "--complex", 10) == 0)
+		return (1);
+	if (ft_strncmp(str, "--adaptive", 11) == 0)
+		return (1);
+	return (0);
+}
+
+void	ft_separate_flags(char **argv, t_isflag *flag_bench, int *i)
+{
+	if (ft_is_bench(argv[*i]) == 1)
 	{
-		ft_is_validint(argv);
-		//ft_isrepeat(argv);
-		argv++;
+		flag_bench -> bench = argv[*i];
+		*i += 1;
 	}
+	if (ft_is_flag(argv[*i]) == 1)
+	{
+		flag_bench -> flag = argv[*i];
+		*i += 1;
+	}
+	else
+	{
+		flag_bench -> flag = "--adaptive";
+	}
+}
+
+char	**ft_new_args(int argc, char **argv, int *i)
+{
+	int		j;
+	int		param;
+	char	**args;
+
+	j = 0;
+	param = ft_args_count(i, argc);
+	if (param == 0)
+		return (NULL);
+	if (param == 1)
+	{
+		args = ft_split(argv[*i], ' ');
+		*i += 1;
+		return (args);
+	}
+	args = malloc(sizeof(*args) * (param + 1));
+	if (args == NULL)
+		return (NULL);
+	while (argv[*i])
+	{
+		args[j] = ft_strdup(argv[*i]);
+		*i += 1;
+		j++;
+	}
+	args[j] = NULL;
+	return (args);
+}
+
+int	push_swap(int argc, char **argv)
+{
+	char		**args;
+	t_bench		*bench;
+	t_isflag	*flag_bench;
+	int			i;
+
+	i = 1;
+	args = NULL;
+	bench = ft_initialise_bench();
+	flag_bench = ft_initialise_flag_bench();
+	ft_separate_flags(argv, flag_bench, &i);
+	args = ft_new_args(argc, argv, &i);
+	if (args == NULL)
+	{
+		free(flag_bench);
+		free(bench);
+		return (-1);
+	}
+	ft_flag_search_parsing(args, flag_bench, bench);
+	if (flag_bench -> bench || (flag_bench -> bench && bench -> disorder == 0))
+		ft_print_bench(bench);
+	ft_free_split(args);
+	free(flag_bench);
+	free(bench);
 	return (0);
 }
