@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 14:35:09 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 10:37:34 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 07:47:13 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	ft_pa(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 	ft_stackadd_front(lst_a, node_to_move);
 	bench -> pa += 1;
 	bench -> total += 1;
-	write(1, "pa\n", 3);
+	bench -> con += 1;
+	//write(1, "pa\n", 3);
 }
 
 void	ft_pb(t_stack *lst_b, t_stack *lst_a, t_bench *bench)
@@ -63,5 +64,6 @@ void	ft_pb(t_stack *lst_b, t_stack *lst_a, t_bench *bench)
 	ft_stackadd_front(lst_b, tmp);
 	bench -> pb += 1;
 	bench -> total += 1;
-	write(1, "pb\n", 3);
+	bench -> con += 1;
+	//write(1, "pb\n", 3);
 }

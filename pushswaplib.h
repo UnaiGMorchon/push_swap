@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:24:41 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 13:09:59 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 08:24:04 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_bench
 	float	disorder;
 	char	*strategy;
 	int		total;
+	int		con;
 	int		sa;
 	int		sb;
 	int		ss;
@@ -54,6 +55,7 @@ typedef struct s_isflag
 {
 	char	*flag;
 	char	*bench;
+	//char	*con;
 }					t_isflag;
 
 void		ft_sa(t_stack *lst_a, t_bench *bench);

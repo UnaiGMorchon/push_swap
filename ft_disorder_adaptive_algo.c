@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 09:09:11 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 10:36:48 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 08:02:07 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_bench	*ft_initialise_bench(void)
 	bench -> disorder = 0.0;
 	bench -> strategy = NULL;
 	bench -> total = 0;
+	bench -> con = 0;
 	bench -> sa = 0;
 	bench -> sb = 0;
 	bench -> ss = 0;
@@ -41,6 +42,7 @@ t_isflag	*ft_initialise_flag_bench(void)
 	flag_bench = malloc(sizeof(t_isflag));
 	flag_bench -> flag = NULL;
 	flag_bench -> bench = NULL;
+	//flag_bench -> con = NULL;
 	return (flag_bench);
 }
 

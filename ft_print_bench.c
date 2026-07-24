@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/20 12:18:29 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/23 10:37:16 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 08:42:56 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ char	ft_print_bench(t_bench *bench)
 	total = (int)(bench -> disorder * 10000.0f);
 	int_part = total / 100;
 	dec_part = total % 100;
-	ft_putstr_fd("[bench] disorder: ", 2);
+ 	ft_putstr_fd("[bench] disorder: ", 2);
 	ft_putnbr_fd(int_part, 2);
-	write(2, ".", 1);
+	write(2, ".", 1); 
 	if (dec_part < 10)
 		ft_putchar_fd('0', 2);
 	ft_putnbr_fd(dec_part, 2);
@@ -60,9 +60,12 @@ char	ft_print_bench(t_bench *bench)
 	ft_putstr_fd("[bench] strategy: ", 2);
 	ft_putstr_fd(bench -> strategy, 2);
 	write(2, "\n", 1);
-	ft_putstr_fd("[bench] total: ", 2);
+/* 	ft_putstr_fd("[bench] total: ", 2);
 	ft_putnbr_fd(bench -> total, 2);
-	write(2, "\n", 1);
+	write(2, "\n", 1); */
 	ft_bench_help(bench);
+	ft_putstr_fd("[con] con: ", 2);
+	ft_putnbr_fd(bench -> con, 2);
+	write(2, "\n", 1);
 	return (0);
 }

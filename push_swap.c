@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/18 12:21:30 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 13:09:40 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 07:57:41 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	ft_is_bench(char *str)
 {
 	if (ft_strncmp(str, "--bench", 7) == 0)
+		return (1);
+	if (ft_strncmp(str, "--con", 5) == 0)
 		return (1);
 	return (0);
 }

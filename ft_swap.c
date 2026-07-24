@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 12:57:52 by ugarcia-          #+#    #+#             */
-/*   Updated: 2026/07/23 10:38:44 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 07:47:51 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	ft_sa(t_stack *lst_a, t_bench *bench)
 	lst_a-> head -> next-> index = temp_index;
 	bench -> sa += 1;
 	bench -> total += 1;
-	write(1, "sa\n", 3);
+	bench -> con += 1;
+	//write(1, "sa\n", 3);
 }
 
 void	ft_sb(t_stack *lst_b, t_bench *bench)
@@ -45,7 +46,8 @@ void	ft_sb(t_stack *lst_b, t_bench *bench)
 	lst_b-> head -> next-> index = temp_index;
 	bench -> sb += 1;
 	bench -> total += 1;
-	write(1, "sb\n", 3);
+	bench -> con += 1;
+	//write(1, "sb\n", 3);
 }
 
 void	ft_ss(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
@@ -58,6 +60,7 @@ void	ft_ss(t_stack *lst_a, t_stack *lst_b, t_bench *bench)
 		bench -> sa -= 1;
 		bench -> sb -= 1;
 		bench -> total -= 1;
-		write(1, "ss\n", 3);
+		bench -> con += 1;
+		//write(1, "ss\n", 3);
 	}
 }

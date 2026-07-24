@@ -6,7 +6,7 @@
 /*   By: ugarcia- <ugarcia-@student.42urduliz.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 09:58:07 by patperez          #+#    #+#             */
-/*   Updated: 2026/07/23 10:37:07 by ugarcia-         ###   ########.fr       */
+/*   Updated: 2026/07/24 08:28:50 by ugarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench,
 		ft_clearstack(converted_stack);
 	}
 	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0
+		|| (flag_bench->flag || ft_strncmp(flag_bench->flag, "--con", 5) == 0)
 		|| !flag_bench -> flag)
 	{
 		ft_adaptive_algo(converted_stack, bench);
