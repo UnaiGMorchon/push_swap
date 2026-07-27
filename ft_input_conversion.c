@@ -135,7 +135,6 @@ void	ft_flag_search_parsing(char **args, t_isflag *flag_bench,
 		bench -> strategy = "Complex / O(n log n)";
 		ft_get_index(converted_stack);
 		ft_radix(converted_stack, bench);
-		ft_clearstack(converted_stack);
 	}
 	else if (ft_strncmp(flag_bench -> flag, "--adaptive", 10) == 0
 		|| !flag_bench -> flag)

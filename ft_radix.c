@@ -50,4 +50,5 @@ void	ft_radix(t_stack *lst_a, t_bench *bench)
 		i++;
 	}
 	ft_clearstack(lst_b);
+	ft_clearstack(lst_a);
 }
